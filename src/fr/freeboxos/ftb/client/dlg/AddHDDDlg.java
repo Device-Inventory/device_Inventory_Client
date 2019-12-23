@@ -9,8 +9,12 @@ import fr.freeboxos.ftb.metier.entitys.HDD;
 import fr.freeboxos.ftb.metier.entitys.SSD;
 import fr.freeboxos.ftb.metier.enums.hddMarque;
 import fr.freeboxos.ftb.metier.enums.ssdType;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -35,6 +39,7 @@ public class AddHDDDlg extends javax.swing.JDialog {
         this.jLabelTitre.setText("Ajout d'un disque dur");
         this.jComboBoxMarque.setModel(new DefaultComboBoxModel(hddMarque.values()));
         this.jComboBoxTypeMemoire.setModel(new DefaultComboBoxModel(ssdType.values()));
+        this.getRootPane().setDefaultButton(jButtonOK);
     }
 
     public AddHDDDlg(java.awt.Frame parent, boolean modal, HDD hdd) {
@@ -42,6 +47,7 @@ public class AddHDDDlg extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
         //this.setSize(500, 580);
+        this.getRootPane().setDefaultButton(jButtonOK);
         /**
          * Mettre les valeurs pour les modification
          */
@@ -518,28 +524,11 @@ public class AddHDDDlg extends javax.swing.JDialog {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddHDDDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddHDDDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddHDDDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddHDDDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(AddHDDDlg.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
