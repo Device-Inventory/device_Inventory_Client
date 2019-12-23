@@ -23,7 +23,7 @@ public class MainIhm extends javax.swing.JFrame {
     public MainIhm() throws Exception {
         super("Inventaire informatique");
         initComponents();
-        this.setSize(537, 180);
+        this.setSize(420, 180);
         this.setLocationRelativeTo(null);
         this.jLabel_cpu.setText(String.valueOf(MetierFactory.getProcesseurService().getCount()));
         this.jLabel_autre.setText(String.valueOf(MetierFactory.getAutreService().getCount()));
@@ -59,13 +59,16 @@ public class MainIhm extends javax.swing.JFrame {
         jButtonUtilisateur = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
+        layout.columnWidths = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0};
+        layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
+        getContentPane().setLayout(layout);
 
         jLabel1.setText("Inventaire");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridwidth = 9;
         getContentPane().add(jLabel1, gridBagConstraints);
 
         jButton1.setText("Processeur");
@@ -76,7 +79,7 @@ public class MainIhm extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(jButton1, gridBagConstraints);
 
@@ -87,8 +90,8 @@ public class MainIhm extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(jButton2, gridBagConstraints);
 
@@ -99,8 +102,8 @@ public class MainIhm extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         getContentPane().add(jButton3, gridBagConstraints);
 
@@ -111,8 +114,8 @@ public class MainIhm extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(jButton4, gridBagConstraints);
 
@@ -123,47 +126,46 @@ public class MainIhm extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(jButton5, gridBagConstraints);
 
         jLabel_cpu.setText("jLabel2");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 4;
         getContentPane().add(jLabel_cpu, gridBagConstraints);
 
         jLabel_ram.setText("jLabel3");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
         getContentPane().add(jLabel_ram, gridBagConstraints);
 
         jLabel_hdd.setText("jLabel4");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 4;
         getContentPane().add(jLabel_hdd, gridBagConstraints);
 
         jLabel_cable.setText("jLabel5");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 4;
         getContentPane().add(jLabel_cable, gridBagConstraints);
 
         jLabel_autre.setText("jLabel6");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 4;
         getContentPane().add(jLabel_autre, gridBagConstraints);
 
         jLabel_prixTotal.setText("jLabel7");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 9;
         getContentPane().add(jLabel_prixTotal, gridBagConstraints);
 
         jButton_Quitter.setText("Quitter");
@@ -174,8 +176,8 @@ public class MainIhm extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 9;
         getContentPane().add(jButton_Quitter, gridBagConstraints);
 
         jButtonUtilisateur.setText("Utilisateur");
@@ -186,7 +188,7 @@ public class MainIhm extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 8;
         getContentPane().add(jButtonUtilisateur, gridBagConstraints);
 
         pack();
