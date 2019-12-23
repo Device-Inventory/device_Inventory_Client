@@ -6,6 +6,8 @@
 package fr.freeboxos.ftb.client.dlg;
 
 import fr.freeboxos.ftb.metier.entitys.Autre;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -34,6 +36,8 @@ public class AddAutreDlg extends javax.swing.JDialog {
         this.setSize(450, 200);
         this.jLabelTitre.setText("Ajout d'un objet");
         this.getRootPane().setDefaultButton(jButton1);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
 
         /*
         Chargement du jcombobox avec 50 nombre
@@ -52,6 +56,8 @@ public class AddAutreDlg extends javax.swing.JDialog {
         this.jLabelTitre.setText("Modification d'un objet");
         this.jTextField1.setText(autre.getElement());
         this.getRootPane().setDefaultButton(jButton1);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
 
         /*
         Chargement du jcombobox avec 50 nombre

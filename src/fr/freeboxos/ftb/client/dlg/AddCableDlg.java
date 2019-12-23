@@ -7,6 +7,8 @@ package fr.freeboxos.ftb.client.dlg;
 
 import fr.freeboxos.ftb.metier.entitys.Cable;
 import fr.freeboxos.ftb.metier.enums.cableType;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -36,6 +38,8 @@ public class AddCableDlg extends javax.swing.JDialog {
         this.jLabel1.setText("Ajout d'un cable");
         this.jComboBox1.setModel(new DefaultComboBoxModel(cableType.values()));
         this.getRootPane().setDefaultButton(jButton1);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
     }
 
     public AddCableDlg(java.awt.Frame parent, boolean modal, Cable cable) {
@@ -50,6 +54,8 @@ public class AddCableDlg extends javax.swing.JDialog {
         this.jComboBox3.setSelectedItem(cable.getPrise_b());
         this.jTextFieldNombre.setText(String.valueOf(cable.getNombre()));
         this.getRootPane().setDefaultButton(jButton1);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
     }
 
     public Cable getCable() {

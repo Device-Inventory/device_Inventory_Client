@@ -6,6 +6,8 @@
 package fr.freeboxos.ftb.client.dlg;
 
 import fr.freeboxos.ftb.metier.entitys.Processeur;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -33,6 +35,8 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.jLabelTitre.setText("Ajout d'un processeur");
         this.getRootPane().setDefaultButton(jButton2);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
     }
 
     public AddProcesseurDlg(java.awt.Frame parent, boolean modal, Processeur processeur) {
@@ -40,6 +44,8 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
         this.getRootPane().setDefaultButton(jButton2);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
 
         this.id = processeur.getId();
         this.jLabelTitre.setText("Modification d'un processeur");

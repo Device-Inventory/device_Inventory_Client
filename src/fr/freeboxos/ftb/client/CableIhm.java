@@ -10,6 +10,8 @@ import fr.freeboxos.ftb.client.model.CableTableModel;
 import fr.freeboxos.ftb.metier.CableService;
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.entitys.Cable;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -42,6 +44,8 @@ public class CableIhm extends javax.swing.JDialog {
         this.cableService = MetierFactory.getCableService();
         this.model = new CableTableModel(this.cableService.sort());
         this.jTable1.setModel(model);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
     }
 
     /**

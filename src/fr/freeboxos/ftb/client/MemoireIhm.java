@@ -10,6 +10,8 @@ import fr.freeboxos.ftb.client.model.MemoireTableModel;
 import fr.freeboxos.ftb.metier.MemoireService;
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.entitys.Memoire;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -42,6 +44,8 @@ public class MemoireIhm extends javax.swing.JDialog {
         this.memoireService = MetierFactory.getMemoireService();
         this.model = new MemoireTableModel(this.memoireService.sort());
         this.jTable1.setModel(model);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
     }
 
     /**

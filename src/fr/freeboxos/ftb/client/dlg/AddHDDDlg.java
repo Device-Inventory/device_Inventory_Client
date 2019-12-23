@@ -9,6 +9,8 @@ import fr.freeboxos.ftb.metier.entitys.HDD;
 import fr.freeboxos.ftb.metier.entitys.SSD;
 import fr.freeboxos.ftb.metier.enums.hddMarque;
 import fr.freeboxos.ftb.metier.enums.ssdType;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -40,6 +42,8 @@ public class AddHDDDlg extends javax.swing.JDialog {
         this.jComboBoxMarque.setModel(new DefaultComboBoxModel(hddMarque.values()));
         this.jComboBoxTypeMemoire.setModel(new DefaultComboBoxModel(ssdType.values()));
         this.getRootPane().setDefaultButton(jButtonOK);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
     }
 
     public AddHDDDlg(java.awt.Frame parent, boolean modal, HDD hdd) {
@@ -48,6 +52,8 @@ public class AddHDDDlg extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         //this.setSize(500, 580);
         this.getRootPane().setDefaultButton(jButtonOK);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
         /**
          * Mettre les valeurs pour les modification
          */

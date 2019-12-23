@@ -10,6 +10,8 @@ import fr.freeboxos.ftb.client.model.ProcesseurTableModel;
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.ProcesseurService;
 import fr.freeboxos.ftb.metier.entitys.Processeur;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -42,6 +44,8 @@ public class ProcesseurIHM extends javax.swing.JDialog {
         this.processeurService = MetierFactory.getProcesseurService();
         this.model = new ProcesseurTableModel(this.processeurService.sort());
         this.jTable1.setModel(model);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
     }
 
     /**

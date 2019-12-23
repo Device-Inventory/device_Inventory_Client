@@ -6,6 +6,8 @@
 package fr.freeboxos.ftb.client;
 
 import fr.freeboxos.ftb.metier.MetierFactory;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -33,6 +35,8 @@ public class MainIhm extends javax.swing.JFrame {
         this.jLabel_hdd.setText(String.valueOf(MetierFactory.getHDDService().getCount()));
         this.jLabel_ram.setText(String.valueOf(MetierFactory.getMemoireService().getCount()));
         this.jLabel_prixTotal.setText("Le prix totale est de ");
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
     }
 
     /**

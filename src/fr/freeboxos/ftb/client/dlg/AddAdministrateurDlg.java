@@ -6,6 +6,8 @@
 package fr.freeboxos.ftb.client.dlg;
 
 import fr.freeboxos.ftb.metier.entitys.Administrateur;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -36,6 +38,8 @@ public class AddAdministrateurDlg extends javax.swing.JDialog {
         this.jLabelNom.setText("Nom d'utilisateur :");
         this.jLabelPassword.setText("Mot de passe");
         this.getRootPane().setDefaultButton(jButtonOK);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
     }
 
     public AddAdministrateurDlg(java.awt.Frame parent, boolean modal, Administrateur administrateur) {
@@ -51,6 +55,8 @@ public class AddAdministrateurDlg extends javax.swing.JDialog {
 
         this.id = administrateur.getId();
         this.jTextFieldNom.setText(administrateur.getLogin());
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
     }
 
     /**

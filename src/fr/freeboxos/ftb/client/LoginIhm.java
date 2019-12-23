@@ -7,6 +7,8 @@ package fr.freeboxos.ftb.client;
 
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.entitys.Administrateur;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -26,6 +28,8 @@ public class LoginIhm extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.getRootPane().setDefaultButton(jButton1);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
     }
 
     /**

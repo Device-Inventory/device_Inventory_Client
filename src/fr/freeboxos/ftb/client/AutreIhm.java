@@ -10,6 +10,8 @@ import fr.freeboxos.ftb.client.model.AutreTableModel;
 import fr.freeboxos.ftb.metier.AutreService;
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.entitys.Autre;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -41,6 +43,8 @@ public class AutreIhm extends javax.swing.JDialog {
         this.autreService = MetierFactory.getAutreService();
         this.model = new AutreTableModel(this.autreService.sort());
         this.jTable1.setModel(model);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
     }
 
     /**

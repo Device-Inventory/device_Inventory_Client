@@ -6,6 +6,8 @@
 package fr.freeboxos.ftb.client.dlg;
 
 import fr.freeboxos.ftb.metier.entitys.Memoire;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -33,6 +35,8 @@ public class AddMemoireDlg extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.jLabelTitre.setText("Ajout d'une barette mémoire");
         this.getRootPane().setDefaultButton(jButton1);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
     }
 
     public AddMemoireDlg(java.awt.Frame parent, boolean modal, Memoire memoire) {
@@ -41,6 +45,8 @@ public class AddMemoireDlg extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.jLabelTitre.setText("Modification d'une barette mémoire");
         this.getRootPane().setDefaultButton(jButton1);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
 
         /**
          * Attribution des valeur

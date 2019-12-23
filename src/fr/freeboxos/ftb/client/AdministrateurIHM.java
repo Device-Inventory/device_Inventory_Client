@@ -10,6 +10,8 @@ import fr.freeboxos.ftb.client.model.AdministrateurTableModel;
 import fr.freeboxos.ftb.metier.AdministrateurService;
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.entitys.Administrateur;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -42,6 +44,8 @@ public class AdministrateurIHM extends javax.swing.JDialog {
         this.administrateurService = MetierFactory.getAdministrateurService();
         this.model = new AdministrateurTableModel(this.administrateurService.sort());
         this.jTable1.setModel(model);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
     }
 
     /**
