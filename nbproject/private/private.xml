@@ -2,21 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/client/CableIhm.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/client/ProcesseurIHM.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/client/AdministrateurIHM.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/client/LoginIhm.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/client/dlg/AddAdministrateurDlg.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/client/MemoireIhm.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/client/dlg/AddAutreDlg.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/client/AutreIhm.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/client/dlg/AddCableDlg.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/client/MainIhm.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/client/dlg/AddMemoireDlg.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/client/dlg/AddHDDDlg.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/client/dlg/AddProcesseurDlg.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/client/HDDIhm.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
