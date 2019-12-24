@@ -6,8 +6,14 @@
 package fr.freeboxos.ftb.client;
 
 import fr.freeboxos.ftb.metier.MetierFactory;
+import fr.freeboxos.ftb.metier.entitys.Autre;
+import fr.freeboxos.ftb.metier.entitys.Cable;
+import fr.freeboxos.ftb.metier.entitys.HDD;
+import fr.freeboxos.ftb.metier.entitys.Memoire;
+import fr.freeboxos.ftb.metier.entitys.Processeur;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -30,11 +36,11 @@ public class MainIhm extends javax.swing.JFrame {
         //this.setSize(420, 180);
         this.setLocationRelativeTo(null);
         this.jLabel_cpu.setText(String.valueOf(MetierFactory.getProcesseurService().getCount()));
-        this.jLabel_autre.setText(String.valueOf(MetierFactory.getAutreService().getCount()));
-        this.jLabel_cable.setText(String.valueOf(MetierFactory.getCableService().getCount()));
+        this.jLabel_autre.setText(String.valueOf(this.getAutres()));
+        this.jLabel_cable.setText(String.valueOf(this.getCable()));
         this.jLabel_hdd.setText(String.valueOf(MetierFactory.getHDDService().getCount()));
         this.jLabel_ram.setText(String.valueOf(MetierFactory.getMemoireService().getCount()));
-        this.jLabel_prixTotal.setText("Le prix totale est de ");
+        this.jLabel_prixTotal.setText("Le prix totale est de " + this.getPrix() + "€");
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
     }
@@ -203,6 +209,58 @@ public class MainIhm extends javax.swing.JFrame {
     private void jButton_QuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuitterActionPerformed
         dispose();
     }//GEN-LAST:event_jButton_QuitterActionPerformed
+
+    private float getPrix() throws Exception {
+        float prix = 0;
+        List<Processeur> processeurs = MetierFactory.getProcesseurService().getAll();
+        List<Memoire> memoires = MetierFactory.getMemoireService().getAll();
+        List<HDD> hdds = MetierFactory.getHDDService().getAll();
+
+        Processeur processeur;
+        Memoire memoire;
+        HDD hdd;
+
+        for (int i = 0; i < processeurs.size(); i++) {
+            processeur = processeurs.get(i);
+            prix = prix + Float.valueOf(processeur.getPrix());
+        }
+
+        for (int i = 0; i < memoires.size(); i++) {
+            memoire = memoires.get(i);
+            prix = prix + Float.valueOf(memoire.getPrix());
+        }
+
+        for (int i = 0; i < hdds.size(); i++) {
+            hdd = hdds.get(i);
+            prix = prix + Float.valueOf(hdd.getPrix());
+        }
+        this.jLabel_cpu.repaint();
+        this.jLabel_ram.repaint();
+
+        return prix;
+    }
+
+    private int getAutres() throws Exception {
+        int nombre = 0;
+        List<Autre> a = MetierFactory.getAutreService().getAll();
+        Autre autre;
+        for (int i = 0; i < a.size(); i++) {
+            autre = a.get(i);
+            nombre = nombre + autre.getNombre();
+        }
+        return nombre;
+    }
+
+    private int getCable() throws Exception {
+        int nombre = 0;
+        List<Cable> cables = MetierFactory.getCableService().getAll();
+        Cable cable;
+        for (int i = 0; i < cables.size(); i++) {
+            cable = cables.get(i);
+            nombre = (int) (nombre + cable.getNombre());
+        }
+        return nombre;
+    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ProcesseurIHM processeurIHM = null;
