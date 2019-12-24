@@ -157,6 +157,14 @@ public class AdministrateurIHM extends javax.swing.JDialog {
      * @param evt
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        MainIhm ihm;
+        try {
+            ihm = new MainIhm();
+            ihm.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(AdministrateurIHM.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 

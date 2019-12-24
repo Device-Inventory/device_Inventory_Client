@@ -160,6 +160,14 @@ public class ProcesseurIHM extends javax.swing.JDialog {
      * @param evt
      */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        MainIhm ihm;
+        try {
+            ihm = new MainIhm();
+            ihm.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(ProcesseurIHM.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 

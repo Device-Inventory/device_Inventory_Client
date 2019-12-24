@@ -70,7 +70,7 @@ public class MainIhm extends javax.swing.JFrame {
         jButton_Quitter = new javax.swing.JButton();
         jButtonUtilisateur = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
         layout.columnWidths = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0};
         layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
@@ -263,64 +263,69 @@ public class MainIhm extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ProcesseurIHM processeurIHM = null;
+
         try {
-            processeurIHM = new ProcesseurIHM(this, true);
+            ProcesseurIHM processeurIHM = new ProcesseurIHM(this, true);
+            processeurIHM.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        processeurIHM.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUtilisateurActionPerformed
-        AdministrateurIHM administrateurIHM = null;
+
         try {
-            administrateurIHM = new AdministrateurIHM(this, true);
+            AdministrateurIHM administrateurIHM = new AdministrateurIHM(this, true);
+            administrateurIHM.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
         }
-        administrateurIHM.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonUtilisateurActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        CableIhm cableIhm = null;
+
         try {
-            cableIhm = new CableIhm(this, true);
+            CableIhm cableIhm = new CableIhm(this, true);
+            cableIhm.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
         }
-        cableIhm.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        AutreIhm autreIhm = null;
         try {
-            autreIhm = new AutreIhm(this, true);
+            AutreIhm autreIhm = new AutreIhm(this, true);
+            autreIhm.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
         }
-        autreIhm.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        HDDIhm hDDIhm = null;
+
         try {
-            hDDIhm = new HDDIhm(this, true);
+            HDDIhm hDDIhm = new HDDIhm(this, true);
+            hDDIhm.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
 
         }
-        hDDIhm.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        MemoireIhm memoireIhm = null;
+
         try {
-            memoireIhm = new MemoireIhm(this, true);
+            MemoireIhm memoireIhm = new MemoireIhm(this, true);
+            memoireIhm.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
         }
-        memoireIhm.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

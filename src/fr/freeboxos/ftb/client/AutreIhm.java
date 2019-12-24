@@ -156,6 +156,12 @@ public class AutreIhm extends javax.swing.JDialog {
      * @param evt
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+            MainIhm ihm = new MainIhm();
+            ihm.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(AutreIhm.class.getName()).log(Level.SEVERE, null, ex);
+        }
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 

@@ -246,7 +246,13 @@ public class MemoireIhm extends javax.swing.JDialog {
      * @param evt
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        dispose();
+        try {
+            MainIhm ihm = new MainIhm();
+            ihm.setVisible(true);
+            dispose();
+        } catch (Exception ex) {
+            Logger.getLogger(MemoireIhm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
