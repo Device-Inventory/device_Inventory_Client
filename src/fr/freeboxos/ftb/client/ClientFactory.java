@@ -16,7 +16,7 @@ public class ClientFactory {
     private ClientFactory() {
     }
 
-    private static JFrame ihm = null;
+    private static JFrame ihm;
 
     public static JFrame getIhm() throws Exception {
         if (ClientFactory.ihm == null) {

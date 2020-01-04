@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+//todo verifier les warning
 
 /**
  *
@@ -40,12 +41,14 @@ public class HDDIhm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setSize(1920, 1080);
+//        this.setSize(1920, 1080);
         this.hDDService = MetierFactory.getHDDService();
         this.model = new HDDTableModel(this.hDDService.sort());
         this.jTable1.setModel(model);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
+        this.repaint();
+        this.pack();
     }
 
     /**

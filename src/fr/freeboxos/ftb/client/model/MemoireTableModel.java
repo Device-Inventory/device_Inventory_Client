@@ -74,24 +74,34 @@ public class MemoireTableModel extends AbstractTableModel {
             switch (columnIndex) {
                 case 0:
                     memoire.setMarque((String) aValue);
+                    break;
                 case 1:
                     memoire.setModele((String) aValue);
+                    break;
                 case 2:
                     memoire.setType((String) aValue);
+                    break;
                 case 3:
                     memoire.setFormat((String) aValue);
+                    break;
                 case 4:
                     memoire.setCapacite((String) aValue);
+                    break;
                 case 5:
                     memoire.setFrequence_memoire((String) aValue);
+                    break;
                 case 6:
                     memoire.setECC((String) aValue);
+                    break;
                 case 7:
                     memoire.setRadiateur((String) aValue);
+                    break;
                 case 8:
                     memoire.setTension((String) aValue);
+                    break;
                 case 9:
                     memoire.setPrix((String) aValue);
+                    break;
             }
             MetierFactory.getMemoireService().update(memoire);
             this.fireTableDataChanged();

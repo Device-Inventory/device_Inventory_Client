@@ -58,8 +58,10 @@ public class AdministrateurTableModel extends AbstractTableModel {
             switch (columnIndex) {
                 case 0:
                     administrateur.setLogin((String) aValue);
+                    break;
                 case 1:
                     administrateur.setMdp((String) aValue);
+                    break;
             }
             MetierFactory.getAdministrateurService().update(administrateur);
             this.fireTableDataChanged();

@@ -50,6 +50,12 @@ public class MetierFactory {
         return administrateurService;
     }
 
+    private static final OrdinateurService ORDINATEUR_SERVICE = new OrdinateurServiceImpl();
+
+    public static OrdinateurService getOrdinateurService() {
+        return ORDINATEUR_SERVICE;
+    }
+
     private static final Sort sortSrv = new InsertionOptimisedSort();
 
     public static Sort getSortSerivce() {

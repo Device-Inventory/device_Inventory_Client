@@ -5,9 +5,7 @@
  */
 package fr.freeboxos.ftb.metier;
 
-import fr.freeboxos.ftb.metier.entitys.Administrateur;
 import fr.freeboxos.ftb.metier.entitys.Cable;
-import fr.freeboxos.ftb.metier.sort.ComparatorByIdAdministrateur;
 import fr.freeboxos.ftb.metier.sort.ComparatorByIdCable;
 import fr.freeboxos.ftb.metier.sort.Sort;
 import java.util.List;

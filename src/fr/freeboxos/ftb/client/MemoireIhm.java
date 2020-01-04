@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//todo verifier les warning
 package fr.freeboxos.ftb.client;
 
 import fr.freeboxos.ftb.client.dlg.AddMemoireDlg;
@@ -40,12 +41,14 @@ public class MemoireIhm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setSize(1920, 1080);
+//        this.setSize(1920, 1080);
         this.memoireService = MetierFactory.getMemoireService();
         this.model = new MemoireTableModel(this.memoireService.sort());
         this.jTable1.setModel(model);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
+        this.repaint();
+        this.pack();
     }
 
     /**

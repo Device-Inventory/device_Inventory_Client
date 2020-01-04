@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.freeboxos.ftb.client;
 
 import fr.freeboxos.ftb.client.dlg.AddAdministrateurDlg;
@@ -19,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+//todo verifier les warning
 
 /**
  *
@@ -46,6 +42,8 @@ public class AdministrateurIHM extends javax.swing.JDialog {
         this.jTable1.setModel(model);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
+        this.repaint();
+        this.pack();
     }
 
     /**

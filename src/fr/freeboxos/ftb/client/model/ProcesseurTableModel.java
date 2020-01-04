@@ -82,32 +82,46 @@ public class ProcesseurTableModel extends AbstractTableModel {
             switch (columnIndex) {
                 case 0:
                     processeur.setMarque((String) aValue);
+                    break;
                 case 1:
                     processeur.setModele((String) aValue);
+                    break;
                 case 2:
                     processeur.setSocket((String) aValue);
+                    break;
                 case 3:
                     processeur.setFrequence((String) aValue);
+                    break;
                 case 4:
                     processeur.setTurbo((String) aValue);
+                    break;
                 case 5:
                     processeur.setCore((int) aValue);
+                    break;
                 case 6:
                     processeur.setThread((int) aValue);
+                    break;
                 case 7:
                     processeur.setPlateforme_nom((String) aValue);
+                    break;
                 case 8:
                     processeur.setFinesse_gravure((String) aValue);
+                    break;
                 case 9:
                     processeur.setTDP((String) aValue);
+                    break;
                 case 10:
                     processeur.setL1((String) aValue);
+                    break;
                 case 11:
                     processeur.setL2((String) aValue);
+                    break;
                 case 12:
                     processeur.setL3((String) aValue);
+                    break;
                 case 13:
                     processeur.setPrix((String) aValue);
+                    break;
             }
             MetierFactory.getProcesseurService().update(processeur);
             this.fireTableDataChanged();

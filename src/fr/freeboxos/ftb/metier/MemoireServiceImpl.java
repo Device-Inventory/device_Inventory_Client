@@ -5,9 +5,7 @@
  */
 package fr.freeboxos.ftb.metier;
 
-import fr.freeboxos.ftb.metier.entitys.HDD;
 import fr.freeboxos.ftb.metier.entitys.Memoire;
-import fr.freeboxos.ftb.metier.sort.ComparatorByIdHDD;
 import fr.freeboxos.ftb.metier.sort.ComparatorByIdMemoire;
 import fr.freeboxos.ftb.metier.sort.Sort;
 import java.util.List;

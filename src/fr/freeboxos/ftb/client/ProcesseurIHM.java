@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//TODO: vérifier les warning
 package fr.freeboxos.ftb.client;
 
 import fr.freeboxos.ftb.client.dlg.AddProcesseurDlg;
@@ -40,12 +41,13 @@ public class ProcesseurIHM extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setSize(1920, 1080);
         this.processeurService = MetierFactory.getProcesseurService();
         this.model = new ProcesseurTableModel(this.processeurService.sort());
         this.jTable1.setModel(model);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
+        this.repaint();
+        this.pack();
     }
 
     /**
@@ -186,13 +188,13 @@ public class ProcesseurIHM extends javax.swing.JDialog {
 
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-            AddProcesseurDlg addProcesseurDlg = null;
+            AddProcesseurDlg addProcesseurDlg;
 
-            addProcesseurDlg = new AddProcesseurDlg(frame, true, processeur);
-
-            addProcesseurDlg.setVisible(true);
-
-            processeur = addProcesseurDlg.getProcesseur();
+            if (this.jTable1.getSelectedRow() != -1) {
+                addProcesseurDlg = new AddProcesseurDlg(frame, true, processeur);
+                addProcesseurDlg.setVisible(true);
+                processeur = addProcesseurDlg.getProcesseur();
+            }
 
             if (processeur != null) {
                 try {

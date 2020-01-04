@@ -62,12 +62,16 @@ public class CableTableModel extends AbstractTableModel {
             switch (columnIndex) {
                 case 0:
                     cable.setType((String) aValue);
+                    break;
                 case 1:
                     cable.setPrise_a((String) aValue);
+                    break;
                 case 2:
                     cable.setPrise_b((String) aValue);
+                    break;
                 case 3:
                     cable.setNombre((long) aValue);
+                    break;
             }
             MetierFactory.getCableService().update(cable);
             this.fireTableDataChanged();

@@ -58,8 +58,10 @@ public class AutreTableModel extends AbstractTableModel {
             switch (columnIndex) {
                 case 0:
                     autre.setElement((String) aValue);
+                    break;
                 case 1:
                     autre.setNombre((int) aValue);
+                    break;
             }
             MetierFactory.getAutreService().update(autre);
             this.fireTableDataChanged();
