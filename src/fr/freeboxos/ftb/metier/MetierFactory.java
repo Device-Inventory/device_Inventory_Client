@@ -61,4 +61,10 @@ public class MetierFactory {
     public static Sort getSortSerivce() {
         return sortSrv;
     }
+
+    private static final CarteGraphiqueService CARTE_GRAPHIQUE_SERVICE = new CarteGraphiqueServiceImpl();
+
+    public static CarteGraphiqueService getCarteGraphiqueService() {
+        return CARTE_GRAPHIQUE_SERVICE;
+    }
 }
