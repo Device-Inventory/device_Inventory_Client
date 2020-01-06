@@ -136,7 +136,6 @@ public class LoginIhm extends javax.swing.JFrame {
                     mainIhm = new MainIhm();
 
                     mainIhm.setVisible(true);
-
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, "Mot de passe incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -157,6 +156,7 @@ public class LoginIhm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("Convert2Lambda")
     public static void main(String args[]) {
 
         try {

@@ -16,13 +16,19 @@
  */
 package fr.freeboxos.ftb.client;
 
+import fr.freeboxos.ftb.client.dlg.AddCarteGraphiqueDlg;
 import fr.freeboxos.ftb.client.model.CarteGraphiqueTableModel;
 import fr.freeboxos.ftb.metier.CarteGraphiqueService;
 import fr.freeboxos.ftb.metier.MetierFactory;
+import fr.freeboxos.ftb.metier.entitys.CarteGraphique;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -47,7 +53,7 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
         this.carteGraphiqueService = MetierFactory.getCarteGraphiqueService();
         this.model = new CarteGraphiqueTableModel(this.carteGraphiqueService.sort());
         this.jTable1.setModel(model);
-        Image icone = Toolkit.getDefaultToolkit().getImage("./image.png");
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
         this.repaint();
         this.pack();
@@ -102,6 +108,11 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
         getContentPane().add(jScrollPane1, gridBagConstraints);
 
         jButtonAjouter.setText("Ajouter");
+        jButtonAjouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAjouterActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -109,12 +120,22 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
         getContentPane().add(jButtonAjouter, gridBagConstraints);
 
         jButtonModifier.setText("Modifier");
+        jButtonModifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModifierActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         getContentPane().add(jButtonModifier, gridBagConstraints);
 
         jButtonSupprimer.setText("Supprimer");
+        jButtonSupprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSupprimerActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -122,6 +143,11 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
         getContentPane().add(jButtonSupprimer, gridBagConstraints);
 
         jButtonQuitter.setText("Quitter");
+        jButtonQuitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonQuitterActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
@@ -130,9 +156,93 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjouterActionPerformed
+        try {
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+
+            AddCarteGraphiqueDlg addCarteGraphiqueDlg;
+            addCarteGraphiqueDlg = new AddCarteGraphiqueDlg(frame, true);
+            addCarteGraphiqueDlg.setVisible(true);
+
+            CarteGraphique carteGraphique = addCarteGraphiqueDlg.getCarteGraphique();
+
+            if (carteGraphique != null) {
+                try {
+                    this.carteGraphiqueService.add(carteGraphique);
+                    this.model.update(this.carteGraphiqueService.sort());
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Erreur pendant la mise a jour d'un ordinateur", "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+        } catch (HeadlessException e) {
+            Logger.getLogger(CarteGraphiqueIhm.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jButtonAjouterActionPerformed
+
+    private void jButtonModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifierActionPerformed
+        try {
+            if (this.jTable1.getSelectedRow() == -1) {
+                throw new Exception("Veuillez selectionner un ordinateur");
+            }
+
+            CarteGraphique carteGraphique = this.model.getCarteGraphiqueAt(this.jTable1.getSelectedRow());
+
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+
+            AddCarteGraphiqueDlg addCarteGraphiqueDlg;
+
+            if (this.jTable1.getSelectedRow() != -1) {
+                addCarteGraphiqueDlg = new AddCarteGraphiqueDlg(frame, true, carteGraphique);
+                addCarteGraphiqueDlg.setVisible(true);
+                carteGraphique = addCarteGraphiqueDlg.getCarteGraphique();
+            }
+
+            if (carteGraphique != null) {
+                try {
+                    this.carteGraphiqueService.update(carteGraphique);
+                    this.model.update(this.carteGraphiqueService.sort());
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "erreur", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+        } catch (Exception e) {
+            Logger.getLogger(CarteGraphiqueIhm.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonModifierActionPerformed
+
+    private void jButtonSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSupprimerActionPerformed
+        try {
+            if (this.jTable1.getSelectedRow() == -1) {
+                throw new Exception("Veuillez selectionner une carte graphique");
+            }
+
+            CarteGraphique carteGraphique = this.model.getCarteGraphiqueAt(this.jTable1.getSelectedRow());
+
+            this.carteGraphiqueService.remove(carteGraphique);
+            this.model.update(this.carteGraphiqueService.sort());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erreur pendant la suppression d'une carte graphique", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonSupprimerActionPerformed
+
+    private void jButtonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitterActionPerformed
+//        dispose();
+        try {
+            MainIhm mainIhm = new MainIhm();
+            mainIhm.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            Logger.getLogger(MemoireIhm.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jButtonQuitterActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("Convert2Lambda")
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
