@@ -7,8 +7,8 @@ package fr.freeboxos.ftb.client.dlg;
 
 import fr.freeboxos.ftb.metier.entitys.HDD;
 import fr.freeboxos.ftb.metier.entitys.SSD;
-import fr.freeboxos.ftb.metier.enums.hddMarque;
-import fr.freeboxos.ftb.metier.enums.ssdType;
+import fr.freeboxos.ftb.metier.enums.HddMarque;
+import fr.freeboxos.ftb.metier.enums.SsdType;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.logging.Level;
@@ -40,8 +40,8 @@ public class AddHDDDlg extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         //this.setSize(500, 580);
         this.jLabelTitre.setText("Ajout d'un disque dur");
-        this.jComboBoxMarque.setModel(new DefaultComboBoxModel(hddMarque.values()));
-        this.jComboBoxTypeMemoire.setModel(new DefaultComboBoxModel(ssdType.values()));
+        this.jComboBoxMarque.setModel(new DefaultComboBoxModel(HddMarque.values()));
+        this.jComboBoxTypeMemoire.setModel(new DefaultComboBoxModel(SsdType.values()));
         this.getRootPane().setDefaultButton(jButtonOK);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
