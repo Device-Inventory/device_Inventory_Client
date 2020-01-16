@@ -25,7 +25,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class CarteGraphiqueTableModel extends AbstractTableModel {
 
-    private final String[] header = {"Marque", "Modèle"};
+    private final String[] header = {"Marque", "Modèle", "Chipset graphique", "Marque chipset", "Fréquence", "Overclocker", "Nombre de GPU", "Bus", "Taille mémoire", "Interface mémoire", "Type de mémoire", "Connecteur d'alimentation", "Consommation", "Prix"};
     private CarteGraphique[] carteGraphiques;
 
     public CarteGraphiqueTableModel(CarteGraphique[] carteGraphiques) {
@@ -55,6 +55,30 @@ public class CarteGraphiqueTableModel extends AbstractTableModel {
                 return carteGraphique.getMarque();
             case 1:
                 return carteGraphique.getModele();
+            case 2:
+                return carteGraphique.getChipsetGraphique();
+            case 3:
+                return carteGraphique.getMarqueChipset();
+            case 4:
+                return carteGraphique.getFrequence();
+            case 5:
+                return carteGraphique.isOverclockee();
+            case 6:
+                return carteGraphique.getNombreGpu();
+            case 7:
+                return carteGraphique.getBus();
+            case 8:
+                return carteGraphique.getTailleMemoire() + " " + carteGraphique.getUniteMemoire();
+            case 9:
+                return carteGraphique.getInterfaceMemoire() + " bit(s)";
+            case 10:
+                return carteGraphique.getTypeMemoire();
+            case 11:
+                return carteGraphique.getConnecteurAlimentation();
+            case 12:
+                return carteGraphique.getConsommation() + " W";
+            case 13:
+                return carteGraphique.getPrix() + " €";
             default:
                 return null;
         }
@@ -69,8 +93,18 @@ public class CarteGraphiqueTableModel extends AbstractTableModel {
     }
 
     @Override
-    public Class<?> getColumnClass(int columnIndex) {
+    public Class getColumnClass(int columnIndex) {
         switch (columnIndex) {
+            case 4:
+            case 6:
+            case 8:
+            case 9:
+            case 12:
+                return Integer.class;
+//            case 13:
+//                return Float.class;
+            case 5:
+                return Boolean.class;
             default:
                 return String.class;
         }

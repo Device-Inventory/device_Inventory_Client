@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -44,6 +45,7 @@ public class ProcesseurIHM extends javax.swing.JDialog {
         this.processeurService = MetierFactory.getProcesseurService();
         this.model = new ProcesseurTableModel(this.processeurService.sort());
         this.jTable1.setModel(model);
+        setSizeColumn();
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
         this.repaint();
@@ -99,9 +101,9 @@ public class ProcesseurIHM extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 359;
-        gridBagConstraints.ipady = 251;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 300;
+        gridBagConstraints.ipady = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -155,6 +157,25 @@ public class ProcesseurIHM extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void setSizeColumn() {
+        TableColumnModel columnModel = this.jTable1.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(100);
+        columnModel.getColumn(1).setPreferredWidth(100);
+        columnModel.getColumn(2).setPreferredWidth(100);
+        columnModel.getColumn(3).setPreferredWidth(130);
+        columnModel.getColumn(4).setPreferredWidth(120);
+        columnModel.getColumn(5).setPreferredWidth(120);
+        columnModel.getColumn(6).setPreferredWidth(130);
+        columnModel.getColumn(7).setPreferredWidth(150);
+        columnModel.getColumn(8).setPreferredWidth(130);
+        columnModel.getColumn(9).setPreferredWidth(100);
+        columnModel.getColumn(10).setPreferredWidth(100);
+        columnModel.getColumn(11).setPreferredWidth(100);
+        columnModel.getColumn(12).setPreferredWidth(100);
+        columnModel.getColumn(13).setPreferredWidth(100);
+        this.jTable1.setAutoResizeMode(0);
+    }
 
     /**
      * Bouton pour quitter l'IHM

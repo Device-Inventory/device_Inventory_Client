@@ -165,4 +165,5 @@ public class ProcesseurTableModel extends AbstractTableModel {
         this.processeurs = processeurs;
         this.fireTableDataChanged();
     }
+
 }

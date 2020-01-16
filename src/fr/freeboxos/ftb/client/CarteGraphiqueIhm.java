@@ -29,6 +29,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -55,6 +56,7 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
         this.jTable1.setModel(model);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
+        setSizeColumn();
         this.repaint();
         this.pack();
     }
@@ -105,6 +107,11 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 300;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         getContentPane().add(jScrollPane1, gridBagConstraints);
 
         jButtonAjouter.setText("Ajouter");
@@ -155,6 +162,25 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void setSizeColumn() {
+        TableColumnModel columnModel = this.jTable1.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(100);
+        columnModel.getColumn(1).setPreferredWidth(100);
+        columnModel.getColumn(2).setPreferredWidth(130);
+        columnModel.getColumn(3).setPreferredWidth(130);
+        columnModel.getColumn(4).setPreferredWidth(80);
+        columnModel.getColumn(5).setPreferredWidth(90);
+        columnModel.getColumn(6).setPreferredWidth(110);
+        columnModel.getColumn(7).setPreferredWidth(140);
+        columnModel.getColumn(8).setPreferredWidth(130);
+        columnModel.getColumn(9).setPreferredWidth(150);
+        columnModel.getColumn(10).setPreferredWidth(140);
+        columnModel.getColumn(11).setPreferredWidth(180);
+        columnModel.getColumn(12).setPreferredWidth(120);
+        columnModel.getColumn(13).setPreferredWidth(90);
+        this.jTable1.setAutoResizeMode(0);
+    }
 
     private void jButtonAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjouterActionPerformed
         try {
@@ -229,7 +255,7 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonSupprimerActionPerformed
 
     private void jButtonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitterActionPerformed
-//        dispose();
+        dispose();
         try {
             MainIhm mainIhm = new MainIhm();
             mainIhm.setVisible(true);

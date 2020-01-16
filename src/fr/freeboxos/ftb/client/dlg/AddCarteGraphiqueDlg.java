@@ -17,7 +17,13 @@
 package fr.freeboxos.ftb.client.dlg;
 
 import fr.freeboxos.ftb.metier.entitys.CarteGraphique;
+import fr.freeboxos.ftb.metier.enums.GpuChipsetMarque;
+import fr.freeboxos.ftb.metier.enums.GpuMarque;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,6 +31,7 @@ import javax.swing.JFrame;
  */
 public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
 
+    private long id = 0;
     private CarteGraphique carteGraphique;
 
     /**
@@ -36,10 +43,45 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
     public AddCarteGraphiqueDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.getRootPane().setDefaultButton(jButtonOk);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
+        this.jLabelTitre.setText("Ajout d'une carte graphique");
+        this.jComboBoxMarque.setModel(new DefaultComboBoxModel(GpuMarque.values()));
+        this.jComboBoxMarqueChipset.setModel(new DefaultComboBoxModel(GpuChipsetMarque.values()));
+        this.repaint();
+        this.pack();
     }
 
     public AddCarteGraphiqueDlg(JFrame frame, boolean b, CarteGraphique carteGraphique) {
-        throw new UnsupportedOperationException("Not supported yet."); //todo: To change body of generated methods, choose Tools | Templates.
+        super(frame, b);
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.getRootPane().setDefaultButton(jButtonOk);
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
+        this.jComboBoxMarque.setModel(new DefaultComboBoxModel(GpuMarque.values()));
+        this.jComboBoxMarqueChipset.setModel(new DefaultComboBoxModel(GpuChipsetMarque.values()));
+        this.jLabelTitre.setText("Modification d'une carte graphique");
+        this.id = carteGraphique.getId();
+        this.jComboBoxMarque.setSelectedItem(carteGraphique.getMarque());
+        this.jTextFieldModele.setText(carteGraphique.getModele());
+        this.jComboBoxChipsetGraphique.setSelectedItem(carteGraphique.getChipsetGraphique());
+        this.jComboBoxMarqueChipset.setSelectedItem(carteGraphique.getMarqueChipset());
+        this.jTextFieldFrequence.setText(String.valueOf(carteGraphique.getFrequence()));
+        this.jCheckBoxOverclock.setSelected(carteGraphique.isOverclockee());
+        this.jTextFieldNombreGpu.setText(String.valueOf(carteGraphique.getNombreGpu()));
+        this.jTextFieldBus.setText(carteGraphique.getBus());
+        this.jTextFieldTailleMemoire.setText(String.valueOf(carteGraphique.getTailleMemoire()));
+        this.jComboBoxUniteDeMemoire.setSelectedItem(carteGraphique.getUniteMemoire());
+        this.jTextFieldInterfaceMemoire.setText(String.valueOf(carteGraphique.getInterfaceMemoire()));
+        this.jComboBoxTypeMemoire.setSelectedItem(carteGraphique.getTypeMemoire());
+        this.jTextFieldConnecteurAlim.setText(carteGraphique.getConnecteurAlimentation());
+        this.jTextFieldConsommation.setText(String.valueOf(carteGraphique.getConsommation()));
+        this.jTextFieldPrix.setText(String.valueOf(carteGraphique.getPrix()));
+        this.repaint();
+        this.pack();
     }
 
     /**
@@ -50,22 +92,426 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        jLabelTitre = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jComboBoxMarque = new javax.swing.JComboBox<>();
+        jComboBoxChipsetGraphique = new javax.swing.JComboBox<>();
+        jComboBoxMarqueChipset = new javax.swing.JComboBox<>();
+        jComboBoxTypeMemoire = new javax.swing.JComboBox<>();
+        jComboBoxUniteDeMemoire = new javax.swing.JComboBox<>();
+        jCheckBoxOverclock = new javax.swing.JCheckBox();
+        jTextFieldModele = new javax.swing.JTextField();
+        jTextFieldFrequence = new javax.swing.JTextField();
+        jTextFieldNombreGpu = new javax.swing.JTextField();
+        jTextFieldBus = new javax.swing.JTextField();
+        jTextFieldInterfaceMemoire = new javax.swing.JTextField();
+        jTextFieldTailleMemoire = new javax.swing.JTextField();
+        jTextFieldConnecteurAlim = new javax.swing.JTextField();
+        jTextFieldPrix = new javax.swing.JTextField();
+        jTextFieldConsommation = new javax.swing.JTextField();
+        jButtonOk = new javax.swing.JButton();
+        jButtonAnnuler = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
+        layout.columnWidths = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0};
+        layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+
+        jLabelTitre.setText("jLabel1");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 5;
+        getContentPane().add(jLabelTitre, gridBagConstraints);
+
+        jLabel2.setText("Marque");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jLabel2, gridBagConstraints);
+
+        jLabel3.setText("Modèle");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jLabel3, gridBagConstraints);
+
+        jLabel4.setText("Chipset graphique");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jLabel4, gridBagConstraints);
+
+        jLabel5.setText("Marque chipset");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jLabel5, gridBagConstraints);
+
+        jLabel6.setText("Fréquence");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jLabel6, gridBagConstraints);
+
+        jLabel7.setText("Overclocker");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jLabel7, gridBagConstraints);
+
+        jLabel8.setText("Nombre de GPU");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jLabel8, gridBagConstraints);
+
+        jLabel9.setText("Bus");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jLabel9, gridBagConstraints);
+
+        jLabel10.setText("Taille de mémoire");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jLabel10, gridBagConstraints);
+
+        jLabel11.setText("Interface mémoire");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jLabel11, gridBagConstraints);
+
+        jLabel12.setText("Type de mémoire");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 22;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jLabel12, gridBagConstraints);
+
+        jLabel13.setText("Connecteur d'alimentation");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 24;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jLabel13, gridBagConstraints);
+
+        jLabel14.setText("Consommation");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 26;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jLabel14, gridBagConstraints);
+
+        jLabel15.setText("Prix");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 28;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jLabel15, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jComboBoxMarque, gridBagConstraints);
+
+        jComboBoxChipsetGraphique.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jComboBoxChipsetGraphique, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jComboBoxMarqueChipset, gridBagConstraints);
+
+        jComboBoxTypeMemoire.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "GDDR1", "GDDR2", "GDDR3", "GDDR4", "GDDR5", "GDDR6" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 22;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jComboBoxTypeMemoire, gridBagConstraints);
+
+        jComboBoxUniteDeMemoire.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ko", "Mo", "Go" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jComboBoxUniteDeMemoire, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jCheckBoxOverclock, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jTextFieldModele, gridBagConstraints);
+
+        jTextFieldFrequence.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldFrequenceKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jTextFieldFrequence, gridBagConstraints);
+
+        jTextFieldNombreGpu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNombreGpuKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jTextFieldNombreGpu, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jTextFieldBus, gridBagConstraints);
+
+        jTextFieldInterfaceMemoire.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldInterfaceMemoireKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 20;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jTextFieldInterfaceMemoire, gridBagConstraints);
+
+        jTextFieldTailleMemoire.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldTailleMemoireKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 18;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jTextFieldTailleMemoire, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 24;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jTextFieldConnecteurAlim, gridBagConstraints);
+
+        jTextFieldPrix.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldPrixKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 28;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jTextFieldPrix, gridBagConstraints);
+
+        jTextFieldConsommation.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldConsommationKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 26;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jTextFieldConsommation, gridBagConstraints);
+
+        jButtonOk.setText("OK");
+        jButtonOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOkActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 30;
+        getContentPane().add(jButtonOk, gridBagConstraints);
+
+        jButtonAnnuler.setText("Annuler");
+        jButtonAnnuler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnnulerActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 30;
+        getContentPane().add(jButtonAnnuler, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnnulerActionPerformed
+        carteGraphique = null;
+        dispose();
+    }//GEN-LAST:event_jButtonAnnulerActionPerformed
+
+    private void jButtonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOkActionPerformed
+        try {
+            String marque = this.jComboBoxMarque.getSelectedItem().toString();
+            String modele = this.jTextFieldModele.getText();
+            String chipsetgraphique = this.jComboBoxChipsetGraphique.getSelectedItem().toString();
+            String marqueChipset = this.jComboBoxMarqueChipset.getSelectedItem().toString();
+            String frequence = this.jTextFieldFrequence.getText();
+            Boolean overclock = this.jCheckBoxOverclock.isSelected();
+            String nombreGpu = this.jTextFieldNombreGpu.getText();
+            String bus = this.jTextFieldBus.getText();
+            String tailleMemoire = this.jTextFieldTailleMemoire.getText();
+            String uniteMemoire = this.jComboBoxUniteDeMemoire.getSelectedItem().toString();
+            String interfaceMemoire = this.jTextFieldInterfaceMemoire.getText();
+            String typeMemoire = this.jComboBoxTypeMemoire.getSelectedItem().toString();
+            String connecteurAlim = this.jTextFieldConnecteurAlim.getText();
+            String consommation = this.jTextFieldConsommation.getText();
+            String prix = this.jTextFieldPrix.getText();
+
+            if (modele.length() == 0) {
+                throw new Exception("Veuillez mettre un modèle ou un \"?\" ");
+            }
+
+            if (frequence.length() == 0) {
+                this.jTextFieldFrequence.setText("0");
+                frequence = this.jTextFieldFrequence.getText();
+            }
+
+            if (nombreGpu.length() == 0) {
+                this.jTextFieldNombreGpu.setText("0");
+                nombreGpu = this.jTextFieldNombreGpu.getText();
+            }
+
+            if (bus.length() == 0) {
+                throw new Exception("Veuillez mettre une valeur de bus ou un \"?\" ");
+            }
+
+            if (tailleMemoire.length() == 0) {
+                this.jTextFieldTailleMemoire.setText("0");
+                tailleMemoire = this.jTextFieldTailleMemoire.getText();
+            }
+
+            if (interfaceMemoire.length() == 0) {
+                this.jTextFieldInterfaceMemoire.setText("0");
+                interfaceMemoire = this.jTextFieldInterfaceMemoire.getText();
+            }
+
+            if (typeMemoire.length() == 0) {
+                throw new Exception("Veuillez mettre un type de mémoire ou un \"?\" ");
+            }
+
+            if (connecteurAlim.length() == 0) {
+                throw new Exception("Veuillez mettre un connecteur d'alimentation ou un \"?\" ");
+            }
+
+            if (consommation.length() == 0) {
+                this.jTextFieldConsommation.setText("0");
+                consommation = this.jTextFieldConsommation.getText();
+            }
+
+            if (prix.length() == 0) {
+                this.jTextFieldPrix.setText("0.0");
+                prix = this.jTextFieldPrix.getText();
+
+            }
+
+            int frequenceInt = Integer.parseInt(frequence);
+            int nombreGpuInt = Integer.parseInt(nombreGpu);
+            int tailleMemoireInt = Integer.parseInt(tailleMemoire);
+            int interfaceMemoireInt = Integer.parseInt(interfaceMemoire);
+            int consommationInt = Integer.parseInt(consommation);
+
+            float prixFloat = Float.parseFloat(prix);
+
+            carteGraphique = new CarteGraphique(marque, modele, chipsetgraphique, marqueChipset, frequenceInt, overclock, nombreGpuInt, bus, tailleMemoireInt, uniteMemoire, interfaceMemoireInt, typeMemoire, connecteurAlim, consommationInt, prixFloat);
+            this.carteGraphique.setId(id);
+            dispose();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonOkActionPerformed
+
+    private void jTextFieldFrequenceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFrequenceKeyTyped
+        this.check(evt);
+    }//GEN-LAST:event_jTextFieldFrequenceKeyTyped
+
+    private void jTextFieldNombreGpuKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreGpuKeyTyped
+        this.check(evt);
+    }//GEN-LAST:event_jTextFieldNombreGpuKeyTyped
+
+    private void jTextFieldTailleMemoireKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTailleMemoireKeyTyped
+        this.check(evt);
+    }//GEN-LAST:event_jTextFieldTailleMemoireKeyTyped
+
+    private void jTextFieldInterfaceMemoireKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInterfaceMemoireKeyTyped
+        this.check(evt);
+    }//GEN-LAST:event_jTextFieldInterfaceMemoireKeyTyped
+
+    private void jTextFieldConsommationKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldConsommationKeyTyped
+        this.check(evt);
+    }//GEN-LAST:event_jTextFieldConsommationKeyTyped
+
+    private void jTextFieldPrixKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrixKeyTyped
+        this.check(evt);
+    }//GEN-LAST:event_jTextFieldPrixKeyTyped
+
+    private void check(java.awt.event.KeyEvent event) {
+        char ch = event.getKeyChar();
+        if (!Character.isDigit(ch) && ch != '.') {
+            event.consume();
+        }
+    }
 
     public CarteGraphique getCarteGraphique() {
         return carteGraphique;
@@ -88,15 +534,11 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddCarteGraphiqueDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddCarteGraphiqueDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddCarteGraphiqueDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AddCarteGraphiqueDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+
         //</editor-fold>
 
         /* Create and display the dialog */
@@ -116,5 +558,37 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAnnuler;
+    private javax.swing.JButton jButtonOk;
+    private javax.swing.JCheckBox jCheckBoxOverclock;
+    private javax.swing.JComboBox<String> jComboBoxChipsetGraphique;
+    private javax.swing.JComboBox<String> jComboBoxMarque;
+    private javax.swing.JComboBox<String> jComboBoxMarqueChipset;
+    private javax.swing.JComboBox<String> jComboBoxTypeMemoire;
+    private javax.swing.JComboBox<String> jComboBoxUniteDeMemoire;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelTitre;
+    private javax.swing.JTextField jTextFieldBus;
+    private javax.swing.JTextField jTextFieldConnecteurAlim;
+    private javax.swing.JTextField jTextFieldConsommation;
+    private javax.swing.JTextField jTextFieldFrequence;
+    private javax.swing.JTextField jTextFieldInterfaceMemoire;
+    private javax.swing.JTextField jTextFieldModele;
+    private javax.swing.JTextField jTextFieldNombreGpu;
+    private javax.swing.JTextField jTextFieldPrix;
+    private javax.swing.JTextField jTextFieldTailleMemoire;
     // End of variables declaration//GEN-END:variables
 }

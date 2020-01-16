@@ -8,6 +8,7 @@ package fr.freeboxos.ftb.client;
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.entitys.Autre;
 import fr.freeboxos.ftb.metier.entitys.Cable;
+import fr.freeboxos.ftb.metier.entitys.CarteGraphique;
 import fr.freeboxos.ftb.metier.entitys.HDD;
 import fr.freeboxos.ftb.metier.entitys.Memoire;
 import fr.freeboxos.ftb.metier.entitys.Processeur;
@@ -70,7 +71,13 @@ public class MainIhm extends javax.swing.JFrame {
             this.jLabelOrdinateur.setText(String.valueOf(MetierFactory.getOrdinateurService().getCount()));
         } catch (Exception ex) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre de barrette de mémoire", "Erreur", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre d'ordinateur", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        try {
+            this.jLabelGpu.setText(String.valueOf(MetierFactory.getCarteGraphiqueService().getCount()));
+        } catch (Exception e) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre de carte graphique", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
         try {
             this.jLabel_prixTotal.setText("Le prix totale est de " + this.getPrix() + "€");
@@ -112,10 +119,12 @@ public class MainIhm extends javax.swing.JFrame {
         jButtonUtilisateur = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabelOrdinateur = new javax.swing.JLabel();
+        jLabelGpu = new javax.swing.JLabel();
+        jButtonGpu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
-        layout.columnWidths = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
+        layout.columnWidths = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
         layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
         getContentPane().setLayout(layout);
 
@@ -123,7 +132,7 @@ public class MainIhm extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridwidth = 13;
         getContentPane().add(jLabel1, gridBagConstraints);
 
         jButton1.setText("Processeur");
@@ -169,7 +178,7 @@ public class MainIhm extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(jButton4, gridBagConstraints);
@@ -181,7 +190,7 @@ public class MainIhm extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridx = 12;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(jButton5, gridBagConstraints);
@@ -206,13 +215,13 @@ public class MainIhm extends javax.swing.JFrame {
 
         jLabel_cable.setText("jLabel5");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 4;
         getContentPane().add(jLabel_cable, gridBagConstraints);
 
         jLabel_autre.setText("jLabel6");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridx = 12;
         gridBagConstraints.gridy = 4;
         getContentPane().add(jLabel_autre, gridBagConstraints);
 
@@ -220,7 +229,7 @@ public class MainIhm extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridwidth = 13;
         getContentPane().add(jLabel_prixTotal, gridBagConstraints);
 
         jButton_Quitter.setText("Quitter");
@@ -232,7 +241,7 @@ public class MainIhm extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridwidth = 13;
         getContentPane().add(jButton_Quitter, gridBagConstraints);
 
         jButtonUtilisateur.setText("Utilisateur");
@@ -263,6 +272,23 @@ public class MainIhm extends javax.swing.JFrame {
         gridBagConstraints.gridy = 4;
         getContentPane().add(jLabelOrdinateur, gridBagConstraints);
 
+        jLabelGpu.setText("jLabel2");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 4;
+        getContentPane().add(jLabelGpu, gridBagConstraints);
+
+        jButtonGpu.setText("Carte graphique");
+        jButtonGpu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGpuActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 2;
+        getContentPane().add(jButtonGpu, gridBagConstraints);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -275,10 +301,12 @@ public class MainIhm extends javax.swing.JFrame {
         List<Processeur> processeurs = MetierFactory.getProcesseurService().getAll();
         List<Memoire> memoires = MetierFactory.getMemoireService().getAll();
         List<HDD> hdds = MetierFactory.getHDDService().getAll();
+        List<CarteGraphique> carteGraphiques = MetierFactory.getCarteGraphiqueService().getAll();
 
         Processeur processeur;
         Memoire memoire;
         HDD hdd;
+        CarteGraphique carteGraphique;
 
         for (int i = 0; i < processeurs.size(); i++) {
             processeur = processeurs.get(i);
@@ -293,6 +321,11 @@ public class MainIhm extends javax.swing.JFrame {
         for (int i = 0; i < hdds.size(); i++) {
             hdd = hdds.get(i);
             prix = prix + Float.valueOf(hdd.getPrix());
+        }
+
+        for (int i = 0; i < carteGraphiques.size(); i++) {
+            carteGraphique = carteGraphiques.get(i);
+            prix = prix + carteGraphique.getPrix();
         }
         return prix;
     }
@@ -395,6 +428,16 @@ public class MainIhm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jButtonGpuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGpuActionPerformed
+        try {
+            CarteGraphiqueIhm carteGraphiqueIhm = new CarteGraphiqueIhm(this, true);
+            carteGraphiqueIhm.setVisible(true);
+        } catch (Exception e) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+        }
+        dispose();
+    }//GEN-LAST:event_jButtonGpuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -427,9 +470,11 @@ public class MainIhm extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButtonGpu;
     private javax.swing.JButton jButtonUtilisateur;
     private javax.swing.JButton jButton_Quitter;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelGpu;
     private javax.swing.JLabel jLabelOrdinateur;
     private javax.swing.JLabel jLabel_autre;
     private javax.swing.JLabel jLabel_cable;
