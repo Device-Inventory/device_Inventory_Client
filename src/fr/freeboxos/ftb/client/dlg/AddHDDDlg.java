@@ -17,7 +17,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-//todo verifier les warning
 
 /**
  *
@@ -468,22 +467,14 @@ public class AddHDDDlg extends javax.swing.JDialog {
             if (this.jCheckBoxSSD.isSelected()) {
                 String type_memoire = this.jComboBoxTypeMemoire.getSelectedItem().toString();
                 boolean nvme;
-                if (this.jCheckBoxNVME.isSelected()) {
-                    nvme = true;
-                } else {
-                    nvme = false;
-                }
+                nvme = this.jCheckBoxNVME.isSelected();
                 String controleur = this.jTextFieldControleur.getText();
                 String lecture = this.jTextFieldLecture.getText();
                 String ecriture = this.jTextFieldEcriture.getText();
                 String iopsString = this.jTextFieldIOPS.getText();
                 long iops = Long.parseLong(iopsString);
                 boolean trim;
-                if (this.jCheckBoxTrim.isSelected()) {
-                    trim = true;
-                } else {
-                    trim = false;
-                }
+                trim = this.jCheckBoxTrim.isSelected();
 
                 if (type_memoire.length() == 0) {
                     throw new Exception("veuillez entrer un type de mémoire");
@@ -530,6 +521,7 @@ public class AddHDDDlg extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("Convert2Lambda")
     public static void main(String args[]) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

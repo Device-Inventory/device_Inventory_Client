@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//TODO: vérifier les warning
 package fr.freeboxos.ftb.client;
 
 import fr.freeboxos.ftb.client.dlg.AddProcesseurDlg;
@@ -282,6 +281,7 @@ public class ProcesseurIHM extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("Convert2Lambda")
     public static void main(String args[]) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -293,19 +293,21 @@ public class ProcesseurIHM extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                ProcesseurIHM dialog = null;
                 try {
+                    ProcesseurIHM dialog;
+
                     dialog = new ProcesseurIHM(new javax.swing.JFrame(), true);
+
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent e) {
+                            System.exit(0);
+                        }
+                    });
+                    dialog.setVisible(true);
                 } catch (Exception ex) {
                     Logger.getLogger(ProcesseurIHM.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
             }
         });
     }

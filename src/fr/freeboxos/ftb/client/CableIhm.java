@@ -19,7 +19,6 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-//todo verifier les warning
 
 /**
  *
@@ -231,7 +230,7 @@ public class CableIhm extends javax.swing.JDialog {
 
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-            AddCableDlg addCableDlg = null;
+            AddCableDlg addCableDlg;
 
             addCableDlg = new AddCableDlg(frame, true, cable);
 
@@ -255,6 +254,7 @@ public class CableIhm extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("Convert2Lambda")
     public static void main(String args[]) {
 
         try {
@@ -267,19 +267,21 @@ public class CableIhm extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                CableIhm dialog = null;
                 try {
+                    CableIhm dialog;
+
                     dialog = new CableIhm(new javax.swing.JFrame(), true);
+
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent e) {
+                            System.exit(0);
+                        }
+                    });
+                    dialog.setVisible(true);
                 } catch (Exception ex) {
                     Logger.getLogger(CableIhm.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
             }
         });
     }

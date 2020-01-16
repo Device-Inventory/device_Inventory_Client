@@ -19,7 +19,6 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-//todo verifier les warning
 
 /**
  *
@@ -230,7 +229,7 @@ public class HDDIhm extends javax.swing.JDialog {
 
             HDD hdd = this.model.getHddAt(this.jTable1.getSelectedRow());
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-            AddHDDDlg addHDDDlg = null;
+            AddHDDDlg addHDDDlg;
             addHDDDlg = new AddHDDDlg(frame, true, hdd);
             addHDDDlg.setVisible(true);
 
@@ -255,6 +254,7 @@ public class HDDIhm extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("Convert2Lambda")
     public static void main(String args[]) {
 
         try {
@@ -267,19 +267,21 @@ public class HDDIhm extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                HDDIhm dialog = null;
                 try {
+                    HDDIhm dialog;
+
                     dialog = new HDDIhm(new javax.swing.JFrame(), true);
+
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent e) {
+                            System.exit(0);
+                        }
+                    });
+                    dialog.setVisible(true);
                 } catch (Exception ex) {
                     Logger.getLogger(HDDIhm.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
             }
         });
     }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//todo verifier les warning
 package fr.freeboxos.ftb.client;
 
 import fr.freeboxos.ftb.client.dlg.AddMemoireDlg;
@@ -196,7 +195,7 @@ public class MemoireIhm extends javax.swing.JDialog {
 
             Memoire memoire = this.model.getMemoireAt(this.jTable1.getSelectedRow());
 
-            AddMemoireDlg addMemoireDlg = null;
+            AddMemoireDlg addMemoireDlg;
 
             addMemoireDlg = new AddMemoireDlg(frame, true, memoire);
 
@@ -261,6 +260,7 @@ public class MemoireIhm extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("Convert2Lambda")
     public static void main(String args[]) {
 
         try {
@@ -273,19 +273,21 @@ public class MemoireIhm extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                MemoireIhm dialog = null;
                 try {
+                    MemoireIhm dialog;
+
                     dialog = new MemoireIhm(new javax.swing.JFrame(), true);
+
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent e) {
+                            System.exit(0);
+                        }
+                    });
+                    dialog.setVisible(true);
                 } catch (Exception ex) {
                     Logger.getLogger(MemoireIhm.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
             }
         });
     }

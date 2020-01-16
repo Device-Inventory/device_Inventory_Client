@@ -15,7 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package fr.freeboxos.ftb.client.dlg;
-//todo verifier les warning
 
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.entitys.HDD;
@@ -35,9 +34,13 @@ import javax.swing.JFrame;
 public class AddOrdinateurDlg extends javax.swing.JDialog {
 
     private Ordinateur ordinateur = null;
+    @SuppressWarnings("FieldMayBeFinal")
     private List<Processeur> processeurs;
+    @SuppressWarnings("FieldMayBeFinal")
     private List<Memoire> memoires;
+    @SuppressWarnings("FieldMayBeFinal")
     private List<HDD> hdds;
+    @SuppressWarnings("FieldMayBeFinal")
     private List<Ordinateur> ordinateurs;
 
     /**

@@ -19,7 +19,6 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-//todo verifier les warning
 
 /**
  *
@@ -224,7 +223,7 @@ public class AutreIhm extends javax.swing.JDialog {
 
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-            AddAutreDlg addAutreDlg = null;
+            AddAutreDlg addAutreDlg;
             addAutreDlg = new AddAutreDlg(frame, true, autre);
 
             addAutreDlg.setVisible(true);
@@ -244,6 +243,7 @@ public class AutreIhm extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("Convert2Lambda")
     public static void main(String args[]) {
 
         try {
@@ -256,19 +256,20 @@ public class AutreIhm extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                AutreIhm dialog = null;
                 try {
+                    AutreIhm dialog;
                     dialog = new AutreIhm(new javax.swing.JFrame(), true);
+
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent e) {
+                            System.exit(0);
+                        }
+                    });
+                    dialog.setVisible(true);
                 } catch (Exception ex) {
                     Logger.getLogger(AutreIhm.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
             }
         });
     }
