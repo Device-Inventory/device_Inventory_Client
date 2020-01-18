@@ -21,6 +21,8 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class LoginIhm extends javax.swing.JFrame {
 
+    private ChargementIHM chargementIHM = new ChargementIHM();
+
     /**
      * Creates new form Login
      */
@@ -30,6 +32,7 @@ public class LoginIhm extends javax.swing.JFrame {
         this.getRootPane().setDefaultButton(jButton1);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
+
         this.repaint();
         this.pack();
     }
@@ -122,6 +125,7 @@ public class LoginIhm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.chargementIHM.setVisible(true);
         String login = this.jTextField1.getText();
 
         try {
