@@ -16,11 +16,20 @@
  */
 package fr.freeboxos.ftb.client;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author alan
  */
 public class ChargementIHM extends javax.swing.JFrame {
+
+    private final Data d;
+
+    public Data getD() {
+        return d;
+    }
 
     /**
      * Creates new form Chargement
@@ -29,8 +38,13 @@ public class ChargementIHM extends javax.swing.JFrame {
         this.initComponents();
         this.setLocationRelativeTo(null);
         this.jLabel1.setText("Chargement en cours ...");
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
         this.repaint();
         this.pack();
+
+        this.d = new Data();
+        this.d.setData("actif");
     }
 
     /**

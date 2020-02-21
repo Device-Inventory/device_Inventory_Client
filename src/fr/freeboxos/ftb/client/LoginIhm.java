@@ -13,6 +13,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,9 +26,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author alan
  */
-public class LoginIhm extends javax.swing.JFrame {
-
-    private ChargementIHM chargementIHM = new ChargementIHM();
+public class LoginIhm extends javax.swing.JFrame implements Observer {
 
     /**
      * Creates new form Login
@@ -77,7 +77,7 @@ public class LoginIhm extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 5;
         getContentPane().add(jLabel1, gridBagConstraints);
 
         jLabel2.setText("Nom d'utilisateur");
@@ -89,6 +89,7 @@ public class LoginIhm extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 269;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(jTextField1, gridBagConstraints);
@@ -116,6 +117,7 @@ public class LoginIhm extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 269;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(jPasswordField1, gridBagConstraints);
@@ -127,9 +129,8 @@ public class LoginIhm extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         getContentPane().add(jButton2, gridBagConstraints);
 
@@ -160,31 +161,9 @@ public class LoginIhm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.chargementIHM.setVisible(true);
-        String login = this.jTextField1.getText();
-
-        try {
-            Administrateur administrateur = (Administrateur) MetierFactory.getAdministrateurService().getByLogin(login);
-            if (administrateur != null) {
-                String passwd = new String(this.jPasswordField1.getPassword());
-                if (administrateur.isValid(passwd)) {
-
-                    MainIhm mainIhm;
-
-                    mainIhm = new MainIhm();
-
-                    mainIhm.setVisible(true);
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Mot de passe incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Nom d'utilisateur incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Nom d'utilisateur inconnu", "Erreur", JOptionPane.ERROR_MESSAGE);
-        }
+        Chargement chargement = new Chargement();
+        chargement.addObserver(this);
+        chargement.execute();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -279,4 +258,38 @@ public class LoginIhm extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (arg != null) {
+            if (arg instanceof Data) {
+                Data data = (Data) arg;
+                String login = this.jTextField1.getText();
+
+                try {
+                    Administrateur administrateur = (Administrateur) MetierFactory.getAdministrateurService().getByLogin(login);
+                    if (administrateur != null) {
+                        String passwd = new String(this.jPasswordField1.getPassword());
+                        if (administrateur.isValid(passwd)) {
+
+                            MainIhm mainIhm;
+
+                            mainIhm = new MainIhm();
+
+                            mainIhm.setVisible(true);
+                            this.dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Mot de passe incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Nom d'utilisateur incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Nom d'utilisateur inconnu", "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    }
+
 }
