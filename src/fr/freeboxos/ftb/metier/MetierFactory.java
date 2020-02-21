@@ -67,4 +67,10 @@ public class MetierFactory {
     public static CarteGraphiqueService getCarteGraphiqueService() {
         return CARTE_GRAPHIQUE_SERVICE;
     }
+
+    private static final CarteMereService CARTE_MERE_SERVICE = new CarteMereServiceImpl();
+
+    public static CarteMereService getCarteMereService() {
+        return CARTE_MERE_SERVICE;
+    }
 }

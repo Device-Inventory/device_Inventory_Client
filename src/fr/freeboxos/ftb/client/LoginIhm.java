@@ -30,18 +30,16 @@ public class LoginIhm extends javax.swing.JFrame implements Observer {
 
     /**
      * Creates new form Login
+     *
+     * @throws java.io.IOException
      */
-    public LoginIhm() {
+    public LoginIhm() throws IOException {
         initComponents();
         this.setLocationRelativeTo(null);
         this.getRootPane().setDefaultButton(jButton1);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
-        try {
-            this.jTextField2.setText(getUrl());
-        } catch (IOException ex) {
-            Logger.getLogger(LoginIhm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.jTextField2.setText(getUrl());
         this.repaint();
         this.pack();
     }
@@ -241,7 +239,11 @@ public class LoginIhm extends javax.swing.JFrame implements Observer {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new LoginIhm().setVisible(true);
+                try {
+                    new LoginIhm().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(LoginIhm.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

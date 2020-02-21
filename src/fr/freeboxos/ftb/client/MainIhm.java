@@ -34,7 +34,6 @@ public class MainIhm extends javax.swing.JFrame {
     public MainIhm() {
         super("Inventaire informatique");
         initComponents();
-        //this.setSize(420, 180);
         this.setLocationRelativeTo(null);
         try {
             this.jLabel_cpu.setText(String.valueOf(MetierFactory.getProcesseurService().getCount()));
@@ -120,6 +119,10 @@ public class MainIhm extends javax.swing.JFrame {
         jLabelOrdinateur = new javax.swing.JLabel();
         jLabelGpu = new javax.swing.JLabel();
         jButtonGpu = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
@@ -288,6 +291,23 @@ public class MainIhm extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         getContentPane().add(jButtonGpu, gridBagConstraints);
 
+        jMenu2.setText("File");
+
+        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Edit");
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -437,6 +457,15 @@ public class MainIhm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonGpuActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        try {
+            ConfigMarqueCpu configMarqueCpu = new ConfigMarqueCpu();
+            configMarqueCpu.setVisible(true);
+        } catch (Exception e) {
+        }
+        dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -481,5 +510,9 @@ public class MainIhm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_hdd;
     private javax.swing.JLabel jLabel_prixTotal;
     private javax.swing.JLabel jLabel_ram;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }
