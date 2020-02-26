@@ -16,14 +16,19 @@
  */
 package fr.freeboxos.ftb.client.dlg;
 
+import fr.freeboxos.ftb.client.LoginIhm;
 import fr.freeboxos.ftb.metier.entitys.CarteGraphique;
 import fr.freeboxos.ftb.metier.enums.GpuChipsetMarque;
 import fr.freeboxos.ftb.metier.enums.GpuMarque;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -94,6 +99,8 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabelTitre = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -128,122 +135,120 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
         jButtonAnnuler = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
-        layout.columnWidths = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0};
-        layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
-        getContentPane().setLayout(layout);
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jLabelTitre.setText("jLabel1");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 5;
-        getContentPane().add(jLabelTitre, gridBagConstraints);
+        jPanel1.add(jLabelTitre, gridBagConstraints);
 
         jLabel2.setText("Marque");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel2, gridBagConstraints);
+        jPanel1.add(jLabel2, gridBagConstraints);
 
         jLabel3.setText("Modèle");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel3, gridBagConstraints);
+        jPanel1.add(jLabel3, gridBagConstraints);
 
         jLabel4.setText("Chipset graphique");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel4, gridBagConstraints);
+        jPanel1.add(jLabel4, gridBagConstraints);
 
         jLabel5.setText("Marque chipset");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel5, gridBagConstraints);
+        jPanel1.add(jLabel5, gridBagConstraints);
 
         jLabel6.setText("Fréquence");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel6, gridBagConstraints);
+        jPanel1.add(jLabel6, gridBagConstraints);
 
         jLabel7.setText("Overclocker");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel7, gridBagConstraints);
+        jPanel1.add(jLabel7, gridBagConstraints);
 
         jLabel8.setText("Nombre de GPU");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 14;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel8, gridBagConstraints);
+        jPanel1.add(jLabel8, gridBagConstraints);
 
         jLabel9.setText("Bus");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel9, gridBagConstraints);
+        jPanel1.add(jLabel9, gridBagConstraints);
 
         jLabel10.setText("Taille de mémoire");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel10, gridBagConstraints);
+        jPanel1.add(jLabel10, gridBagConstraints);
 
         jLabel11.setText("Interface mémoire");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 20;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel11, gridBagConstraints);
+        jPanel1.add(jLabel11, gridBagConstraints);
 
         jLabel12.setText("Type de mémoire");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 22;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel12, gridBagConstraints);
+        jPanel1.add(jLabel12, gridBagConstraints);
 
         jLabel13.setText("Connecteur d'alimentation");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 24;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel13, gridBagConstraints);
+        jPanel1.add(jLabel13, gridBagConstraints);
 
         jLabel14.setText("Consommation");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 26;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel14, gridBagConstraints);
+        jPanel1.add(jLabel14, gridBagConstraints);
 
         jLabel15.setText("Prix");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 28;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel15, gridBagConstraints);
+        jPanel1.add(jLabel15, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jComboBoxMarque, gridBagConstraints);
+        jPanel1.add(jComboBoxMarque, gridBagConstraints);
 
         jComboBoxChipsetGraphique.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -251,14 +256,14 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jComboBoxChipsetGraphique, gridBagConstraints);
+        jPanel1.add(jComboBoxChipsetGraphique, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jComboBoxMarqueChipset, gridBagConstraints);
+        jPanel1.add(jComboBoxMarqueChipset, gridBagConstraints);
 
         jComboBoxTypeMemoire.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "GDDR1", "GDDR2", "GDDR3", "GDDR4", "GDDR5", "GDDR6" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -266,25 +271,25 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 22;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jComboBoxTypeMemoire, gridBagConstraints);
+        jPanel1.add(jComboBoxTypeMemoire, gridBagConstraints);
 
         jComboBoxUniteDeMemoire.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ko", "Mo", "Go" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jComboBoxUniteDeMemoire, gridBagConstraints);
+        jPanel1.add(jComboBoxUniteDeMemoire, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jCheckBoxOverclock, gridBagConstraints);
+        jPanel1.add(jCheckBoxOverclock, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jTextFieldModele, gridBagConstraints);
+        jPanel1.add(jTextFieldModele, gridBagConstraints);
 
         jTextFieldFrequence.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -296,7 +301,7 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 10;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jTextFieldFrequence, gridBagConstraints);
+        jPanel1.add(jTextFieldFrequence, gridBagConstraints);
 
         jTextFieldNombreGpu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -308,13 +313,13 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 14;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jTextFieldNombreGpu, gridBagConstraints);
+        jPanel1.add(jTextFieldNombreGpu, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 16;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jTextFieldBus, gridBagConstraints);
+        jPanel1.add(jTextFieldBus, gridBagConstraints);
 
         jTextFieldInterfaceMemoire.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -326,7 +331,7 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 20;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jTextFieldInterfaceMemoire, gridBagConstraints);
+        jPanel1.add(jTextFieldInterfaceMemoire, gridBagConstraints);
 
         jTextFieldTailleMemoire.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -338,13 +343,13 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 18;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jTextFieldTailleMemoire, gridBagConstraints);
+        jPanel1.add(jTextFieldTailleMemoire, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 24;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jTextFieldConnecteurAlim, gridBagConstraints);
+        jPanel1.add(jTextFieldConnecteurAlim, gridBagConstraints);
 
         jTextFieldPrix.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -356,7 +361,7 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 28;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jTextFieldPrix, gridBagConstraints);
+        jPanel1.add(jTextFieldPrix, gridBagConstraints);
 
         jTextFieldConsommation.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -368,7 +373,7 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 26;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jTextFieldConsommation, gridBagConstraints);
+        jPanel1.add(jTextFieldConsommation, gridBagConstraints);
 
         jButtonOk.setText("OK");
         jButtonOk.addActionListener(new java.awt.event.ActionListener() {
@@ -379,7 +384,7 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 30;
-        getContentPane().add(jButtonOk, gridBagConstraints);
+        jPanel1.add(jButtonOk, gridBagConstraints);
 
         jButtonAnnuler.setText("Annuler");
         jButtonAnnuler.addActionListener(new java.awt.event.ActionListener() {
@@ -390,7 +395,11 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 30;
-        getContentPane().add(jButtonAnnuler, gridBagConstraints);
+        jPanel1.add(jButtonAnnuler, gridBagConstraints);
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -528,14 +537,9 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddCarteGraphiqueDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(LoginIhm.class.getName()).log(Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -581,6 +585,8 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelTitre;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldBus;
     private javax.swing.JTextField jTextFieldConnecteurAlim;
     private javax.swing.JTextField jTextFieldConsommation;

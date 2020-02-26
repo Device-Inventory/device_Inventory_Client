@@ -16,6 +16,7 @@
  */
 package fr.freeboxos.ftb.client.dlg;
 
+import fr.freeboxos.ftb.client.LoginIhm;
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.entitys.HDD;
 import fr.freeboxos.ftb.metier.entitys.Memoire;
@@ -26,6 +27,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -42,6 +45,7 @@ public class AddOrdinateurDlg extends javax.swing.JDialog {
     private List<HDD> hdds;
     @SuppressWarnings("FieldMayBeFinal")
     private List<Ordinateur> ordinateurs;
+    private long id = 0;
 
     /**
      * Creates new form AddOrdinateurDlg
@@ -111,7 +115,8 @@ public class AddOrdinateurDlg extends javax.swing.JDialog {
         super(frame, b);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.jLabelTitre.setText("Ajout d'un ordinateur");
+        this.jLabelTitre.setText("Modification d'un ordinateur");
+        this.id = ordinateur.getId();
         this.ordinateurs = MetierFactory.getOrdinateurService().getAll();
 
 //        Processeur p;
@@ -177,6 +182,8 @@ public class AddOrdinateurDlg extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabelTitre = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jComboBoxMemoire = new javax.swing.JComboBox<>();
@@ -188,55 +195,53 @@ public class AddOrdinateurDlg extends javax.swing.JDialog {
         jButtonAnnuler = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
-        layout.columnWidths = new int[] {0, 5, 0};
-        layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0};
-        getContentPane().setLayout(layout);
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jLabelTitre.setText("jLabel4");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 3;
-        getContentPane().add(jLabelTitre, gridBagConstraints);
+        jPanel1.add(jLabelTitre, gridBagConstraints);
 
         jLabel1.setText("Processeur");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel1, gridBagConstraints);
+        jPanel1.add(jLabel1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jComboBoxMemoire, gridBagConstraints);
+        jPanel1.add(jComboBoxMemoire, gridBagConstraints);
 
         jLabel2.setText("Memoire");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel2, gridBagConstraints);
+        jPanel1.add(jLabel2, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jComboBoxProcesseur, gridBagConstraints);
+        jPanel1.add(jComboBoxProcesseur, gridBagConstraints);
 
         jLabel3.setText("Disque dur");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel3, gridBagConstraints);
+        jPanel1.add(jLabel3, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jComboBoxDisqueDur, gridBagConstraints);
+        jPanel1.add(jComboBoxDisqueDur, gridBagConstraints);
 
         jButtonValider.setText("Ajouter");
         jButtonValider.addActionListener(new java.awt.event.ActionListener() {
@@ -247,7 +252,7 @@ public class AddOrdinateurDlg extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
-        getContentPane().add(jButtonValider, gridBagConstraints);
+        jPanel1.add(jButtonValider, gridBagConstraints);
 
         jButtonAnnuler.setText("Annuler");
         jButtonAnnuler.addActionListener(new java.awt.event.ActionListener() {
@@ -258,7 +263,11 @@ public class AddOrdinateurDlg extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 8;
-        getContentPane().add(jButtonAnnuler, gridBagConstraints);
+        jPanel1.add(jButtonAnnuler, gridBagConstraints);
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -312,6 +321,7 @@ public class AddOrdinateurDlg extends javax.swing.JDialog {
         }
 
         this.ordinateur.setHdd(hdd);
+        this.ordinateur.setId(id);
         this.dispose();
     }//GEN-LAST:event_jButtonValiderActionPerformed
 
@@ -330,14 +340,9 @@ public class AddOrdinateurDlg extends javax.swing.JDialog {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddOrdinateurDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(LoginIhm.class.getName()).log(Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -373,5 +378,7 @@ public class AddOrdinateurDlg extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelTitre;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

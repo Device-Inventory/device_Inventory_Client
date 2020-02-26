@@ -37,6 +37,8 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         this.getRootPane().setDefaultButton(jButton2);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
+        this.repaint();
+        this.pack();
     }
 
     public AddProcesseurDlg(java.awt.Frame parent, boolean modal, Processeur processeur) {
@@ -63,6 +65,9 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         this.jTextFieldL3.setText(processeur.getL3());
         this.jTextFieldPrix.setText(processeur.getPrix());
         this.jComboBox1.setSelectedItem(processeur.getMarque());
+
+        this.repaint();
+        this.pack();
     }
 
     /**
@@ -75,6 +80,8 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabelTitre = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -108,108 +115,106 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         jTextFieldPrix = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
-        layout.columnWidths = new int[] {0, 5, 0};
-        layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
-        getContentPane().setLayout(layout);
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jLabelTitre.setText("jLabel1");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 3;
-        getContentPane().add(jLabelTitre, gridBagConstraints);
+        jPanel1.add(jLabelTitre, gridBagConstraints);
 
         jLabel1.setText("Marque");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel1, gridBagConstraints);
+        jPanel1.add(jLabel1, gridBagConstraints);
 
         jLabel2.setText("Modele");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel2, gridBagConstraints);
+        jPanel1.add(jLabel2, gridBagConstraints);
 
         jLabel3.setText("Socket");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel3, gridBagConstraints);
+        jPanel1.add(jLabel3, gridBagConstraints);
 
         jLabel4.setText("Fréquence normale");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel4, gridBagConstraints);
+        jPanel1.add(jLabel4, gridBagConstraints);
 
         jLabel5.setText("Fréquence turbo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel5, gridBagConstraints);
+        jPanel1.add(jLabel5, gridBagConstraints);
 
         jLabel6.setText("Nombre de core");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel6, gridBagConstraints);
+        jPanel1.add(jLabel6, gridBagConstraints);
 
         jLabel7.setText("Nombre de thread");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 14;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel7, gridBagConstraints);
+        jPanel1.add(jLabel7, gridBagConstraints);
 
         jLabel8.setText("Nom de la plateforme");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel8, gridBagConstraints);
+        jPanel1.add(jLabel8, gridBagConstraints);
 
         jLabel9.setText("Finesse de gravure");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel9, gridBagConstraints);
+        jPanel1.add(jLabel9, gridBagConstraints);
 
         jLabel10.setText("TDP");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 20;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel10, gridBagConstraints);
+        jPanel1.add(jLabel10, gridBagConstraints);
 
         jLabel11.setText("Cache L1");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 22;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel11, gridBagConstraints);
+        jPanel1.add(jLabel11, gridBagConstraints);
 
         jLabel12.setText("Cache L2");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 24;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel12, gridBagConstraints);
+        jPanel1.add(jLabel12, gridBagConstraints);
 
         jLabel13.setText("Cache L3");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 26;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel13, gridBagConstraints);
+        jPanel1.add(jLabel13, gridBagConstraints);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Intel", "AMD" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -217,7 +222,7 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 180;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jComboBox1, gridBagConstraints);
+        jPanel1.add(jComboBox1, gridBagConstraints);
 
         jTextFieldModele.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -225,7 +230,7 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.ipadx = 221;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldModele, gridBagConstraints);
+        jPanel1.add(jTextFieldModele, gridBagConstraints);
 
         jTextFieldSocket.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -233,7 +238,7 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 6;
         gridBagConstraints.ipadx = 221;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldSocket, gridBagConstraints);
+        jPanel1.add(jTextFieldSocket, gridBagConstraints);
 
         jTextFieldFrequence.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -241,7 +246,7 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 8;
         gridBagConstraints.ipadx = 221;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldFrequence, gridBagConstraints);
+        jPanel1.add(jTextFieldFrequence, gridBagConstraints);
 
         jTextFieldTurbo.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -249,7 +254,7 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 10;
         gridBagConstraints.ipadx = 221;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldTurbo, gridBagConstraints);
+        jPanel1.add(jTextFieldTurbo, gridBagConstraints);
 
         jTextFieldCore.setText("0");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -257,7 +262,7 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 12;
         gridBagConstraints.ipadx = 221;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldCore, gridBagConstraints);
+        jPanel1.add(jTextFieldCore, gridBagConstraints);
 
         jTextFieldThread.setText("0");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -265,7 +270,7 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 14;
         gridBagConstraints.ipadx = 221;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldThread, gridBagConstraints);
+        jPanel1.add(jTextFieldThread, gridBagConstraints);
 
         jTextFieldPlateforme.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -273,7 +278,7 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 16;
         gridBagConstraints.ipadx = 221;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldPlateforme, gridBagConstraints);
+        jPanel1.add(jTextFieldPlateforme, gridBagConstraints);
 
         jTextFieldGravure.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -281,7 +286,7 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 18;
         gridBagConstraints.ipadx = 221;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldGravure, gridBagConstraints);
+        jPanel1.add(jTextFieldGravure, gridBagConstraints);
 
         jTextFieldTPD.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -289,7 +294,7 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 20;
         gridBagConstraints.ipadx = 221;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldTPD, gridBagConstraints);
+        jPanel1.add(jTextFieldTPD, gridBagConstraints);
 
         jTextFieldL1.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -297,7 +302,7 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 22;
         gridBagConstraints.ipadx = 221;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldL1, gridBagConstraints);
+        jPanel1.add(jTextFieldL1, gridBagConstraints);
 
         jTextFieldL2.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -305,7 +310,7 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 24;
         gridBagConstraints.ipadx = 221;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldL2, gridBagConstraints);
+        jPanel1.add(jTextFieldL2, gridBagConstraints);
 
         jTextFieldL3.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -313,7 +318,7 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 26;
         gridBagConstraints.ipadx = 221;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldL3, gridBagConstraints);
+        jPanel1.add(jTextFieldL3, gridBagConstraints);
 
         jButton1.setText("Annuler");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -325,7 +330,7 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 30;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jButton1, gridBagConstraints);
+        jPanel1.add(jButton1, gridBagConstraints);
 
         jButton2.setText("OK");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -337,14 +342,14 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 30;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        getContentPane().add(jButton2, gridBagConstraints);
+        jPanel1.add(jButton2, gridBagConstraints);
 
         jLabel14.setText("Prix");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 28;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel14, gridBagConstraints);
+        jPanel1.add(jLabel14, gridBagConstraints);
 
         jTextFieldPrix.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -352,7 +357,11 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 28;
         gridBagConstraints.ipadx = 221;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldPrix, gridBagConstraints);
+        jPanel1.add(jTextFieldPrix, gridBagConstraints);
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -439,7 +448,6 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -493,6 +501,8 @@ public class AddProcesseurDlg extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelTitre;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldCore;
     private javax.swing.JTextField jTextFieldFrequence;
     private javax.swing.JTextField jTextFieldGravure;

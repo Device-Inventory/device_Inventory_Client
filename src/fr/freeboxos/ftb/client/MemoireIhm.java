@@ -40,7 +40,6 @@ public class MemoireIhm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-//        this.setSize(1920, 1080);
         this.memoireService = MetierFactory.getMemoireService();
         this.model = new MemoireTableModel(this.memoireService.sort());
         this.jTable1.setModel(model);

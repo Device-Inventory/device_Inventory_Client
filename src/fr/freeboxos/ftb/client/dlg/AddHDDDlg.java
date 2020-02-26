@@ -37,25 +37,25 @@ public class AddHDDDlg extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        //this.setSize(500, 580);
         this.jLabelTitre.setText("Ajout d'un disque dur");
         this.jComboBoxMarque.setModel(new DefaultComboBoxModel(HddMarque.values()));
         this.jComboBoxTypeMemoire.setModel(new DefaultComboBoxModel(SsdType.values()));
         this.getRootPane().setDefaultButton(jButtonOK);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
+        this.repaint();
+        this.pack();
     }
 
     public AddHDDDlg(java.awt.Frame parent, boolean modal, HDD hdd) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        //this.setSize(500, 580);
         this.getRootPane().setDefaultButton(jButtonOK);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
         /**
-         * Mettre les valeurs pour les modification
+         * Mettre les valeurs pour les modifications
          */
         this.id = hdd.getId();
         this.jLabelTitre.setText("Modification d'un disque dur");
@@ -98,6 +98,8 @@ public class AddHDDDlg extends javax.swing.JDialog {
                 this.jCheckBoxTrim.setSelected(true);
             }
         }
+        this.repaint();
+        this.pack();
     }
 
     /**
@@ -110,6 +112,8 @@ public class AddHDDDlg extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabelTitre = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBoxMarque = new javax.swing.JComboBox<>();
@@ -144,24 +148,22 @@ public class AddHDDDlg extends javax.swing.JDialog {
         jComboBoxTypeMemoire = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
-        layout.columnWidths = new int[] {0, 5, 0};
-        layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
-        getContentPane().setLayout(layout);
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jLabelTitre.setText("jLabel1");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 3;
-        getContentPane().add(jLabelTitre, gridBagConstraints);
+        jPanel1.add(jLabelTitre, gridBagConstraints);
 
         jLabel2.setText("Marque");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel2, gridBagConstraints);
+        jPanel1.add(jLabel2, gridBagConstraints);
 
         jComboBoxMarque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Samsung", "Western_Digital", "Toshiba", "Hitachi", "HP", "LDLC", "Seagate" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -169,14 +171,14 @@ public class AddHDDDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 27;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jComboBoxMarque, gridBagConstraints);
+        jPanel1.add(jComboBoxMarque, gridBagConstraints);
 
         jLabel3.setText("Modèle");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel3, gridBagConstraints);
+        jPanel1.add(jLabel3, gridBagConstraints);
 
         jTextFieldModele.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -184,28 +186,28 @@ public class AddHDDDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldModele, gridBagConstraints);
+        jPanel1.add(jTextFieldModele, gridBagConstraints);
 
         jLabel4.setText("Interface ordinateur");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel4, gridBagConstraints);
+        jPanel1.add(jLabel4, gridBagConstraints);
 
         jLabel5.setText("Format");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel5, gridBagConstraints);
+        jPanel1.add(jLabel5, gridBagConstraints);
 
         jLabel6.setText("Capacité");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel6, gridBagConstraints);
+        jPanel1.add(jLabel6, gridBagConstraints);
 
         jTextFieldCapacite.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -213,21 +215,21 @@ public class AddHDDDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 10;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldCapacite, gridBagConstraints);
+        jPanel1.add(jTextFieldCapacite, gridBagConstraints);
 
         jLabel7.setText("Vitesse de rotation");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel7, gridBagConstraints);
+        jPanel1.add(jLabel7, gridBagConstraints);
 
         jLabel8.setText("Cache");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 14;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel8, gridBagConstraints);
+        jPanel1.add(jLabel8, gridBagConstraints);
 
         jTextFieldCache.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -235,21 +237,21 @@ public class AddHDDDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 14;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldCache, gridBagConstraints);
+        jPanel1.add(jTextFieldCache, gridBagConstraints);
 
         jComboBoxInterface.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SAS 2.0 6Gb/s", "SAS 3.0 12Gb/s", "SATA 3Gb/s (SATA 2)", "SATA 6Gb/s (SATA 3)" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jComboBoxInterface, gridBagConstraints);
+        jPanel1.add(jComboBoxInterface, gridBagConstraints);
 
         jComboBoxFormat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2\" 1/2", "3\" 1/2" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jComboBoxFormat, gridBagConstraints);
+        jPanel1.add(jComboBoxFormat, gridBagConstraints);
 
         jComboBoxVitesse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5400 RPM", "7200 RPM" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -257,7 +259,7 @@ public class AddHDDDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 12;
         gridBagConstraints.ipadx = 75;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jComboBoxVitesse, gridBagConstraints);
+        jPanel1.add(jComboBoxVitesse, gridBagConstraints);
 
         jCheckBoxSSD.setText("SSD");
         jCheckBoxSSD.addActionListener(new java.awt.event.ActionListener() {
@@ -269,14 +271,14 @@ public class AddHDDDlg extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jCheckBoxSSD, gridBagConstraints);
+        jPanel1.add(jCheckBoxSSD, gridBagConstraints);
 
         jLabel9.setText("Type de mémoire");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel9, gridBagConstraints);
+        jPanel1.add(jLabel9, gridBagConstraints);
 
         jCheckBoxNVME.setText("NVME");
         jCheckBoxNVME.setEnabled(false);
@@ -284,14 +286,14 @@ public class AddHDDDlg extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 20;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jCheckBoxNVME, gridBagConstraints);
+        jPanel1.add(jCheckBoxNVME, gridBagConstraints);
 
         jLabel10.setText("Type de controleur");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 22;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel10, gridBagConstraints);
+        jPanel1.add(jLabel10, gridBagConstraints);
 
         jTextFieldControleur.setText("?");
         jTextFieldControleur.setEnabled(false);
@@ -300,14 +302,14 @@ public class AddHDDDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 22;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldControleur, gridBagConstraints);
+        jPanel1.add(jTextFieldControleur, gridBagConstraints);
 
         jLabel11.setText("Vitesse de lecture");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 24;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel11, gridBagConstraints);
+        jPanel1.add(jLabel11, gridBagConstraints);
 
         jTextFieldLecture.setText("?");
         jTextFieldLecture.setEnabled(false);
@@ -316,14 +318,14 @@ public class AddHDDDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 24;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldLecture, gridBagConstraints);
+        jPanel1.add(jTextFieldLecture, gridBagConstraints);
 
         jLabel12.setText("Vitesse d'écriture");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 26;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel12, gridBagConstraints);
+        jPanel1.add(jLabel12, gridBagConstraints);
 
         jTextFieldEcriture.setText("?");
         jTextFieldEcriture.setEnabled(false);
@@ -332,14 +334,14 @@ public class AddHDDDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 26;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldEcriture, gridBagConstraints);
+        jPanel1.add(jTextFieldEcriture, gridBagConstraints);
 
         jLabel13.setText("IOPS");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 28;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel13, gridBagConstraints);
+        jPanel1.add(jLabel13, gridBagConstraints);
 
         jTextFieldIOPS.setText("0");
         jTextFieldIOPS.setEnabled(false);
@@ -348,7 +350,7 @@ public class AddHDDDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 28;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldIOPS, gridBagConstraints);
+        jPanel1.add(jTextFieldIOPS, gridBagConstraints);
 
         jCheckBoxTrim.setText("Trim");
         jCheckBoxTrim.setEnabled(false);
@@ -356,14 +358,14 @@ public class AddHDDDlg extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 30;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jCheckBoxTrim, gridBagConstraints);
+        jPanel1.add(jCheckBoxTrim, gridBagConstraints);
 
         jLabel14.setText("Prix");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 32;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel14, gridBagConstraints);
+        jPanel1.add(jLabel14, gridBagConstraints);
 
         jTextFieldPrix.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -371,7 +373,7 @@ public class AddHDDDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 32;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldPrix, gridBagConstraints);
+        jPanel1.add(jTextFieldPrix, gridBagConstraints);
 
         jButtonOK.setText("OK");
         jButtonOK.addActionListener(new java.awt.event.ActionListener() {
@@ -383,7 +385,7 @@ public class AddHDDDlg extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 34;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jButtonOK, gridBagConstraints);
+        jPanel1.add(jButtonOK, gridBagConstraints);
 
         jButtonAnnuler.setText("Annuler");
         jButtonAnnuler.addActionListener(new java.awt.event.ActionListener() {
@@ -395,7 +397,7 @@ public class AddHDDDlg extends javax.swing.JDialog {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 34;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        getContentPane().add(jButtonAnnuler, gridBagConstraints);
+        jPanel1.add(jButtonAnnuler, gridBagConstraints);
 
         jComboBoxTypeMemoire.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MLC", "QLC", "TLC" }));
         jComboBoxTypeMemoire.setEnabled(false);
@@ -404,7 +406,11 @@ public class AddHDDDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 18;
         gridBagConstraints.ipadx = 113;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jComboBoxTypeMemoire, gridBagConstraints);
+        jPanel1.add(jComboBoxTypeMemoire, gridBagConstraints);
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -576,6 +582,8 @@ public class AddHDDDlg extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelTitre;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldCache;
     private javax.swing.JTextField jTextFieldCapacite;
     private javax.swing.JTextField jTextFieldControleur;

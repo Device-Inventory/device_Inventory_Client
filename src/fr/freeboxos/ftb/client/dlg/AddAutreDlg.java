@@ -33,7 +33,6 @@ public class AddAutreDlg extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setSize(450, 200);
         this.jLabelTitre.setText("Ajout d'un objet");
         this.getRootPane().setDefaultButton(jButton1);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
@@ -46,13 +45,15 @@ public class AddAutreDlg extends javax.swing.JDialog {
             String str1 = Integer.toString(i);
             this.jComboBox1.addItem(str1);
         }
+
+        this.repaint();
+        this.pack();
     }
 
     public AddAutreDlg(java.awt.Frame parent, boolean modal, Autre autre) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setSize(400, 142);
         this.jLabelTitre.setText("Modification d'un objet");
         this.jTextField1.setText(autre.getElement());
         this.getRootPane().setDefaultButton(jButton1);
@@ -69,6 +70,9 @@ public class AddAutreDlg extends javax.swing.JDialog {
 
         this.jComboBox1.setSelectedIndex(autre.getNombre());
         this.id = autre.getId();
+
+        this.repaint();
+        this.pack();
     }
 
     /**
@@ -81,6 +85,8 @@ public class AddAutreDlg extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabelTitre = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -90,24 +96,22 @@ public class AddAutreDlg extends javax.swing.JDialog {
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
-        layout.columnWidths = new int[] {0, 5, 0};
-        layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0};
-        getContentPane().setLayout(layout);
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jLabelTitre.setText("jLabel1");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 3;
-        getContentPane().add(jLabelTitre, gridBagConstraints);
+        jPanel1.add(jLabelTitre, gridBagConstraints);
 
         jLabel1.setText("Nom de l'objet");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel1, gridBagConstraints);
+        jPanel1.add(jLabel1, gridBagConstraints);
 
         jTextField1.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -115,7 +119,7 @@ public class AddAutreDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 256;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jTextField1, gridBagConstraints);
+        jPanel1.add(jTextField1, gridBagConstraints);
 
         jButton1.setText("Ok");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +131,7 @@ public class AddAutreDlg extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jButton1, gridBagConstraints);
+        jPanel1.add(jButton1, gridBagConstraints);
 
         jButton2.setText("Annuler");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +143,7 @@ public class AddAutreDlg extends javax.swing.JDialog {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        getContentPane().add(jButton2, gridBagConstraints);
+        jPanel1.add(jButton2, gridBagConstraints);
 
         jLabel2.setText("Nombre");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -147,7 +151,7 @@ public class AddAutreDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.ipadx = 44;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jLabel2, gridBagConstraints);
+        jPanel1.add(jLabel2, gridBagConstraints);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -155,7 +159,11 @@ public class AddAutreDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.ipadx = 239;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jComboBox1, gridBagConstraints);
+        jPanel1.add(jComboBox1, gridBagConstraints);
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -233,6 +241,8 @@ public class AddAutreDlg extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelTitre;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

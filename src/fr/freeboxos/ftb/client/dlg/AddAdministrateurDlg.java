@@ -33,13 +33,14 @@ public class AddAdministrateurDlg extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setSize(445, 190);
         this.jLabelTitre.setText("Ajout d'un utilisateur");
         this.jLabelNom.setText("Nom d'utilisateur :");
         this.jLabelPassword.setText("Mot de passe");
         this.getRootPane().setDefaultButton(jButtonOK);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
+        this.repaint();
+        this.pack();
     }
 
     public AddAdministrateurDlg(java.awt.Frame parent, boolean modal, Administrateur administrateur) {
@@ -47,7 +48,6 @@ public class AddAdministrateurDlg extends javax.swing.JDialog {
         initComponents();
 
         this.setLocationRelativeTo(null);
-        this.setSize(445, 176);
         this.jLabelTitre.setText("Modification d'un utilisateur");
         this.jLabelNom.setText("Nom d'utilisateur :");
         this.jLabelPassword.setText("Mot de passe");
@@ -57,6 +57,8 @@ public class AddAdministrateurDlg extends javax.swing.JDialog {
         this.jTextFieldNom.setText(administrateur.getLogin());
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
+        this.repaint();
+        this.pack();
     }
 
     /**
@@ -69,6 +71,8 @@ public class AddAdministrateurDlg extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabelTitre = new javax.swing.JLabel();
         jLabelNom = new javax.swing.JLabel();
         jTextFieldNom = new javax.swing.JTextField();
@@ -78,43 +82,41 @@ public class AddAdministrateurDlg extends javax.swing.JDialog {
         jButtonAnnuler = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
-        layout.columnWidths = new int[] {0, 5, 0};
-        layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0};
-        getContentPane().setLayout(layout);
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jLabelTitre.setText("jLabel1");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 3;
-        getContentPane().add(jLabelTitre, gridBagConstraints);
+        jPanel1.add(jLabelTitre, gridBagConstraints);
 
         jLabelNom.setText("Nom d'utilisateur");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabelNom, gridBagConstraints);
+        jPanel1.add(jLabelNom, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 277;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldNom, gridBagConstraints);
+        jPanel1.add(jTextFieldNom, gridBagConstraints);
 
         jLabelPassword.setText("Mot de passe");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabelPassword, gridBagConstraints);
+        jPanel1.add(jLabelPassword, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.ipadx = 277;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jPasswordField1, gridBagConstraints);
+        jPanel1.add(jPasswordField1, gridBagConstraints);
 
         jButtonOK.setText("OK");
         jButtonOK.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +128,7 @@ public class AddAdministrateurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jButtonOK, gridBagConstraints);
+        jPanel1.add(jButtonOK, gridBagConstraints);
 
         jButtonAnnuler.setText("Annuler");
         jButtonAnnuler.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +141,11 @@ public class AddAdministrateurDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        getContentPane().add(jButtonAnnuler, gridBagConstraints);
+        jPanel1.add(jButtonAnnuler, gridBagConstraints);
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,7 +211,9 @@ public class AddAdministrateurDlg extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelNom;
     private javax.swing.JLabel jLabelPassword;
     private javax.swing.JLabel jLabelTitre;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldNom;
     // End of variables declaration//GEN-END:variables
 

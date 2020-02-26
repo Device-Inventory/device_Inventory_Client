@@ -198,6 +198,7 @@ public class OrdinateurIhm extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonAjouterActionPerformed
 
     private void jButtonModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifierActionPerformed
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
         try {
             if (this.jTable1.getSelectedRow() == -1) {
                 throw new Exception("Veuillez selectionner un ordinateur");
@@ -205,16 +206,14 @@ public class OrdinateurIhm extends javax.swing.JDialog {
 
             Ordinateur ordinateur = this.model.getOrdinateurAt(this.jTable1.getSelectedRow());
 
-            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-
             AddOrdinateurDlg addOrdinateurDlg;
+            addOrdinateurDlg = new AddOrdinateurDlg(frame, true, ordinateur);
+            addOrdinateurDlg.setVisible(true);
+            ordinateur = addOrdinateurDlg.getOrdinateur();
 
-            if (this.jTable1.getSelectedRow() != -1) {
-                addOrdinateurDlg = new AddOrdinateurDlg(frame, true, ordinateur);
-                addOrdinateurDlg.setVisible(true);
-                ordinateur = addOrdinateurDlg.getOrdinateur();
-            }
-
+//            if (this.jTable1.getSelectedRow() != -1) {
+//
+//            }
             if (ordinateur != null) {
                 try {
                     this.ordinateurService.update(ordinateur);
@@ -224,7 +223,6 @@ public class OrdinateurIhm extends javax.swing.JDialog {
                 }
             }
         } catch (Exception e) {
-            Logger.getLogger(OrdinateurIhm.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonModifierActionPerformed
@@ -249,8 +247,10 @@ public class OrdinateurIhm extends javax.swing.JDialog {
         try {
             ihm = new MainIhm();
             ihm.setVisible(true);
+
         } catch (Exception ex) {
-            Logger.getLogger(OrdinateurIhm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrdinateurIhm.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowClosing
 
@@ -269,10 +269,12 @@ public class OrdinateurIhm extends javax.swing.JDialog {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OrdinateurIhm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OrdinateurIhm.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -291,8 +293,10 @@ public class OrdinateurIhm extends javax.swing.JDialog {
                         }
                     });
                     dialog.setVisible(true);
+
                 } catch (Exception ex) {
-                    Logger.getLogger(OrdinateurIhm.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(OrdinateurIhm.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

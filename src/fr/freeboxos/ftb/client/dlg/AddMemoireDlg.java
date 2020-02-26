@@ -37,6 +37,8 @@ public class AddMemoireDlg extends javax.swing.JDialog {
         this.getRootPane().setDefaultButton(jButton1);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
+        this.repaint();
+        this.pack();
     }
 
     public AddMemoireDlg(java.awt.Frame parent, boolean modal, Memoire memoire) {
@@ -62,6 +64,9 @@ public class AddMemoireDlg extends javax.swing.JDialog {
         this.jTextFieldRadiateur.setText(memoire.getRadiateur());
         this.jTextFieldTension.setText(memoire.getTension());
         this.jTextFieldPrix.setText(memoire.getPrix());
+
+        this.repaint();
+        this.pack();
     }
 
     /**
@@ -74,6 +79,8 @@ public class AddMemoireDlg extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabelTitre = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jComboBoxMarque = new javax.swing.JComboBox<>();
@@ -99,38 +106,36 @@ public class AddMemoireDlg extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
-        layout.columnWidths = new int[] {0, 5, 0};
-        layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
-        getContentPane().setLayout(layout);
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jLabelTitre.setText("jLabel1");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 3;
-        getContentPane().add(jLabelTitre, gridBagConstraints);
+        jPanel1.add(jLabelTitre, gridBagConstraints);
 
         jLabel1.setText("Marque");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel1, gridBagConstraints);
+        jPanel1.add(jLabel1, gridBagConstraints);
 
         jComboBoxMarque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ramaxel", "Hynix", "Kingston", "Samsung", "Micron", "Hyundai", "Nanya", "LDLC", "Crucial" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jComboBoxMarque, gridBagConstraints);
+        jPanel1.add(jComboBoxMarque, gridBagConstraints);
 
         jLabel2.setText("Modèle");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel2, gridBagConstraints);
+        jPanel1.add(jLabel2, gridBagConstraints);
 
         jTextFieldModele.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -138,42 +143,42 @@ public class AddMemoireDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldModele, gridBagConstraints);
+        jPanel1.add(jTextFieldModele, gridBagConstraints);
 
         jLabel3.setText("Type de mémoire");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel3, gridBagConstraints);
+        jPanel1.add(jLabel3, gridBagConstraints);
 
         jComboBoxType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DDR", "DDR2", "DDR3", "DDR4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jComboBoxType, gridBagConstraints);
+        jPanel1.add(jComboBoxType, gridBagConstraints);
 
         jLabel4.setText("Format de mémoire");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel4, gridBagConstraints);
+        jPanel1.add(jLabel4, gridBagConstraints);
 
         jComboBoxFormat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DIMM 184 pins (DDR)", "DIMM 240 pins (DDR2)", "DIMM 240 pins (DDR3)", "DIMM 288 pins (DDR4)", "SO-DIMM 200 pins (DDR)", "SO-DIMM 200 pins (DDR2)", "SO-DIMM 204 pins (DDR3)", "SO-DIMM 260 pins (DDR4)" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jComboBoxFormat, gridBagConstraints);
+        jPanel1.add(jComboBoxFormat, gridBagConstraints);
 
         jLabel5.setText("Capacité");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel5, gridBagConstraints);
+        jPanel1.add(jLabel5, gridBagConstraints);
 
         jTextFieldCapacité.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -181,28 +186,28 @@ public class AddMemoireDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 10;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldCapacité, gridBagConstraints);
+        jPanel1.add(jTextFieldCapacité, gridBagConstraints);
 
         jLabel6.setText("Fréquence mémoire");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel6, gridBagConstraints);
+        jPanel1.add(jLabel6, gridBagConstraints);
 
         jComboBoxFréquence.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DDR 333 MHz", "DDR 400 MHz", "DDR2 667 MHz", "DDR2 800 MHz ", "DDR3 1066 MHz", "DDR3 1333 MHz", "DDR3 1375 MHz", "DDR3 1600 MHz", "DDR3 1622 MHz", "DDR3 1800 MHz", "DDR3 1866 MHz", "DDR3 1900 MHz", "DDR3 2000 MHz", "DDR3 2133 MHz", "DDR3 2200 MHz", "DDR3 2250 MHz", "DDR3 2300 MHz", "DDR3 2333 MHz", "DDR3 2400 MHz", "DDR3 2600 MHz", "DDR3 2666 MHz", "DDR3 2800 MHz", "DDR3 2933 MHz", "DDR3 3000 MHz", "DDR3 3100 MHz", "DDR3 800 MHz", "DDR4 1600 MHz", "DDR4 1866 MHz", "DDR4 2133 MHz", "DDR4 2400 MHz", "DDR4 2666 MHz", "DDR4 2800 MHz", "DDR4 2933 MHz", "DDR4 3000 MHz", "DDR4 3200 MHz", "DDR4 3300 MHz", "DDR4 3333 MHz", "DDR4 3400 MHz", "DDR4 3466 MHz", "DDR4 3600 MHz", "DDR4 3666 MHz", "DDR4 3733 MHz", "DDR4 3800 MHz", "DDR4 3866 MHz", "DDR4 4000 MHz", "DDR4 4133 MHz", "DDR4 4200 MHz", "DDR4 4266 MHz", "DDR4 4300 MHz", "DDR4 4333 MHz", "DDR4 4400 MHz", "DDR4 4500 MHz", "DDR4 4600 MHz", "DDR4 4800 MHz" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jComboBoxFréquence, gridBagConstraints);
+        jPanel1.add(jComboBoxFréquence, gridBagConstraints);
 
         jLabel7.setText("ECC");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 14;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel7, gridBagConstraints);
+        jPanel1.add(jLabel7, gridBagConstraints);
 
         jTextFieldECC.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -210,14 +215,14 @@ public class AddMemoireDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 14;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldECC, gridBagConstraints);
+        jPanel1.add(jTextFieldECC, gridBagConstraints);
 
         jLabel8.setText("Radiateur");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel8, gridBagConstraints);
+        jPanel1.add(jLabel8, gridBagConstraints);
 
         jTextFieldRadiateur.setText("Non");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -225,14 +230,14 @@ public class AddMemoireDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 16;
         gridBagConstraints.ipadx = 130;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldRadiateur, gridBagConstraints);
+        jPanel1.add(jTextFieldRadiateur, gridBagConstraints);
 
         jLabel9.setText("Tension");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel9, gridBagConstraints);
+        jPanel1.add(jLabel9, gridBagConstraints);
 
         jTextFieldTension.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -240,14 +245,14 @@ public class AddMemoireDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 18;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldTension, gridBagConstraints);
+        jPanel1.add(jTextFieldTension, gridBagConstraints);
 
         jLabel10.setText("Prix");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 20;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jLabel10, gridBagConstraints);
+        jPanel1.add(jLabel10, gridBagConstraints);
 
         jTextFieldPrix.setText("?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -255,7 +260,7 @@ public class AddMemoireDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 20;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jTextFieldPrix, gridBagConstraints);
+        jPanel1.add(jTextFieldPrix, gridBagConstraints);
 
         jButton1.setText("OK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -268,7 +273,7 @@ public class AddMemoireDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 22;
         gridBagConstraints.ipadx = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(jButton1, gridBagConstraints);
+        jPanel1.add(jButton1, gridBagConstraints);
 
         jButton2.setText("Annuler");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -281,7 +286,11 @@ public class AddMemoireDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 22;
         gridBagConstraints.ipadx = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        getContentPane().add(jButton2, gridBagConstraints);
+        jPanel1.add(jButton2, gridBagConstraints);
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -393,6 +402,8 @@ public class AddMemoireDlg extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelTitre;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldCapacité;
     private javax.swing.JTextField jTextFieldECC;
     private javax.swing.JTextField jTextFieldModele;

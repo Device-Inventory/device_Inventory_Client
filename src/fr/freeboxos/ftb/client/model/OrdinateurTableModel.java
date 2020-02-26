@@ -39,7 +39,7 @@ public class OrdinateurTableModel extends AbstractTableModel {
 
     @Override
     public String getColumnName(int column) {
-        return this.header[column]; //To change body of generated methods, choose Tools | Templates.
+        return this.header[column];
     }
 
     @Override
@@ -86,7 +86,6 @@ public class OrdinateurTableModel extends AbstractTableModel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "erreur", JOptionPane.ERROR_MESSAGE);
         }
-        //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -100,6 +99,12 @@ public class OrdinateurTableModel extends AbstractTableModel {
     @Override
     public Class getColumnClass(int columnIndex) {
         switch (columnIndex) {
+            case 0:
+                return Processeur.class;
+            case 1:
+                return Memoire.class;
+            case 2:
+                return HDD.class;
             default:
                 return String.class;
         }
