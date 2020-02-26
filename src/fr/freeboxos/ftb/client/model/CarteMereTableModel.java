@@ -25,7 +25,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class CarteMereTableModel extends AbstractTableModel {
 
-    private final String[] header = {"Marque", "Modèle"}; //todo : finir de remplir le header
+    private final String[] header = {"Marque", "Modèle", "Désignation"}; //todo : finir de remplir le header
     private CarteMere[] carteMeres;
 
     public CarteMereTableModel(CarteMere[] carteMeres) {
@@ -55,6 +55,8 @@ public class CarteMereTableModel extends AbstractTableModel {
                 return carteMere.getMarque();
             case 1:
                 return carteMere.getModele();
+            case 2:
+                return carteMere.getDesignation();
             default:
                 return null;
         }
@@ -69,7 +71,7 @@ public class CarteMereTableModel extends AbstractTableModel {
     }
 
     @Override
-    public Class getColumnClass(int columnIndex) { //todo : remplir le switch case 
+    public Class getColumnClass(int columnIndex) { //todo : remplir le switch case
         switch (columnIndex) {
             default:
                 return String.class;

@@ -202,7 +202,7 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
                     this.carteGraphiqueService.add(carteGraphique);
                     this.model.update(this.carteGraphiqueService.sort());
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Erreur pendant la mise a jour d'un ordinateur", "Erreur", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Erreur pendant la mise a jour d'une carte graphique", "Erreur", JOptionPane.ERROR_MESSAGE);
                 }
             }
 
@@ -214,7 +214,7 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
     private void jButtonModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifierActionPerformed
         try {
             if (this.jTable1.getSelectedRow() == -1) {
-                throw new Exception("Veuillez selectionner un ordinateur");
+                throw new Exception("Veuillez selectionner une carte graphique");
             }
 
             CarteGraphique carteGraphique = this.model.getCarteGraphiqueAt(this.jTable1.getSelectedRow());
@@ -260,7 +260,6 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonSupprimerActionPerformed
 
     private void jButtonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitterActionPerformed
-        dispose();
         try {
             MainIhm mainIhm = new MainIhm();
             mainIhm.setVisible(true);

@@ -16,13 +16,19 @@
  */
 package fr.freeboxos.ftb.client;
 
+import fr.freeboxos.ftb.client.dlg.AddCarteMereDlg;
 import fr.freeboxos.ftb.client.model.CarteMereTableModel;
 import fr.freeboxos.ftb.metier.CarteMereService;
 import fr.freeboxos.ftb.metier.MetierFactory;
+import fr.freeboxos.ftb.metier.entitys.CarteMere;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -102,6 +108,11 @@ public class CarteMereIhm extends javax.swing.JDialog {
         getContentPane().add(jScrollPane1, gridBagConstraints);
 
         jButtonAdd.setText("Ajouter");
+        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -109,12 +120,22 @@ public class CarteMereIhm extends javax.swing.JDialog {
         getContentPane().add(jButtonAdd, gridBagConstraints);
 
         jButtonUpdate.setText("Modifier");
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         getContentPane().add(jButtonUpdate, gridBagConstraints);
 
         jButtonRemove.setText("Supprimer");
+        jButtonRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoveActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -122,6 +143,11 @@ public class CarteMereIhm extends javax.swing.JDialog {
         getContentPane().add(jButtonRemove, gridBagConstraints);
 
         jButtonQuit.setText("Quitter");
+        jButtonQuit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonQuitActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
@@ -129,6 +155,81 @@ public class CarteMereIhm extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitActionPerformed
+        dispose();
+        MainIhm mainIhm = new MainIhm();
+        mainIhm.setVisible(true);
+    }//GEN-LAST:event_jButtonQuitActionPerformed
+
+    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
+        try {
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+
+            AddCarteMereDlg addCarteMereDlg = new AddCarteMereDlg(frame, true);
+            addCarteMereDlg.setVisible(true);
+
+            CarteMere carteMere = addCarteMereDlg.getCarteMere();
+
+            if (carteMere != null) {
+                try {
+                    this.carteMereService.add(carteMere);
+                    this.model.update(this.carteMereService.sort());
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Erreur pendant la mise a jour d'un carte mère", "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(this, "Erreur d'ouverture de la fenetre d'ajout d'une carte mère", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonAddActionPerformed
+
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        try {
+            if (this.jTable1.getSelectedRow() == -1) {
+                throw new Exception("Veuillez selectionner une carte mère");
+            }
+
+            CarteMere carteMere = this.model.getCarteMereAt(this.jTable1.getSelectedRow());
+
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+
+            AddCarteMereDlg addCarteMereDlg;
+
+            if (this.jTable1.getSelectedRow() != -1) {
+                addCarteMereDlg = new AddCarteMereDlg(frame, true, carteMere);
+                addCarteMereDlg.setVisible(true);
+                carteMere = addCarteMereDlg.getCarteMere();
+            }
+
+            if (carteMere != null) {
+                try {
+                    this.carteMereService.update(carteMere);
+                    this.model.update(this.carteMereService.sort());
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "erreur", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+        } catch (Exception e) {
+            Logger.getLogger(CarteGraphiqueIhm.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveActionPerformed
+        try {
+            if (this.jTable1.getSelectedRow() == -1) {
+                throw new Exception("Veuillez selectionner une carte mère");
+            }
+            CarteMere carteMere = this.model.getCarteMereAt(this.jTable1.getSelectedRow());
+
+            this.carteMereService.remove(carteMere);
+            this.model.update(this.carteMereService.sort());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erreur pendant la suppression d'une carte mère", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonRemoveActionPerformed
 
     /**
      * @param args the command line arguments
