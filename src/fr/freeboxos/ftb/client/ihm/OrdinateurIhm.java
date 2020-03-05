@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 alan
+ * Copyright (C) 2019 alan
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,14 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.freeboxos.ftb.client;
+package fr.freeboxos.ftb.client.ihm;
 
-import fr.freeboxos.ftb.client.dlg.AddCarteGraphiqueDlg;
-import fr.freeboxos.ftb.client.model.CarteGraphiqueTableModel;
-import fr.freeboxos.ftb.metier.CarteGraphiqueService;
+import fr.freeboxos.ftb.client.dlg.AddOrdinateurDlg;
+import fr.freeboxos.ftb.client.model.OrdinateurTableModel;
 import fr.freeboxos.ftb.metier.MetierFactory;
-import fr.freeboxos.ftb.metier.entitys.CarteGraphique;
-import java.awt.HeadlessException;
+import fr.freeboxos.ftb.metier.OrdinateurService;
+import fr.freeboxos.ftb.metier.entitys.Ordinateur;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.logging.Level;
@@ -29,34 +28,32 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import javax.swing.table.TableColumnModel;
 
 /**
  *
  * @author alan
  */
-public class CarteGraphiqueIhm extends javax.swing.JDialog {
+public class OrdinateurIhm extends javax.swing.JDialog {
 
-    private final CarteGraphiqueService carteGraphiqueService;
-    private final CarteGraphiqueTableModel model;
+    private final OrdinateurService ordinateurService;
+    private final OrdinateurTableModel model;
 
     /**
-     * Creates new form CarteGraphiqueIhm
+     * Creates new form OrdinateurIhm
      *
      * @param parent
      * @param modal
      * @throws java.lang.Exception
      */
-    public CarteGraphiqueIhm(java.awt.Frame parent, boolean modal) throws Exception {
+    public OrdinateurIhm(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.carteGraphiqueService = MetierFactory.getCarteGraphiqueService();
-        this.model = new CarteGraphiqueTableModel(this.carteGraphiqueService.sort());
+        this.ordinateurService = MetierFactory.getOrdinateurService();
+        this.model = new OrdinateurTableModel(this.ordinateurService.sort());
         this.jTable1.setModel(model);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
-        setSizeColumn();
         this.repaint();
         this.pack();
     }
@@ -90,7 +87,7 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
         layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0};
         getContentPane().setLayout(layout);
 
-        jLabel1.setText("Liste des cartes graphiques");
+        jLabel1.setText("Liste des ordinateurs");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -113,8 +110,6 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 300;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(jScrollPane1, gridBagConstraints);
@@ -168,78 +163,59 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void setSizeColumn() {
-        TableColumnModel columnModel = this.jTable1.getColumnModel();
-        columnModel.getColumn(0).setPreferredWidth(100);
-        columnModel.getColumn(1).setPreferredWidth(100);
-        columnModel.getColumn(2).setPreferredWidth(130);
-        columnModel.getColumn(3).setPreferredWidth(130);
-        columnModel.getColumn(4).setPreferredWidth(80);
-        columnModel.getColumn(5).setPreferredWidth(90);
-        columnModel.getColumn(6).setPreferredWidth(110);
-        columnModel.getColumn(7).setPreferredWidth(140);
-        columnModel.getColumn(8).setPreferredWidth(130);
-        columnModel.getColumn(9).setPreferredWidth(150);
-        columnModel.getColumn(10).setPreferredWidth(140);
-        columnModel.getColumn(11).setPreferredWidth(180);
-        columnModel.getColumn(12).setPreferredWidth(120);
-        columnModel.getColumn(13).setPreferredWidth(90);
-        this.jTable1.setAutoResizeMode(0);
-    }
+    private void jButtonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitterActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButtonQuitterActionPerformed
 
     private void jButtonAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjouterActionPerformed
         try {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-            AddCarteGraphiqueDlg addCarteGraphiqueDlg;
-            addCarteGraphiqueDlg = new AddCarteGraphiqueDlg(frame, true);
-            addCarteGraphiqueDlg.setVisible(true);
+            AddOrdinateurDlg addOrdinateurDlg;
+            addOrdinateurDlg = new AddOrdinateurDlg(frame, true);
+            addOrdinateurDlg.setVisible(true);
 
-            CarteGraphique carteGraphique = addCarteGraphiqueDlg.getCarteGraphique();
+            Ordinateur ordinateur = addOrdinateurDlg.getOrdinateur();
 
-            if (carteGraphique != null) {
+            if (ordinateur != null) {
                 try {
-                    this.carteGraphiqueService.add(carteGraphique);
-                    this.model.update(this.carteGraphiqueService.sort());
+                    this.ordinateurService.add(ordinateur);
+                    this.model.update(this.ordinateurService.sort());
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Erreur pendant la mise a jour d'une carte graphique", "Erreur", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Erreur pendant la mise a jour d'un ordinateur", "Erreur", JOptionPane.ERROR_MESSAGE);
                 }
             }
-
-        } catch (HeadlessException e) {
-            Logger.getLogger(CarteGraphiqueIhm.class.getName()).log(Level.SEVERE, null, e);
+        } catch (Exception ex) {
+            Logger.getLogger(OrdinateurIhm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonAjouterActionPerformed
 
     private void jButtonModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifierActionPerformed
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
         try {
             if (this.jTable1.getSelectedRow() == -1) {
-                throw new Exception("Veuillez selectionner une carte graphique");
+                throw new Exception("Veuillez selectionner un ordinateur");
             }
 
-            CarteGraphique carteGraphique = this.model.getCarteGraphiqueAt(this.jTable1.getSelectedRow());
+            Ordinateur ordinateur = this.model.getOrdinateurAt(this.jTable1.getSelectedRow());
 
-            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+            AddOrdinateurDlg addOrdinateurDlg;
+            addOrdinateurDlg = new AddOrdinateurDlg(frame, true, ordinateur);
+            addOrdinateurDlg.setVisible(true);
+            ordinateur = addOrdinateurDlg.getOrdinateur();
 
-            AddCarteGraphiqueDlg addCarteGraphiqueDlg;
-
-            if (this.jTable1.getSelectedRow() != -1) {
-                addCarteGraphiqueDlg = new AddCarteGraphiqueDlg(frame, true, carteGraphique);
-                addCarteGraphiqueDlg.setVisible(true);
-                carteGraphique = addCarteGraphiqueDlg.getCarteGraphique();
-            }
-
-            if (carteGraphique != null) {
+//            if (this.jTable1.getSelectedRow() != -1) {
+//
+//            }
+            if (ordinateur != null) {
                 try {
-                    this.carteGraphiqueService.update(carteGraphique);
-                    this.model.update(this.carteGraphiqueService.sort());
+                    this.ordinateurService.update(ordinateur);
+                    this.model.update(this.ordinateurService.sort());
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, e.getMessage(), "erreur", JOptionPane.ERROR_MESSAGE);
                 }
             }
-
         } catch (Exception e) {
-            Logger.getLogger(CarteGraphiqueIhm.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonModifierActionPerformed
@@ -247,34 +223,27 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
     private void jButtonSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSupprimerActionPerformed
         try {
             if (this.jTable1.getSelectedRow() == -1) {
-                throw new Exception("Veuillez selectionner une carte graphique");
+                throw new Exception("Veuillez selectionner un ordinateur");
             }
 
-            CarteGraphique carteGraphique = this.model.getCarteGraphiqueAt(this.jTable1.getSelectedRow());
+            Ordinateur ordinateur = this.model.getOrdinateurAt(this.jTable1.getSelectedRow());
 
-            this.carteGraphiqueService.remove(carteGraphique);
-            this.model.update(this.carteGraphiqueService.sort());
+            this.ordinateurService.remove(ordinateur);
+            this.model.update(this.ordinateurService.sort());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erreur pendant la suppression d'une carte graphique", "Erreur", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erreur pendant la suppression d'un ordinateur", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonSupprimerActionPerformed
 
-    private void jButtonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitterActionPerformed
-        try {
-            MainIhm mainIhm = new MainIhm();
-            mainIhm.setVisible(true);
-            dispose();
-        } catch (Exception e) {
-            Logger.getLogger(MemoireIhm.class.getName()).log(Level.SEVERE, null, e);
-        }
-    }//GEN-LAST:event_jButtonQuitterActionPerformed
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MainIhm ihm;
         try {
-            MainIhm ihm = new MainIhm();
+            ihm = new MainIhm();
             ihm.setVisible(true);
+
         } catch (Exception ex) {
-            Logger.getLogger(HDDIhm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrdinateurIhm.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowClosing
 
@@ -293,10 +262,12 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CarteGraphiqueIhm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OrdinateurIhm.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -307,7 +278,7 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
             @Override
             public void run() {
                 try {
-                    CarteGraphiqueIhm dialog = new CarteGraphiqueIhm(new javax.swing.JFrame(), true);
+                    OrdinateurIhm dialog = new OrdinateurIhm(new javax.swing.JFrame(), true);
                     dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                         @Override
                         public void windowClosing(java.awt.event.WindowEvent e) {
@@ -315,8 +286,10 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
                         }
                     });
                     dialog.setVisible(true);
+
                 } catch (Exception ex) {
-                    Logger.getLogger(CarteGraphiqueIhm.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(OrdinateurIhm.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

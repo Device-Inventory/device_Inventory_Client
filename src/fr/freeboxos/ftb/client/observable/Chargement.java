@@ -14,8 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.freeboxos.ftb.client;
+package fr.freeboxos.ftb.client.observable;
 
+import fr.freeboxos.ftb.client.ihm.ChargementIHM;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.Observable;

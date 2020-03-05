@@ -16,7 +16,7 @@
  */
 package fr.freeboxos.ftb.client.dlg;
 
-import fr.freeboxos.ftb.client.LoginIhm;
+import fr.freeboxos.ftb.client.ihm.LoginIhm;
 import fr.freeboxos.ftb.metier.entitys.CarteGraphique;
 import fr.freeboxos.ftb.metier.enums.GpuChipsetMarque;
 import fr.freeboxos.ftb.metier.enums.GpuMarque;

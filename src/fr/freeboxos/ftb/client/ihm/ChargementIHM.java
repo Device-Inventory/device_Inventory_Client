@@ -14,20 +14,38 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.freeboxos.ftb.client;
+package fr.freeboxos.ftb.client.ihm;
+
+import fr.freeboxos.ftb.client.observable.Data;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 /**
  *
  * @author alan
  */
-public class ConfigMarqueCpu extends javax.swing.JFrame {
+public class ChargementIHM extends javax.swing.JFrame {
+
+    private final Data d;
+
+    public Data getD() {
+        return d;
+    }
 
     /**
-     * Creates new form ConfigMarqueCpu
+     * Creates new form Chargement
      */
-    public ConfigMarqueCpu() {
-        initComponents();
+    public ChargementIHM() {
+        this.initComponents();
         this.setLocationRelativeTo(null);
+        this.jLabel1.setText("Chargement en cours ...");
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
+        this.repaint();
+        this.pack();
+
+        this.d = new Data();
+        this.d.setData("actif");
     }
 
     /**
@@ -38,14 +56,19 @@ public class ConfigMarqueCpu extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setText("Test marque");
-        getContentPane().add(jLabel1, new java.awt.GridBagConstraints());
+        jLabel1.setText("jLabel1");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(12, 12, 12, 12);
+        getContentPane().add(jLabel1, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -53,7 +76,6 @@ public class ConfigMarqueCpu extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    @SuppressWarnings("Convert2Lambda")
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -68,18 +90,17 @@ public class ConfigMarqueCpu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConfigMarqueCpu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChargementIHM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new ConfigMarqueCpu().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new ChargementIHM().setVisible(true);
         });
     }
 

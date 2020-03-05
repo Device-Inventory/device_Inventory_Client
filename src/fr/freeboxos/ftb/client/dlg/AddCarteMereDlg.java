@@ -16,7 +16,7 @@
  */
 package fr.freeboxos.ftb.client.dlg;
 
-import fr.freeboxos.ftb.client.MainIhm;
+import fr.freeboxos.ftb.client.ihm.MainIhm;
 import fr.freeboxos.ftb.metier.entitys.CarteMere;
 import java.awt.Image;
 import java.awt.Toolkit;

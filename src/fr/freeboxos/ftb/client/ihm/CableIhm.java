@@ -1,10 +1,15 @@
-package fr.freeboxos.ftb.client;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package fr.freeboxos.ftb.client.ihm;
 
-import fr.freeboxos.ftb.client.dlg.AddAdministrateurDlg;
-import fr.freeboxos.ftb.client.model.AdministrateurTableModel;
-import fr.freeboxos.ftb.metier.AdministrateurService;
+import fr.freeboxos.ftb.client.dlg.AddCableDlg;
+import fr.freeboxos.ftb.client.model.CableTableModel;
+import fr.freeboxos.ftb.metier.CableService;
 import fr.freeboxos.ftb.metier.MetierFactory;
-import fr.freeboxos.ftb.metier.entitys.Administrateur;
+import fr.freeboxos.ftb.metier.entitys.Cable;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.logging.Level;
@@ -19,25 +24,24 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author alan
  */
-public class AdministrateurIHM extends javax.swing.JDialog {
+public class CableIhm extends javax.swing.JDialog {
 
-    private final AdministrateurService administrateurService;
-    private final AdministrateurTableModel model;
+    private final CableService cableService;
+    private final CableTableModel model;
 
     /**
-     * Creates new form AdministrateurIHM
+     * Creates new form CableIhm
      *
      * @param parent
      * @param modal
      * @throws java.lang.Exception
      */
-    public AdministrateurIHM(java.awt.Frame parent, boolean modal) throws Exception {
+    public CableIhm(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.jLabel1.setText("Liste des utilisateurs");
-        this.administrateurService = MetierFactory.getAdministrateurService();
-        this.model = new AdministrateurTableModel(this.administrateurService.sort());
+        this.cableService = MetierFactory.getCableService();
+        this.model = new CableTableModel(this.cableService.sort());
         this.jTable1.setModel(model);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
@@ -74,7 +78,7 @@ public class AdministrateurIHM extends javax.swing.JDialog {
         layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0};
         getContentPane().setLayout(layout);
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Liste des cables");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -97,8 +101,8 @@ public class AdministrateurIHM extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 64;
-        gridBagConstraints.ipady = 60;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.ipady = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -159,38 +163,30 @@ public class AdministrateurIHM extends javax.swing.JDialog {
      * @param evt
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        MainIhm ihm;
-        try {
-            ihm = new MainIhm();
-            ihm.setVisible(true);
-        } catch (Exception ex) {
-            Logger.getLogger(AdministrateurIHM.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
-     * Bouton supprimer
+     * Bouton permettant de supprimer un cable
      *
      * @param evt
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             if (this.jTable1.getSelectedRow() == -1) {
-                throw new Exception("Veuillez selectionner un utilisateur");
+                throw new Exception("Veuillez selectionner un cable");
             }
 
-            Administrateur administrateur = this.model.getAdministrateurAt(this.jTable1.getSelectedRow());
+            Cable cable = this.model.getCableAt(this.jTable1.getSelectedRow());
 
             try {
-                this.administrateurService.remove(administrateur);
-                this.model.update(this.administrateurService.sort());
+                this.cableService.remove(cable);
+                this.model.update(this.cableService.sort());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
             }
-
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -202,18 +198,19 @@ public class AdministrateurIHM extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-        AddAdministrateurDlg addAdministrateurDlg;
-        addAdministrateurDlg = new AddAdministrateurDlg(frame, true);
-        addAdministrateurDlg.setVisible(true);
-        Administrateur administrateur = addAdministrateurDlg.getAdministrateur();
+        AddCableDlg addCableDlg;
+        addCableDlg = new AddCableDlg(frame, true);
+        addCableDlg.setVisible(true);
 
-        if (administrateur != null) {
+        Cable cable = addCableDlg.getCable();
+        if (cable != null) {
             try {
-                this.administrateurService.add(administrateur);
-                this.model.update(this.administrateurService.sort());
+                this.cableService.add(cable);
+                this.model.update(this.cableService.sort());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Erreur pendant l'ajout de l'utilisateur", "Erreur", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Erreur pendant l'ajout du cable", "Erreur", JOptionPane.ERROR_MESSAGE);
             }
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -225,37 +222,40 @@ public class AdministrateurIHM extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             if (this.jTable1.getSelectedRow() == -1) {
-                throw new Exception("Veuillez selectionner un utilisateur");
+                throw new Exception("Veuillez selectionner un cable");
             }
 
-            Administrateur administrateur = this.model.getAdministrateurAt(this.jTable1.getSelectedRow());
+            Cable cable = this.model.getCableAt(this.jTable1.getSelectedRow());
 
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-            AddAdministrateurDlg addAdministrateurDlg;
+            AddCableDlg addCableDlg;
 
-            addAdministrateurDlg = new AddAdministrateurDlg(frame, true, administrateur);
+            addCableDlg = new AddCableDlg(frame, true, cable);
 
-            addAdministrateurDlg.setVisible(true);
+            addCableDlg.setVisible(true);
 
-            administrateur = addAdministrateurDlg.getAdministrateur();
+            cable = addCableDlg.getCable();
 
-            if (administrateur != null) {
-                this.administrateurService.update(administrateur);
-                this.model.update(this.administrateurService.sort());
+            if (cable != null) {
+                try {
+                    this.cableService.update(cable);
+                    this.model.update(this.cableService.sort());
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Erreur pendant le mise a jour du cable", "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "erreur", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        MainIhm ihm;
         try {
-            ihm = new MainIhm();
+            MainIhm ihm = new MainIhm();
             ihm.setVisible(true);
         } catch (Exception ex) {
-            Logger.getLogger(AdministrateurIHM.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CableIhm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowClosing
 
@@ -268,7 +268,7 @@ public class AdministrateurIHM extends javax.swing.JDialog {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(AdministrateurIHM.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CableIhm.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         /* Create and display the dialog */
@@ -276,9 +276,9 @@ public class AdministrateurIHM extends javax.swing.JDialog {
             @Override
             public void run() {
                 try {
-                    AdministrateurIHM dialog;
+                    CableIhm dialog;
 
-                    dialog = new AdministrateurIHM(new javax.swing.JFrame(), true);
+                    dialog = new CableIhm(new javax.swing.JFrame(), true);
 
                     dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                         @Override
@@ -288,7 +288,7 @@ public class AdministrateurIHM extends javax.swing.JDialog {
                     });
                     dialog.setVisible(true);
                 } catch (Exception ex) {
-                    Logger.getLogger(AdministrateurIHM.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CableIhm.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

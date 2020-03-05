@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.freeboxos.ftb.client;
+package fr.freeboxos.ftb.client.ihm;
 
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.entitys.Autre;
@@ -30,75 +30,13 @@ public class MainIhm extends javax.swing.JFrame {
     /**
      * Creates new form MainIhm
      *
+     * @throws java.lang.Exception
      */
-    public MainIhm() {
+    public MainIhm() throws Exception {
         super("Inventaire informatique");
         initComponents();
         this.setLocationRelativeTo(null);
-
-        try {
-            this.jLabel_cpu.setText(String.valueOf(MetierFactory.getProcesseurService().getCount()));
-        } catch (Exception ex) {
-            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre de processeur", "Erreur", JOptionPane.ERROR_MESSAGE);
-        }
-
-        try {
-            this.jLabel_autre.setText(String.valueOf(this.getAutres()));
-        } catch (Exception ex) {
-            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre d'autre élément", "Erreur", JOptionPane.ERROR_MESSAGE);
-        }
-
-        try {
-            this.jLabel_cable.setText(String.valueOf(this.getCable()));
-        } catch (Exception ex) {
-            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre de cable", "Erreur", JOptionPane.ERROR_MESSAGE);
-        }
-
-        try {
-            this.jLabel_hdd.setText(String.valueOf(MetierFactory.getHDDService().getCount()));
-        } catch (Exception ex) {
-            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre de disque dur", "Erreur", JOptionPane.ERROR_MESSAGE);
-        }
-
-        try {
-            this.jLabel_ram.setText(String.valueOf(MetierFactory.getMemoireService().getCount()));
-        } catch (Exception ex) {
-            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre de barrette de mémoire", "Erreur", JOptionPane.ERROR_MESSAGE);
-        }
-
-        try {
-            this.jLabelOrdinateur.setText(String.valueOf(MetierFactory.getOrdinateurService().getCount()));
-        } catch (Exception ex) {
-            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre d'ordinateur", "Erreur", JOptionPane.ERROR_MESSAGE);
-        }
-
-        try {
-            this.jLabelGpu.setText(String.valueOf(MetierFactory.getCarteGraphiqueService().getCount()));
-        } catch (Exception e) {
-            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
-            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre de carte graphique", "Erreur", JOptionPane.ERROR_MESSAGE);
-        }
-
-        try {
-            this.jLabel_prixTotal.setText("Le prix totale est de " + this.getPrix() + "€");
-        } catch (Exception ex) {
-            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Erreur de lecture du prix", "Erreur", JOptionPane.ERROR_MESSAGE);
-            this.jLabel_prixTotal.setText("Erreur");
-        }
-
-        try {
-            this.jLabel2.setText(String.valueOf(MetierFactory.getCarteMereService().getCount()));
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre de carte mère", "Erreur", JOptionPane.ERROR_MESSAGE);
-        }
-
+        this.getNombreAll();
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
         this.repaint();
@@ -404,6 +342,71 @@ public class MainIhm extends javax.swing.JFrame {
         return nombre;
     }
 
+    private void getNombreAll() {
+        try {
+            this.jLabel_cpu.setText(String.valueOf(MetierFactory.getProcesseurService().getCount()));
+        } catch (Exception ex) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre de processeur", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+
+        try {
+            this.jLabel_autre.setText(String.valueOf(this.getAutres()));
+        } catch (Exception ex) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre d'autre élément", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+
+        try {
+            this.jLabel_cable.setText(String.valueOf(this.getCable()));
+        } catch (Exception ex) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre de cable", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+
+        try {
+            this.jLabel_hdd.setText(String.valueOf(MetierFactory.getHDDService().getCount()));
+        } catch (Exception ex) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre de disque dur", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+
+        try {
+            this.jLabel_ram.setText(String.valueOf(MetierFactory.getMemoireService().getCount()));
+        } catch (Exception ex) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre de barrette de mémoire", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+
+        try {
+            this.jLabelOrdinateur.setText(String.valueOf(MetierFactory.getOrdinateurService().getCount()));
+        } catch (Exception ex) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre d'ordinateur", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+
+        try {
+            this.jLabelGpu.setText(String.valueOf(MetierFactory.getCarteGraphiqueService().getCount()));
+        } catch (Exception e) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre de carte graphique", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+
+        try {
+            this.jLabel_prixTotal.setText("Le prix totale est de " + this.getPrix() + "€");
+        } catch (Exception ex) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erreur de lecture du prix", "Erreur", JOptionPane.ERROR_MESSAGE);
+            this.jLabel_prixTotal.setText("Erreur");
+        }
+
+        try {
+            this.jLabel2.setText(String.valueOf(MetierFactory.getCarteMereService().getCount()));
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre de carte mère", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
@@ -411,8 +414,9 @@ public class MainIhm extends javax.swing.JFrame {
             processeurIHM.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
+            //todo : corriger le catch processeur
         }
-        dispose();
+        this.getNombreAll();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUtilisateurActionPerformed
@@ -422,8 +426,9 @@ public class MainIhm extends javax.swing.JFrame {
             administrateurIHM.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+            //todo : corriger le catch admin
         }
-        dispose();
+        this.getNombreAll();
     }//GEN-LAST:event_jButtonUtilisateurActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -433,8 +438,9 @@ public class MainIhm extends javax.swing.JFrame {
             cableIhm.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+            //todo : corriger le catch cable
         }
-        dispose();
+        this.getNombreAll();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -443,8 +449,9 @@ public class MainIhm extends javax.swing.JFrame {
             autreIhm.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+            //todo : corriger le catch autre
         }
-        dispose();
+        this.getNombreAll();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -454,9 +461,9 @@ public class MainIhm extends javax.swing.JFrame {
             hDDIhm.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
-
+            //todo : corriger le catch hdd
         }
-        dispose();
+        this.getNombreAll();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -466,8 +473,9 @@ public class MainIhm extends javax.swing.JFrame {
             memoireIhm.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+            //todo : corriger le catch memoire
         }
-        dispose();
+        this.getNombreAll();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -476,8 +484,9 @@ public class MainIhm extends javax.swing.JFrame {
             ordinateurIhm.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+            //todo : corriger le catch ordinateur
         }
-        dispose();
+        this.getNombreAll();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButtonGpuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGpuActionPerformed
@@ -486,8 +495,9 @@ public class MainIhm extends javax.swing.JFrame {
             carteGraphiqueIhm.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+            //todo : corriger le catch gpu
         }
-        dispose();
+        this.getNombreAll();
     }//GEN-LAST:event_jButtonGpuActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -495,8 +505,9 @@ public class MainIhm extends javax.swing.JFrame {
             ConfigMarqueCpu configMarqueCpu = new ConfigMarqueCpu();
             configMarqueCpu.setVisible(true);
         } catch (Exception e) {
+            //todo : corriger le catch configMarqueCpu
         }
-        dispose();
+        this.getNombreAll();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -505,7 +516,9 @@ public class MainIhm extends javax.swing.JFrame {
             carteMereIhm.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
+            //todo : corriger le catch carteMere
         }
+        this.getNombreAll();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**

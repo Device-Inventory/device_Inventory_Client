@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 alan
+ * Copyright (C) 2020 alan
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,13 +14,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.freeboxos.ftb.client;
+package fr.freeboxos.ftb.client.ihm;
 
-import fr.freeboxos.ftb.client.dlg.AddOrdinateurDlg;
-import fr.freeboxos.ftb.client.model.OrdinateurTableModel;
+import fr.freeboxos.ftb.client.dlg.AddCarteMereDlg;
+import fr.freeboxos.ftb.client.model.CarteMereTableModel;
+import fr.freeboxos.ftb.metier.CarteMereService;
 import fr.freeboxos.ftb.metier.MetierFactory;
-import fr.freeboxos.ftb.metier.OrdinateurService;
-import fr.freeboxos.ftb.metier.entitys.Ordinateur;
+import fr.freeboxos.ftb.metier.entitys.CarteMere;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.logging.Level;
@@ -33,24 +34,24 @@ import javax.swing.SwingUtilities;
  *
  * @author alan
  */
-public class OrdinateurIhm extends javax.swing.JDialog {
+public class CarteMereIhm extends javax.swing.JDialog {
 
-    private final OrdinateurService ordinateurService;
-    private final OrdinateurTableModel model;
+    private final CarteMereService carteMereService;
+    private final CarteMereTableModel model;
 
     /**
-     * Creates new form OrdinateurIhm
+     * Creates new form CarteMereIhm
      *
      * @param parent
      * @param modal
      * @throws java.lang.Exception
      */
-    public OrdinateurIhm(java.awt.Frame parent, boolean modal) throws Exception {
+    public CarteMereIhm(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.ordinateurService = MetierFactory.getOrdinateurService();
-        this.model = new OrdinateurTableModel(this.ordinateurService.sort());
+        this.carteMereService = MetierFactory.getCarteMereService();
+        this.model = new CarteMereTableModel(this.carteMereService.sort());
         this.jTable1.setModel(model);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
@@ -71,23 +72,18 @@ public class OrdinateurIhm extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButtonAjouter = new javax.swing.JButton();
-        jButtonModifier = new javax.swing.JButton();
-        jButtonSupprimer = new javax.swing.JButton();
-        jButtonQuitter = new javax.swing.JButton();
+        jButtonAdd = new javax.swing.JButton();
+        jButtonUpdate = new javax.swing.JButton();
+        jButtonRemove = new javax.swing.JButton();
+        jButtonQuit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
         layout.columnWidths = new int[] {0};
         layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0};
         getContentPane().setLayout(layout);
 
-        jLabel1.setText("Liste des ordinateurs");
+        jLabel1.setText("Liste des carte mère");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -109,150 +105,129 @@ public class OrdinateurIhm extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
         getContentPane().add(jScrollPane1, gridBagConstraints);
 
-        jButtonAjouter.setText("Ajouter");
-        jButtonAjouter.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAdd.setText("Ajouter");
+        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAjouterActionPerformed(evt);
+                jButtonAddActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jButtonAjouter, gridBagConstraints);
+        getContentPane().add(jButtonAdd, gridBagConstraints);
 
-        jButtonModifier.setText("Modifier");
-        jButtonModifier.addActionListener(new java.awt.event.ActionListener() {
+        jButtonUpdate.setText("Modifier");
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModifierActionPerformed(evt);
+                jButtonUpdateActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        getContentPane().add(jButtonModifier, gridBagConstraints);
+        getContentPane().add(jButtonUpdate, gridBagConstraints);
 
-        jButtonSupprimer.setText("Supprimer");
-        jButtonSupprimer.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRemove.setText("Supprimer");
+        jButtonRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSupprimerActionPerformed(evt);
+                jButtonRemoveActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        getContentPane().add(jButtonSupprimer, gridBagConstraints);
+        getContentPane().add(jButtonRemove, gridBagConstraints);
 
-        jButtonQuitter.setText("Quitter");
-        jButtonQuitter.addActionListener(new java.awt.event.ActionListener() {
+        jButtonQuit.setText("Quitter");
+        jButtonQuit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonQuitterActionPerformed(evt);
+                jButtonQuitActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        getContentPane().add(jButtonQuitter, gridBagConstraints);
+        getContentPane().add(jButtonQuit, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitterActionPerformed
+    private void jButtonQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitActionPerformed
         dispose();
-        try {
-            MainIhm ihm = new MainIhm();
-            ihm.setVisible(true);
-            dispose();
-        } catch (Exception ex) {
-            Logger.getLogger(MemoireIhm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButtonQuitterActionPerformed
+    }//GEN-LAST:event_jButtonQuitActionPerformed
 
-    private void jButtonAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjouterActionPerformed
+    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         try {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-            AddOrdinateurDlg addOrdinateurDlg;
-            addOrdinateurDlg = new AddOrdinateurDlg(frame, true);
-            addOrdinateurDlg.setVisible(true);
+            AddCarteMereDlg addCarteMereDlg = new AddCarteMereDlg(frame, true);
+            addCarteMereDlg.setVisible(true);
 
-            Ordinateur ordinateur = addOrdinateurDlg.getOrdinateur();
+            CarteMere carteMere = addCarteMereDlg.getCarteMere();
 
-            if (ordinateur != null) {
+            if (carteMere != null) {
                 try {
-                    this.ordinateurService.add(ordinateur);
-                    this.model.update(this.ordinateurService.sort());
+                    this.carteMereService.add(carteMere);
+                    this.model.update(this.carteMereService.sort());
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Erreur pendant la mise a jour d'un ordinateur", "Erreur", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Erreur pendant la mise a jour d'un carte mère", "Erreur", JOptionPane.ERROR_MESSAGE);
                 }
             }
-        } catch (Exception ex) {
-            Logger.getLogger(OrdinateurIhm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(this, "Erreur d'ouverture de la fenetre d'ajout d'une carte mère", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButtonAjouterActionPerformed
+    }//GEN-LAST:event_jButtonAddActionPerformed
 
-    private void jButtonModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifierActionPerformed
-        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
         try {
             if (this.jTable1.getSelectedRow() == -1) {
-                throw new Exception("Veuillez selectionner un ordinateur");
+                throw new Exception("Veuillez selectionner une carte mère");
             }
 
-            Ordinateur ordinateur = this.model.getOrdinateurAt(this.jTable1.getSelectedRow());
+            CarteMere carteMere = this.model.getCarteMereAt(this.jTable1.getSelectedRow());
 
-            AddOrdinateurDlg addOrdinateurDlg;
-            addOrdinateurDlg = new AddOrdinateurDlg(frame, true, ordinateur);
-            addOrdinateurDlg.setVisible(true);
-            ordinateur = addOrdinateurDlg.getOrdinateur();
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-//            if (this.jTable1.getSelectedRow() != -1) {
-//
-//            }
-            if (ordinateur != null) {
+            AddCarteMereDlg addCarteMereDlg;
+
+            if (this.jTable1.getSelectedRow() != -1) {
+                addCarteMereDlg = new AddCarteMereDlg(frame, true, carteMere);
+                addCarteMereDlg.setVisible(true);
+                carteMere = addCarteMereDlg.getCarteMere();
+            }
+
+            if (carteMere != null) {
                 try {
-                    this.ordinateurService.update(ordinateur);
-                    this.model.update(this.ordinateurService.sort());
+                    this.carteMereService.update(carteMere);
+                    this.model.update(this.carteMereService.sort());
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, e.getMessage(), "erreur", JOptionPane.ERROR_MESSAGE);
                 }
             }
+
         } catch (Exception e) {
+            Logger.getLogger(CarteGraphiqueIhm.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButtonModifierActionPerformed
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
 
-    private void jButtonSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSupprimerActionPerformed
+    private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveActionPerformed
         try {
             if (this.jTable1.getSelectedRow() == -1) {
-                throw new Exception("Veuillez selectionner un ordinateur");
+                throw new Exception("Veuillez selectionner une carte mère");
             }
+            CarteMere carteMere = this.model.getCarteMereAt(this.jTable1.getSelectedRow());
 
-            Ordinateur ordinateur = this.model.getOrdinateurAt(this.jTable1.getSelectedRow());
-
-            this.ordinateurService.remove(ordinateur);
-            this.model.update(this.ordinateurService.sort());
+            this.carteMereService.remove(carteMere);
+            this.model.update(this.carteMereService.sort());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erreur pendant la suppression d'un ordinateur", "Erreur", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erreur pendant la suppression d'une carte mère", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButtonSupprimerActionPerformed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        MainIhm ihm;
-        try {
-            ihm = new MainIhm();
-            ihm.setVisible(true);
-
-        } catch (Exception ex) {
-            Logger.getLogger(OrdinateurIhm.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_formWindowClosing
+    }//GEN-LAST:event_jButtonRemoveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,12 +244,10 @@ public class OrdinateurIhm extends javax.swing.JDialog {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OrdinateurIhm.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CarteMereIhm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -285,7 +258,7 @@ public class OrdinateurIhm extends javax.swing.JDialog {
             @Override
             public void run() {
                 try {
-                    OrdinateurIhm dialog = new OrdinateurIhm(new javax.swing.JFrame(), true);
+                    CarteMereIhm dialog = new CarteMereIhm(new javax.swing.JFrame(), true);
                     dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                         @Override
                         public void windowClosing(java.awt.event.WindowEvent e) {
@@ -293,20 +266,18 @@ public class OrdinateurIhm extends javax.swing.JDialog {
                         }
                     });
                     dialog.setVisible(true);
-
                 } catch (Exception ex) {
-                    Logger.getLogger(OrdinateurIhm.class
-                            .getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CarteMereIhm.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAjouter;
-    private javax.swing.JButton jButtonModifier;
-    private javax.swing.JButton jButtonQuitter;
-    private javax.swing.JButton jButtonSupprimer;
+    private javax.swing.JButton jButtonAdd;
+    private javax.swing.JButton jButtonQuit;
+    private javax.swing.JButton jButtonRemove;
+    private javax.swing.JButton jButtonUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

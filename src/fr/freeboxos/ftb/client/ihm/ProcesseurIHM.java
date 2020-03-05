@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.freeboxos.ftb.client;
+package fr.freeboxos.ftb.client.ihm;
 
-import fr.freeboxos.ftb.client.dlg.AddAutreDlg;
-import fr.freeboxos.ftb.client.model.AutreTableModel;
-import fr.freeboxos.ftb.metier.AutreService;
+import fr.freeboxos.ftb.client.dlg.AddProcesseurDlg;
+import fr.freeboxos.ftb.client.model.ProcesseurTableModel;
 import fr.freeboxos.ftb.metier.MetierFactory;
-import fr.freeboxos.ftb.metier.entitys.Autre;
+import fr.freeboxos.ftb.metier.ProcesseurService;
+import fr.freeboxos.ftb.metier.entitys.Processeur;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.logging.Level;
@@ -19,30 +19,32 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
  * @author alan
  */
-public class AutreIhm extends javax.swing.JDialog {
+public class ProcesseurIHM extends javax.swing.JDialog {
 
-    private final AutreService autreService;
-    private final AutreTableModel model;
+    private final ProcesseurService processeurService;
+    private final ProcesseurTableModel model;
 
     /**
-     * Creates new form AutreIhm
+     * Creates new form ProcesseurIHM
      *
      * @param parent
      * @param modal
      * @throws java.lang.Exception
      */
-    public AutreIhm(java.awt.Frame parent, boolean modal) throws Exception {
+    public ProcesseurIHM(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.autreService = MetierFactory.getAutreService();
-        this.model = new AutreTableModel(this.autreService.sort());
+        this.processeurService = MetierFactory.getProcesseurService();
+        this.model = new ProcesseurTableModel(this.processeurService.sort());
         this.jTable1.setModel(model);
+        setSizeColumn();
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
         this.repaint();
@@ -59,13 +61,16 @@ public class AutreIhm extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+
+        jButton4.setText("jButton4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -78,7 +83,7 @@ public class AutreIhm extends javax.swing.JDialog {
         layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0};
         getContentPane().setLayout(layout);
 
-        jLabel1.setText("Liste des autre objet");
+        jLabel1.setText("Liste des processeur");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -100,9 +105,9 @@ public class AutreIhm extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 60;
-        gridBagConstraints.ipady = 64;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 300;
+        gridBagConstraints.ipady = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -143,114 +148,140 @@ public class AutreIhm extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         getContentPane().add(jButton3, gridBagConstraints);
 
-        jButton4.setText("Quitter");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButton5.setText("Quitter");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButton5ActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        getContentPane().add(jButton4, gridBagConstraints);
+        getContentPane().add(jButton5, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * Bouton quitter
-     *
-     * @param evt
-     */
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        try {
-            MainIhm ihm = new MainIhm();
-            ihm.setVisible(true);
-        } catch (Exception ex) {
-            Logger.getLogger(AutreIhm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void setSizeColumn() {
+        TableColumnModel columnModel = this.jTable1.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(100);
+        columnModel.getColumn(1).setPreferredWidth(100);
+        columnModel.getColumn(2).setPreferredWidth(100);
+        columnModel.getColumn(3).setPreferredWidth(130);
+        columnModel.getColumn(4).setPreferredWidth(120);
+        columnModel.getColumn(5).setPreferredWidth(120);
+        columnModel.getColumn(6).setPreferredWidth(130);
+        columnModel.getColumn(7).setPreferredWidth(150);
+        columnModel.getColumn(8).setPreferredWidth(130);
+        columnModel.getColumn(9).setPreferredWidth(100);
+        columnModel.getColumn(10).setPreferredWidth(100);
+        columnModel.getColumn(11).setPreferredWidth(100);
+        columnModel.getColumn(12).setPreferredWidth(100);
+        columnModel.getColumn(13).setPreferredWidth(100);
+        this.jTable1.setAutoResizeMode(0);
+    }
 
     /**
-     * Bouton supprimer
+     * Bouton pour quitter l'IHM
      *
      * @param evt
      */
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    /**
+     * Mise a jour d'un processeur
+     *
+     * @param evt
+     */
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             if (this.jTable1.getSelectedRow() == -1) {
-                throw new Exception("Veuillez selectionner un utilisateur");
+                throw new Exception("Veuillez selectionner un processeur");
             }
 
-            Autre autre = this.model.getAutreAt(this.jTable1.getSelectedRow());
+            Processeur processeur = this.model.getProcesseurAt(this.jTable1.getSelectedRow());
 
-            try {
-                this.autreService.remove(autre);
-                this.model.update(this.autreService.sort());
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+
+            AddProcesseurDlg addProcesseurDlg;
+
+            if (this.jTable1.getSelectedRow() != -1) {
+                addProcesseurDlg = new AddProcesseurDlg(frame, true, processeur);
+                addProcesseurDlg.setVisible(true);
+                processeur = addProcesseurDlg.getProcesseur();
             }
-        } catch (Exception e) {
+
+            if (processeur != null) {
+                try {
+                    this.processeurService.update(processeur);
+                    this.model.update(this.processeurService.sort());
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "erreur", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(ProcesseurIHM.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
-     * Bouton ajouter
+     * Ajout d'un processeur
      *
      * @param evt
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-        AddAutreDlg addAutreDlg;
-        addAutreDlg = new AddAutreDlg(frame, true);
-        addAutreDlg.setVisible(true);
-        Autre autre = addAutreDlg.getAutre();
+        AddProcesseurDlg addProcesseurDlg;
+        addProcesseurDlg = new AddProcesseurDlg(frame, true);
+        addProcesseurDlg.setVisible(true);
 
-        if (autre != null) {
+        Processeur processeur = addProcesseurDlg.getProcesseur();
+        if (processeur != null) {
             try {
-                this.autreService.add(autre);
-                this.model.update(this.autreService.sort());
+                this.processeurService.add(processeur);
+                this.model.update(this.processeurService.sort());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Erreur pendant l'ajout de l'objet", "Erreur", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Erreur pendant l'ajout du processeur", "Erreur", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    /**
+     * Suppression d'un processeur
+     *
+     * @param evt
+     */
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             if (this.jTable1.getSelectedRow() == -1) {
-                throw new Exception("Veuillez selectionner un objet");
+                throw new Exception("Veuillez selectionner un processeur");
             }
 
-            Autre autre = this.model.getAutreAt(this.jTable1.getSelectedRow());
+            Processeur processeur = this.model.getProcesseurAt(this.jTable1.getSelectedRow());
 
-            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-
-            AddAutreDlg addAutreDlg;
-            addAutreDlg = new AddAutreDlg(frame, true, autre);
-
-            addAutreDlg.setVisible(true);
-
-            autre = addAutreDlg.getAutre();
-
-            if (autre != null) {
-                this.autreService.update(autre);
-                this.model.update(this.autreService.sort());
+            try {
+                this.processeurService.remove(processeur);
+                this.model.update(this.processeurService.sort());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "erreur", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
-
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MainIhm ihm;
         try {
-            MainIhm ihm = new MainIhm();
+            ihm = new MainIhm();
             ihm.setVisible(true);
         } catch (Exception ex) {
-            Logger.getLogger(AutreIhm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProcesseurIHM.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowClosing
 
@@ -259,11 +290,10 @@ public class AutreIhm extends javax.swing.JDialog {
      */
     @SuppressWarnings("Convert2Lambda")
     public static void main(String args[]) {
-
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(AutreIhm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProcesseurIHM.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         /* Create and display the dialog */
@@ -271,8 +301,9 @@ public class AutreIhm extends javax.swing.JDialog {
             @Override
             public void run() {
                 try {
-                    AutreIhm dialog;
-                    dialog = new AutreIhm(new javax.swing.JFrame(), true);
+                    ProcesseurIHM dialog;
+
+                    dialog = new ProcesseurIHM(new javax.swing.JFrame(), true);
 
                     dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                         @Override
@@ -282,7 +313,7 @@ public class AutreIhm extends javax.swing.JDialog {
                     });
                     dialog.setVisible(true);
                 } catch (Exception ex) {
-                    Logger.getLogger(AutreIhm.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ProcesseurIHM.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -293,6 +324,7 @@ public class AutreIhm extends javax.swing.JDialog {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

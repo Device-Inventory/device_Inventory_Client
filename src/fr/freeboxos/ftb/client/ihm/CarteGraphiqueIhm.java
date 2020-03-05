@@ -14,13 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.freeboxos.ftb.client;
+package fr.freeboxos.ftb.client.ihm;
 
-import fr.freeboxos.ftb.client.dlg.AddCarteMereDlg;
-import fr.freeboxos.ftb.client.model.CarteMereTableModel;
-import fr.freeboxos.ftb.metier.CarteMereService;
+import fr.freeboxos.ftb.client.dlg.AddCarteGraphiqueDlg;
+import fr.freeboxos.ftb.client.model.CarteGraphiqueTableModel;
+import fr.freeboxos.ftb.metier.CarteGraphiqueService;
 import fr.freeboxos.ftb.metier.MetierFactory;
-import fr.freeboxos.ftb.metier.entitys.CarteMere;
+import fr.freeboxos.ftb.metier.entitys.CarteGraphique;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -29,32 +29,34 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
  * @author alan
  */
-public class CarteMereIhm extends javax.swing.JDialog {
+public class CarteGraphiqueIhm extends javax.swing.JDialog {
 
-    private final CarteMereService carteMereService;
-    private final CarteMereTableModel model;
+    private final CarteGraphiqueService carteGraphiqueService;
+    private final CarteGraphiqueTableModel model;
 
     /**
-     * Creates new form CarteMereIhm
+     * Creates new form CarteGraphiqueIhm
      *
      * @param parent
      * @param modal
      * @throws java.lang.Exception
      */
-    public CarteMereIhm(java.awt.Frame parent, boolean modal) throws Exception {
+    public CarteGraphiqueIhm(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.carteMereService = MetierFactory.getCarteMereService();
-        this.model = new CarteMereTableModel(this.carteMereService.sort());
+        this.carteGraphiqueService = MetierFactory.getCarteGraphiqueService();
+        this.model = new CarteGraphiqueTableModel(this.carteGraphiqueService.sort());
         this.jTable1.setModel(model);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
+        setSizeColumn();
         this.repaint();
         this.pack();
     }
@@ -72,18 +74,23 @@ public class CarteMereIhm extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButtonAdd = new javax.swing.JButton();
-        jButtonUpdate = new javax.swing.JButton();
-        jButtonRemove = new javax.swing.JButton();
-        jButtonQuit = new javax.swing.JButton();
+        jButtonAjouter = new javax.swing.JButton();
+        jButtonModifier = new javax.swing.JButton();
+        jButtonSupprimer = new javax.swing.JButton();
+        jButtonQuitter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
         layout.columnWidths = new int[] {0};
         layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0};
         getContentPane().setLayout(layout);
 
-        jLabel1.setText("Liste des carte mère");
+        jLabel1.setText("Liste des cartes graphiques");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -105,107 +112,127 @@ public class CarteMereIhm extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 300;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         getContentPane().add(jScrollPane1, gridBagConstraints);
 
-        jButtonAdd.setText("Ajouter");
-        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAjouter.setText("Ajouter");
+        jButtonAjouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddActionPerformed(evt);
+                jButtonAjouterActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(jButtonAdd, gridBagConstraints);
+        getContentPane().add(jButtonAjouter, gridBagConstraints);
 
-        jButtonUpdate.setText("Modifier");
-        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+        jButtonModifier.setText("Modifier");
+        jButtonModifier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUpdateActionPerformed(evt);
+                jButtonModifierActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        getContentPane().add(jButtonUpdate, gridBagConstraints);
+        getContentPane().add(jButtonModifier, gridBagConstraints);
 
-        jButtonRemove.setText("Supprimer");
-        jButtonRemove.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSupprimer.setText("Supprimer");
+        jButtonSupprimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRemoveActionPerformed(evt);
+                jButtonSupprimerActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        getContentPane().add(jButtonRemove, gridBagConstraints);
+        getContentPane().add(jButtonSupprimer, gridBagConstraints);
 
-        jButtonQuit.setText("Quitter");
-        jButtonQuit.addActionListener(new java.awt.event.ActionListener() {
+        jButtonQuitter.setText("Quitter");
+        jButtonQuitter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonQuitActionPerformed(evt);
+                jButtonQuitterActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        getContentPane().add(jButtonQuit, gridBagConstraints);
+        getContentPane().add(jButtonQuitter, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitActionPerformed
-        dispose();
-        MainIhm mainIhm = new MainIhm();
-        mainIhm.setVisible(true);
-    }//GEN-LAST:event_jButtonQuitActionPerformed
+    private void setSizeColumn() {
+        TableColumnModel columnModel = this.jTable1.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(100);
+        columnModel.getColumn(1).setPreferredWidth(100);
+        columnModel.getColumn(2).setPreferredWidth(130);
+        columnModel.getColumn(3).setPreferredWidth(130);
+        columnModel.getColumn(4).setPreferredWidth(80);
+        columnModel.getColumn(5).setPreferredWidth(90);
+        columnModel.getColumn(6).setPreferredWidth(110);
+        columnModel.getColumn(7).setPreferredWidth(140);
+        columnModel.getColumn(8).setPreferredWidth(130);
+        columnModel.getColumn(9).setPreferredWidth(150);
+        columnModel.getColumn(10).setPreferredWidth(140);
+        columnModel.getColumn(11).setPreferredWidth(180);
+        columnModel.getColumn(12).setPreferredWidth(120);
+        columnModel.getColumn(13).setPreferredWidth(90);
+        this.jTable1.setAutoResizeMode(0);
+    }
 
-    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
+    private void jButtonAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjouterActionPerformed
         try {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-            AddCarteMereDlg addCarteMereDlg = new AddCarteMereDlg(frame, true);
-            addCarteMereDlg.setVisible(true);
+            AddCarteGraphiqueDlg addCarteGraphiqueDlg;
+            addCarteGraphiqueDlg = new AddCarteGraphiqueDlg(frame, true);
+            addCarteGraphiqueDlg.setVisible(true);
 
-            CarteMere carteMere = addCarteMereDlg.getCarteMere();
+            CarteGraphique carteGraphique = addCarteGraphiqueDlg.getCarteGraphique();
 
-            if (carteMere != null) {
+            if (carteGraphique != null) {
                 try {
-                    this.carteMereService.add(carteMere);
-                    this.model.update(this.carteMereService.sort());
+                    this.carteGraphiqueService.add(carteGraphique);
+                    this.model.update(this.carteGraphiqueService.sort());
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Erreur pendant la mise a jour d'un carte mère", "Erreur", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Erreur pendant la mise a jour d'une carte graphique", "Erreur", JOptionPane.ERROR_MESSAGE);
                 }
             }
-        } catch (HeadlessException e) {
-            JOptionPane.showMessageDialog(this, "Erreur d'ouverture de la fenetre d'ajout d'une carte mère", "Erreur", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_jButtonAddActionPerformed
 
-    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        } catch (HeadlessException e) {
+            Logger.getLogger(CarteGraphiqueIhm.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jButtonAjouterActionPerformed
+
+    private void jButtonModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifierActionPerformed
         try {
             if (this.jTable1.getSelectedRow() == -1) {
-                throw new Exception("Veuillez selectionner une carte mère");
+                throw new Exception("Veuillez selectionner une carte graphique");
             }
 
-            CarteMere carteMere = this.model.getCarteMereAt(this.jTable1.getSelectedRow());
+            CarteGraphique carteGraphique = this.model.getCarteGraphiqueAt(this.jTable1.getSelectedRow());
 
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-            AddCarteMereDlg addCarteMereDlg;
+            AddCarteGraphiqueDlg addCarteGraphiqueDlg;
 
             if (this.jTable1.getSelectedRow() != -1) {
-                addCarteMereDlg = new AddCarteMereDlg(frame, true, carteMere);
-                addCarteMereDlg.setVisible(true);
-                carteMere = addCarteMereDlg.getCarteMere();
+                addCarteGraphiqueDlg = new AddCarteGraphiqueDlg(frame, true, carteGraphique);
+                addCarteGraphiqueDlg.setVisible(true);
+                carteGraphique = addCarteGraphiqueDlg.getCarteGraphique();
             }
 
-            if (carteMere != null) {
+            if (carteGraphique != null) {
                 try {
-                    this.carteMereService.update(carteMere);
-                    this.model.update(this.carteMereService.sort());
+                    this.carteGraphiqueService.update(carteGraphique);
+                    this.model.update(this.carteGraphiqueService.sort());
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, e.getMessage(), "erreur", JOptionPane.ERROR_MESSAGE);
                 }
@@ -215,21 +242,35 @@ public class CarteMereIhm extends javax.swing.JDialog {
             Logger.getLogger(CarteGraphiqueIhm.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButtonUpdateActionPerformed
+    }//GEN-LAST:event_jButtonModifierActionPerformed
 
-    private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveActionPerformed
+    private void jButtonSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSupprimerActionPerformed
         try {
             if (this.jTable1.getSelectedRow() == -1) {
-                throw new Exception("Veuillez selectionner une carte mère");
+                throw new Exception("Veuillez selectionner une carte graphique");
             }
-            CarteMere carteMere = this.model.getCarteMereAt(this.jTable1.getSelectedRow());
 
-            this.carteMereService.remove(carteMere);
-            this.model.update(this.carteMereService.sort());
+            CarteGraphique carteGraphique = this.model.getCarteGraphiqueAt(this.jTable1.getSelectedRow());
+
+            this.carteGraphiqueService.remove(carteGraphique);
+            this.model.update(this.carteGraphiqueService.sort());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erreur pendant la suppression d'une carte mère", "Erreur", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erreur pendant la suppression d'une carte graphique", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButtonRemoveActionPerformed
+    }//GEN-LAST:event_jButtonSupprimerActionPerformed
+
+    private void jButtonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitterActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButtonQuitterActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        try {
+            MainIhm ihm = new MainIhm();
+            ihm.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(HDDIhm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -249,7 +290,7 @@ public class CarteMereIhm extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CarteMereIhm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CarteGraphiqueIhm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -260,7 +301,7 @@ public class CarteMereIhm extends javax.swing.JDialog {
             @Override
             public void run() {
                 try {
-                    CarteMereIhm dialog = new CarteMereIhm(new javax.swing.JFrame(), true);
+                    CarteGraphiqueIhm dialog = new CarteGraphiqueIhm(new javax.swing.JFrame(), true);
                     dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                         @Override
                         public void windowClosing(java.awt.event.WindowEvent e) {
@@ -269,17 +310,17 @@ public class CarteMereIhm extends javax.swing.JDialog {
                     });
                     dialog.setVisible(true);
                 } catch (Exception ex) {
-                    Logger.getLogger(CarteMereIhm.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CarteGraphiqueIhm.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAdd;
-    private javax.swing.JButton jButtonQuit;
-    private javax.swing.JButton jButtonRemove;
-    private javax.swing.JButton jButtonUpdate;
+    private javax.swing.JButton jButtonAjouter;
+    private javax.swing.JButton jButtonModifier;
+    private javax.swing.JButton jButtonQuitter;
+    private javax.swing.JButton jButtonSupprimer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

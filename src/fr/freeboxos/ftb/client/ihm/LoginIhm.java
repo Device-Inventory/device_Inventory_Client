@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.freeboxos.ftb.client;
+package fr.freeboxos.ftb.client.ihm;
 
+import fr.freeboxos.ftb.client.observable.Chargement;
+import fr.freeboxos.ftb.client.observable.Data;
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.entitys.Administrateur;
 import java.awt.Image;
