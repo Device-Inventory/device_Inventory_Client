@@ -23,6 +23,7 @@ import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -49,6 +50,7 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
         this.jLabelTitre.setText("Ajout d'une carte mère");
+        this.setAllModelJSpinner();
         //todo : seter les jcombobox
         this.repaint();
         this.pack();
@@ -62,7 +64,7 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         this.getRootPane().setDefaultButton(jButtonOk);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
-        this.setAllElements();
+        this.setAllElements(carteMere);
         this.repaint();
         this.pack();
         this.setSize(this.getWidth() + 10, this.getHeight());
@@ -73,12 +75,70 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
     }
 
     /**
+     * Cette methode va appeller tous les jspinner du jdialog et il vas setter
+     * la valeur min et max.
+     */
+    private void setAllModelJSpinner() {
+        Integer value = 0;
+        Integer min = 0;
+        Integer max = 99;
+        Integer step = 1;
+        SpinnerNumberModel model = new SpinnerNumberModel(value, min, max, step);
+        this.jSpinnerNombreDeCpu.setModel(model);
+        this.jSpinnerCapaciteMaximaleRamSlot.setModel(model);
+        this.jSpinnerCapaciteMaximaleRamTotale.setModel(model);
+        this.jSpinnerModeRaid.setModel(model);
+        this.jSpinnerNombreCanauxAudio.setModel(model);
+        this.jSpinnerPci.setModel(model);
+        this.jSpinnerPciE16x20.setModel(model);
+        this.jSpinnerPciE16x30.setModel(model);
+        this.jSpinnerPciE1x20.setModel(model);
+        this.jSpinnerPciE1x30.setModel(model);
+        this.jSpinnerTailleMemoireVideo.setModel(model);
+    }
+
+    /**
      * Appelle tous les elements pour une modification de celui-ci.
      */
-    private void setAllElements() {
+    private void setAllElements(CarteMere carteMere) {
         //todo : seter les jcombobox
         this.id = carteMere.getId();
-        this.jLabelMarque.setText(carteMere.getMarque());
+        //todo : jcombobox marque
+        this.jTextFieldModele.setText(carteMere.getModele());
+        this.jTextFieldDesignation.setText(carteMere.getDesignation());
+        this.jTextFieldSupportDuProcesseur.setText(carteMere.getSupportDuProcesseur());
+        this.jSpinnerNombreDeCpu.setValue(carteMere.getNombreDeCpu());
+        //todo : jcombobox format de la carte mère
+        //todo : jcombobox chipset
+        //todo : jcombobox type de memoire
+        this.jTextFieldFrequenceMemoire.setText(carteMere.getFrequenceMemoire());
+        //todo : jcombobox technologie memoire
+        this.jSpinnerCapaciteMaximaleRamSlot.setValue(carteMere.getCapaciteMaximaleRamSlot());
+        this.jSpinnerCapaciteMaximaleRamTotale.setValue(carteMere.getCapaciteMaximaleRam());
+        this.jCheckBoxControleurGpuIntegre.setSelected(carteMere.getControleurGraphiqueIntegre());
+        this.jCheckBoxGpuDansCpu.setSelected(carteMere.getGpuInCpu());
+        //todo : jcombobox chipset graphique
+        this.jSpinnerTailleMemoireVideo.setValue(carteMere.getTailleMemoireVideo());
+        //todo : jcombobox type de multi-gpu
+        //todo : jcombobox connecteur graphique
+        this.jCheckBoxPci.setSelected(carteMere.getPci());
+        this.jSpinnerPci.setValue(carteMere.getPciNum());
+        this.jCheckBoxPciE1x20.setSelected(carteMere.getPciExpress1x20());
+        this.jSpinnerPciE1x20.setValue(carteMere.getPciExpress1x20Num());
+        this.jCheckBoxPciE16x20.setSelected(carteMere.getPciExpress16x20());
+        this.jSpinnerPciE16x20.setValue(carteMere.getPciExpress16x20Num());
+        this.jCheckBoxPciE1x30.setSelected(carteMere.getPciExpress1x30());
+        this.jSpinnerPciE1x30.setValue(carteMere.getPciExpress1x30Num());
+        this.jCheckBoxPciE16x30.setSelected(carteMere.getPciExpress16x30());
+        this.jSpinnerPciE16x30.setValue(carteMere.getPciExpress16x30Num());
+        //todo : jcombobox chipset audio
+        this.jSpinnerNombreCanauxAudio.setValue(carteMere.getNombreCanauxAudio());
+        this.jTextFieldControleurEthernet.setText(carteMere.getControleurEthernet());
+        //todo : jcombobox norme réseaux
+        this.jCheckBoxRaid.setSelected(carteMere.getRaid());
+        //todo : jcombobox mode raid
+        this.jCheckBoxLed.setSelected(carteMere.getLed());
+        this.jTextFieldPrix.setText(String.valueOf(carteMere.getPrix()));
     }
 
     /**
@@ -95,7 +155,6 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabelTitre = new javax.swing.JLabel();
         jLabelMarque = new javax.swing.JLabel();
-        jTextFieldMarque = new javax.swing.JTextField();
         jButtonOk = new javax.swing.JButton();
         jButtonAnnuler = new javax.swing.JButton();
         jLabelModele = new javax.swing.JLabel();
@@ -113,13 +172,11 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         jLabelFrequenceMemoire = new javax.swing.JLabel();
         jTextFieldFrequenceMemoire = new javax.swing.JTextField();
         jLabelTechnologieMemoire = new javax.swing.JLabel();
-        jTextFieldTechnologieMemoire = new javax.swing.JTextField();
         jLabelCapaciteMaximaleRamSlot = new javax.swing.JLabel();
         jSpinnerCapaciteMaximaleRamSlot = new javax.swing.JSpinner();
         jLabelCapaciteMaximaleRamTotale = new javax.swing.JLabel();
         jSpinnerCapaciteMaximaleRamTotale = new javax.swing.JSpinner();
         jLabelTypeDeMemoire = new javax.swing.JLabel();
-        jTextFieldTypeDeMemoire = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jCheckBoxControleurGpuIntegre = new javax.swing.JCheckBox();
         jLabel13 = new javax.swing.JLabel();
@@ -165,11 +222,14 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         jCheckBoxLed = new javax.swing.JCheckBox();
         jLabel31 = new javax.swing.JLabel();
         jTextFieldPrix = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
-        jPanel1Layout.columnWidths = new int[] {0, 5, 0, 5, 0};
+        jPanel1Layout.columnWidths = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0};
         jPanel1Layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
         jPanel1.setLayout(jPanel1Layout);
 
@@ -186,13 +246,6 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jLabelMarque, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 150;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel1.add(jTextFieldMarque, gridBagConstraints);
 
         jButtonOk.setText("Ok");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -258,6 +311,7 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 12;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jSpinnerNombreDeCpu, gridBagConstraints);
 
@@ -290,12 +344,12 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         jLabelFrequenceMemoire.setText("Fréquence mémoire");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 18;
+        gridBagConstraints.gridy = 20;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jLabelFrequenceMemoire, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 18;
+        gridBagConstraints.gridy = 20;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jTextFieldFrequenceMemoire, gridBagConstraints);
@@ -303,52 +357,42 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         jLabelTechnologieMemoire.setText("Téchnologie mémoire");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 20;
+        gridBagConstraints.gridy = 22;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jLabelTechnologieMemoire, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 20;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel1.add(jTextFieldTechnologieMemoire, gridBagConstraints);
 
         jLabelCapaciteMaximaleRamSlot.setText("Capacité maximale ram slot");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 22;
+        gridBagConstraints.gridy = 24;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jLabelCapaciteMaximaleRamSlot, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 22;
+        gridBagConstraints.gridy = 24;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jSpinnerCapaciteMaximaleRamSlot, gridBagConstraints);
 
         jLabelCapaciteMaximaleRamTotale.setText("Capacité maximale ram totale");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 24;
+        gridBagConstraints.gridy = 26;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jLabelCapaciteMaximaleRamTotale, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 24;
+        gridBagConstraints.gridy = 26;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jSpinnerCapaciteMaximaleRamTotale, gridBagConstraints);
 
         jLabelTypeDeMemoire.setText("Type de mémoire");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 26;
+        gridBagConstraints.gridy = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jLabelTypeDeMemoire, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 26;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel1.add(jTextFieldTypeDeMemoire, gridBagConstraints);
 
         jLabel12.setText("Controleur graphique intégrer");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -390,6 +434,7 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 34;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jSpinnerTailleMemoireVideo, gridBagConstraints);
 
@@ -442,6 +487,7 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 40;
+        gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         jPanel1.add(jSpinnerPci, gridBagConstraints);
 
@@ -459,6 +505,7 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 42;
+        gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         jPanel1.add(jSpinnerPciE1x20, gridBagConstraints);
 
@@ -476,6 +523,7 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 44;
+        gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         jPanel1.add(jSpinnerPciE16x20, gridBagConstraints);
 
@@ -493,6 +541,7 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 46;
+        gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         jPanel1.add(jSpinnerPciE1x30, gridBagConstraints);
 
@@ -510,6 +559,7 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 48;
+        gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         jPanel1.add(jSpinnerPciE16x30, gridBagConstraints);
 
@@ -536,6 +586,7 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 52;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jSpinnerNombreCanauxAudio, gridBagConstraints);
 
@@ -600,6 +651,7 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 62;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jSpinnerModeRaid, gridBagConstraints);
 
@@ -627,6 +679,25 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jTextFieldPrix, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 50;
+        jPanel1.add(jComboBox1, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 22;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel1.add(jComboBox2, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 18;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel1.add(jComboBox3, gridBagConstraints);
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -681,6 +752,9 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
     private javax.swing.JCheckBox jCheckBoxPciE1x20;
     private javax.swing.JCheckBox jCheckBoxPciE1x30;
     private javax.swing.JCheckBox jCheckBoxRaid;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBoxChipset;
     private javax.swing.JComboBox<String> jComboBoxChipsetAudio;
     private javax.swing.JComboBox<String> jComboBoxChipsetGraphique;
@@ -738,11 +812,8 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldControleurEthernet;
     private javax.swing.JTextField jTextFieldDesignation;
     private javax.swing.JTextField jTextFieldFrequenceMemoire;
-    private javax.swing.JTextField jTextFieldMarque;
     private javax.swing.JTextField jTextFieldModele;
     private javax.swing.JTextField jTextFieldPrix;
     private javax.swing.JTextField jTextFieldSupportDuProcesseur;
-    private javax.swing.JTextField jTextFieldTechnologieMemoire;
-    private javax.swing.JTextField jTextFieldTypeDeMemoire;
     // End of variables declaration//GEN-END:variables
 }
