@@ -40,7 +40,6 @@ public class HDDIhm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-//        this.setSize(1920, 1080);
         this.hDDService = MetierFactory.getHDDService();
         this.model = new HDDTableModel(this.hDDService.sort());
         this.jTable1.setModel(model);
@@ -69,11 +68,6 @@ public class HDDIhm extends javax.swing.JDialog {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
         layout.columnWidths = new int[] {0};
         layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0};
@@ -249,15 +243,6 @@ public class HDDIhm extends javax.swing.JDialog {
 
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        try {
-            MainIhm ihm = new MainIhm();
-            ihm.setVisible(true);
-        } catch (Exception ex) {
-            Logger.getLogger(HDDIhm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

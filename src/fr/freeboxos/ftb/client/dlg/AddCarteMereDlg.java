@@ -20,6 +20,7 @@ import fr.freeboxos.ftb.client.ihm.MainIhm;
 import fr.freeboxos.ftb.metier.entitys.CarteMere;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -222,14 +223,15 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         jCheckBoxLed = new javax.swing.JCheckBox();
         jLabel31 = new javax.swing.JLabel();
         jTextFieldPrix = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jListMarque = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
-        jPanel1Layout.columnWidths = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0};
+        jPanel1Layout.columnWidths = new int[] {0, 5, 0, 5, 0};
         jPanel1Layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
         jPanel1.setLayout(jPanel1Layout);
 
@@ -237,7 +239,7 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridwidth = 3;
         jPanel1.add(jLabelTitre, gridBagConstraints);
 
         jLabelMarque.setText("Marque");
@@ -248,9 +250,15 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         jPanel1.add(jLabelMarque, gridBagConstraints);
 
         jButtonOk.setText("Ok");
+        jButtonOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOkActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 68;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jButtonOk, gridBagConstraints);
 
         jButtonAnnuler.setText("Annuler");
@@ -262,7 +270,6 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 68;
-        gridBagConstraints.gridwidth = 3;
         jPanel1.add(jButtonAnnuler, gridBagConstraints);
 
         jLabelModele.setText("Modèle");
@@ -682,13 +689,6 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 50;
-        jPanel1.add(jComboBox1, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 22;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         jPanel1.add(jComboBox2, gridBagConstraints);
@@ -698,6 +698,21 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 18;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         jPanel1.add(jComboBox3, gridBagConstraints);
+
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(60, 50));
+
+        jListMarque.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "test1", "test2" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jListMarque);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel1.add(jScrollPane2, gridBagConstraints);
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -710,6 +725,13 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         carteMere = null;
         dispose();
     }//GEN-LAST:event_jButtonAnnulerActionPerformed
+
+    private void jButtonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOkActionPerformed
+
+        List<String> marque = this.jListMarque.getSelectedValuesList();
+        carteMere = new CarteMere(marque, "fgnb", "fgn", "fgnb", 5, "trhbr", "gfhb", "hgb", "dtgbfh", 5, 5, "rtghbt", true, true, "gfbkjh", 51, "gerb", "ldibuhd", true, true, true, true, true, 561, 51, 51, 51, 51, "ubh", 51, "gbnkf", "kjnfgd", true, "iuhtg", 51, true, 50);
+        dispose();
+    }//GEN-LAST:event_jButtonOkActionPerformed
 
     /**
      * @param args the command line arguments
@@ -752,7 +774,6 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
     private javax.swing.JCheckBox jCheckBoxPciE1x20;
     private javax.swing.JCheckBox jCheckBoxPciE1x30;
     private javax.swing.JCheckBox jCheckBoxRaid;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBoxChipset;
@@ -795,8 +816,10 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelTechnologieMemoire;
     private javax.swing.JLabel jLabelTitre;
     private javax.swing.JLabel jLabelTypeDeMemoire;
+    private javax.swing.JList<String> jListMarque;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinnerCapaciteMaximaleRamSlot;
     private javax.swing.JSpinner jSpinnerCapaciteMaximaleRamTotale;
     private javax.swing.JSpinner jSpinnerModeRaid;

@@ -5,6 +5,7 @@
  */
 package fr.freeboxos.ftb.client.ihm;
 
+import fr.freeboxos.ftb.client.ihm.config.ConfigMarqueCpuIhm;
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.entitys.Autre;
 import fr.freeboxos.ftb.metier.entitys.Cable;
@@ -77,6 +78,7 @@ public class MainIhm extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
@@ -264,7 +266,7 @@ public class MainIhm extends javax.swing.JFrame {
 
         jMenu2.setText("File");
 
-        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.setText("Quitter");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -275,6 +277,15 @@ public class MainIhm extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Edit");
+
+        jMenuItem2.setText("Marque processeur");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem2);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -501,13 +512,7 @@ public class MainIhm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonGpuActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        try {
-            ConfigMarqueCpu configMarqueCpu = new ConfigMarqueCpu();
-            configMarqueCpu.setVisible(true);
-        } catch (Exception e) {
-            //todo : corriger le catch configMarqueCpu
-        }
-        this.getNombreAll();
+        dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -520,6 +525,15 @@ public class MainIhm extends javax.swing.JFrame {
         }
         this.getNombreAll();
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        try {
+            ConfigMarqueCpuIhm configMarqueCpu = new ConfigMarqueCpuIhm();
+            configMarqueCpu.setVisible(true);
+        } catch (Exception e) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -571,5 +585,6 @@ public class MainIhm extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }

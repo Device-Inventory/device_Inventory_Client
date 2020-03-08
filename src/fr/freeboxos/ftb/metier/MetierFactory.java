@@ -5,6 +5,8 @@
  */
 package fr.freeboxos.ftb.metier;
 
+import fr.freeboxos.ftb.metier.config.ConfigMarqueCpuService;
+import fr.freeboxos.ftb.metier.config.ConfigMarqueCpuServiceImpl;
 import fr.freeboxos.ftb.metier.sort.InsertionOptimisedSort;
 import fr.freeboxos.ftb.metier.sort.Sort;
 
@@ -72,5 +74,11 @@ public class MetierFactory {
 
     public static CarteMereService getCarteMereService() {
         return CARTE_MERE_SERVICE;
+    }
+
+    private static final ConfigMarqueCpuService CONFIG_MARQUE_CPU_SERVICE = new ConfigMarqueCpuServiceImpl();
+
+    public static ConfigMarqueCpuService getConfigMarqueCpuService() {
+        return CONFIG_MARQUE_CPU_SERVICE;
     }
 }

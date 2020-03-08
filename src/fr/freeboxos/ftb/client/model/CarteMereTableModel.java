@@ -17,6 +17,7 @@
 package fr.freeboxos.ftb.client.model;
 
 import fr.freeboxos.ftb.metier.entitys.CarteMere;
+import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -52,7 +53,16 @@ public class CarteMereTableModel extends AbstractTableModel {
         CarteMere carteMere = this.carteMeres[rowIndex];
         switch (columnIndex) {
             case 0:
-                return carteMere.getMarque();
+                List<String> marqueList = carteMere.getMarque();
+                String marque = null;
+                for (int i = 0; i < marqueList.size(); i++) {
+                    if (i == 0) {
+                        marque = marqueList.get(i);
+                    } else {
+                        marque = marque + " " + marqueList.get(i);
+                    }
+                }
+                return marque;
             case 1:
                 return carteMere.getModele();
             case 2:
@@ -73,6 +83,8 @@ public class CarteMereTableModel extends AbstractTableModel {
     @Override
     public Class getColumnClass(int columnIndex) { //todo : remplir le switch case
         switch (columnIndex) {
+            case 0:
+                return List.class;
             default:
                 return String.class;
         }
