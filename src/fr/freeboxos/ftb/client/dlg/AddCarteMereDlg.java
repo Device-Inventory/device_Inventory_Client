@@ -103,7 +103,6 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
      */
     private void setAllElements(CarteMere carteMere) {
         //todo : seter les jcombobox
-        this.id = carteMere.getId();
         //todo : jcombobox marque
         this.jTextFieldModele.setText(carteMere.getModele());
         this.jTextFieldDesignation.setText(carteMere.getDesignation());
@@ -140,6 +139,7 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         //todo : jcombobox mode raid
         this.jCheckBoxLed.setSelected(carteMere.getLed());
         this.jTextFieldPrix.setText(String.valueOf(carteMere.getPrix()));
+        this.id = carteMere.getId();
     }
 
     /**
@@ -730,6 +730,7 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
 
         List<String> marque = this.jListMarque.getSelectedValuesList();
         carteMere = new CarteMere(marque, "fgnb", "fgn", "fgnb", 5, "trhbr", "gfhb", "hgb", "dtgbfh", 5, 5, "rtghbt", true, true, "gfbkjh", 51, "gerb", "ldibuhd", true, true, true, true, true, 561, 51, 51, 51, 51, "ubh", 51, "gbnkf", "kjnfgd", true, "iuhtg", 51, true, 50);
+        this.carteMere.setId(id);
         dispose();
     }//GEN-LAST:event_jButtonOkActionPerformed
 
