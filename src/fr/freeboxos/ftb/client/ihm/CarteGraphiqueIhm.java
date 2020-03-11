@@ -268,7 +268,7 @@ public class CarteGraphiqueIhm extends javax.swing.JDialog {
             MainIhm ihm = new MainIhm();
             ihm.setVisible(true);
         } catch (Exception ex) {
-            Logger.getLogger(HDDIhm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HddIhm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowClosing
 

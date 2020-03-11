@@ -13,12 +13,12 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author alan
  */
-public class HDDTableModel extends AbstractTableModel {
+public class HddTableModel extends AbstractTableModel {
 
     private final String[] header = {"Marque", "Modèle", "Interface ordinateur", "Format", "Capacité", "Vitesse de rotation", "Cache", "Type de mémoire", "NVME", "Controleur", "Vitesse de lecture", "Vitesse d'écriture", "IOPS", "Trim", "Prix"};
     private HDD[] hdds;
 
-    public HDDTableModel(HDD[] hdds) {
+    public HddTableModel(HDD[] hdds) {
         this.hdds = hdds;
     }
 

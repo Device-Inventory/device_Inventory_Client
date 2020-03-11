@@ -18,13 +18,10 @@ package fr.freeboxos.ftb.client.dlg;
 
 import fr.freeboxos.ftb.client.ihm.LoginIhm;
 import fr.freeboxos.ftb.metier.entitys.CarteGraphique;
-import fr.freeboxos.ftb.metier.enums.GpuChipsetMarque;
-import fr.freeboxos.ftb.metier.enums.GpuMarque;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -53,8 +50,9 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
         this.jLabelTitre.setText("Ajout d'une carte graphique");
-        this.jComboBoxMarque.setModel(new DefaultComboBoxModel(GpuMarque.values()));
-        this.jComboBoxMarqueChipset.setModel(new DefaultComboBoxModel(GpuChipsetMarque.values()));
+        //todo : remplir les jcombobox
+//        this.jComboBoxMarque.setModel(new DefaultComboBoxModel(GpuMarque.values()));
+//        this.jComboBoxMarqueChipset.setModel(new DefaultComboBoxModel(GpuChipsetMarque.values()));
         this.repaint();
         this.pack();
     }
@@ -66,8 +64,9 @@ public class AddCarteGraphiqueDlg extends javax.swing.JDialog {
         this.getRootPane().setDefaultButton(jButtonOk);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
-        this.jComboBoxMarque.setModel(new DefaultComboBoxModel(GpuMarque.values()));
-        this.jComboBoxMarqueChipset.setModel(new DefaultComboBoxModel(GpuChipsetMarque.values()));
+        //todo : remplir les jcombobox
+//        this.jComboBoxMarque.setModel(new DefaultComboBoxModel(GpuMarque.values()));
+//        this.jComboBoxMarqueChipset.setModel(new DefaultComboBoxModel(GpuChipsetMarque.values()));
         this.jLabelTitre.setText("Modification d'une carte graphique");
         this.id = carteGraphique.getId();
         this.jComboBoxMarque.setSelectedItem(carteGraphique.getMarque());

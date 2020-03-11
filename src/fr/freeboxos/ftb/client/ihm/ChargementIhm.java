@@ -24,7 +24,7 @@ import java.awt.Toolkit;
  *
  * @author alan
  */
-public class ChargementIHM extends javax.swing.JFrame {
+public class ChargementIhm extends javax.swing.JFrame {
 
     private final Data d;
 
@@ -35,7 +35,7 @@ public class ChargementIHM extends javax.swing.JFrame {
     /**
      * Creates new form Chargement
      */
-    public ChargementIHM() {
+    public ChargementIhm() {
         this.initComponents();
         this.setLocationRelativeTo(null);
         this.jLabel1.setText("Chargement en cours ...");
@@ -100,8 +100,10 @@ public class ChargementIHM extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ChargementIHM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChargementIhm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -110,7 +112,7 @@ public class ChargementIHM extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new ChargementIHM().setVisible(true);
+            new ChargementIhm().setVisible(true);
         });
     }
 

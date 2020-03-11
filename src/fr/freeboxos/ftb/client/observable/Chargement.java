@@ -16,7 +16,7 @@
  */
 package fr.freeboxos.ftb.client.observable;
 
-import fr.freeboxos.ftb.client.ihm.ChargementIHM;
+import fr.freeboxos.ftb.client.ihm.ChargementIhm;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.Observable;
@@ -27,10 +27,10 @@ import java.util.Observable;
  */
 public class Chargement extends Observable implements WindowListener {
 
-    private ChargementIHM chargementIHM;
+    private ChargementIhm chargementIHM;
 
     public void execute() {
-        this.chargementIHM = new ChargementIHM();
+        this.chargementIHM = new ChargementIhm();
         this.chargementIHM.addWindowListener(this);
         this.chargementIHM.setLocationRelativeTo(null);
         this.chargementIHM.setVisible(true);

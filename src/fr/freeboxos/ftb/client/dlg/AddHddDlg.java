@@ -7,13 +7,10 @@ package fr.freeboxos.ftb.client.dlg;
 
 import fr.freeboxos.ftb.metier.entitys.HDD;
 import fr.freeboxos.ftb.metier.entitys.SSD;
-import fr.freeboxos.ftb.metier.enums.HddMarque;
-import fr.freeboxos.ftb.metier.enums.SsdType;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -22,7 +19,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author alan
  */
-public class AddHDDDlg extends javax.swing.JDialog {
+public class AddHddDlg extends javax.swing.JDialog {
 
     private long id = 0;
     private HDD hdd = null;
@@ -33,13 +30,14 @@ public class AddHDDDlg extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    public AddHDDDlg(java.awt.Frame parent, boolean modal) {
+    public AddHddDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
         this.jLabelTitre.setText("Ajout d'un disque dur");
-        this.jComboBoxMarque.setModel(new DefaultComboBoxModel(HddMarque.values()));
-        this.jComboBoxTypeMemoire.setModel(new DefaultComboBoxModel(SsdType.values()));
+        //todo : remplir les jcombobox
+//        this.jComboBoxMarque.setModel(new DefaultComboBoxModel(HddMarque.values()));
+//        this.jComboBoxTypeMemoire.setModel(new DefaultComboBoxModel(SsdType.values()));
         this.getRootPane().setDefaultButton(jButtonOK);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
@@ -47,7 +45,7 @@ public class AddHDDDlg extends javax.swing.JDialog {
         this.pack();
     }
 
-    public AddHDDDlg(java.awt.Frame parent, boolean modal, HDD hdd) {
+    public AddHddDlg(java.awt.Frame parent, boolean modal, HDD hdd) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -66,6 +64,7 @@ public class AddHDDDlg extends javax.swing.JDialog {
         this.jTextFieldCapacite.setText(hdd.getCapacite());
         this.jComboBoxVitesse.setSelectedItem(hdd.getVitesse_de_rotation());
         this.jTextFieldCache.setText(hdd.getCache());
+        //todo : remplir les jcombobox
 
         if (hdd instanceof SSD) {
             SSD ssd = (SSD) hdd;
@@ -532,7 +531,7 @@ public class AddHDDDlg extends javax.swing.JDialog {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(AddHDDDlg.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddHddDlg.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         /* Create and display the dialog */
@@ -541,7 +540,7 @@ public class AddHDDDlg extends javax.swing.JDialog {
             @Override
 
             public void run() {
-                AddHDDDlg dialog = new AddHDDDlg(new javax.swing.JFrame(), true);
+                AddHddDlg dialog = new AddHddDlg(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

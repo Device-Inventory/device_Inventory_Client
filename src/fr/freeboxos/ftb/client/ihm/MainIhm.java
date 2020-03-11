@@ -421,7 +421,7 @@ public class MainIhm extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
-            ProcesseurIHM processeurIHM = new ProcesseurIHM(this, true);
+            ProcesseurIhm processeurIHM = new ProcesseurIhm(this, true);
             processeurIHM.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
@@ -433,7 +433,7 @@ public class MainIhm extends javax.swing.JFrame {
     private void jButtonUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUtilisateurActionPerformed
 
         try {
-            AdministrateurIHM administrateurIHM = new AdministrateurIHM(this, true);
+            AdministrateurIhm administrateurIHM = new AdministrateurIhm(this, true);
             administrateurIHM.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
@@ -468,7 +468,7 @@ public class MainIhm extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         try {
-            HDDIhm hDDIhm = new HDDIhm(this, true);
+            HddIhm hDDIhm = new HddIhm(this, true);
             hDDIhm.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);

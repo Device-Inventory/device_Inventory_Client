@@ -6,13 +6,10 @@
 package fr.freeboxos.ftb.metier;
 
 import fr.freeboxos.ftb.metier.entitys.HDD;
-
 import fr.freeboxos.ftb.metier.entitys.SSD;
-import java.util.ArrayList;
-
-import fr.freeboxos.ftb.metier.sort.ComparatorByIdHDD;
+import fr.freeboxos.ftb.metier.sort.ComparatorByIdHdd;
 import fr.freeboxos.ftb.metier.sort.Sort;
-
+import java.util.ArrayList;
 import java.util.List;
 import lml.rest.client.ClientRest;
 
@@ -20,9 +17,9 @@ import lml.rest.client.ClientRest;
  *
  * @author alan
  */
-public class HDDServiceImpl extends ClientRest<HDD> implements HDDService {
+public class HddServiceImpl extends ClientRest<HDD> implements HddService {
 
-    public HDDServiceImpl() {
+    public HddServiceImpl() {
         super.init("HDDService", new RestServerLocalConfiguration());
         List<Class> classes = new ArrayList<>();
         classes.add(SSD.class);
@@ -74,7 +71,7 @@ public class HDDServiceImpl extends ClientRest<HDD> implements HDDService {
     @Override
     public HDD[] sort() throws Exception {
         HDD[] hdds = this.getAll().toArray(new HDD[0]);
-        ComparatorByIdHDD cmp = new ComparatorByIdHDD();
+        ComparatorByIdHdd cmp = new ComparatorByIdHdd();
         Sort trieuse = MetierFactory.getSortSerivce();
         trieuse.sort(hdds, cmp);
 

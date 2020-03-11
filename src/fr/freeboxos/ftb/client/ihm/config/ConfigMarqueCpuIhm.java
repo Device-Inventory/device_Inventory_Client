@@ -17,7 +17,7 @@
 package fr.freeboxos.ftb.client.ihm.config;
 
 import fr.freeboxos.ftb.client.dlg.config.AddConfigMarqueCpuDlg;
-import fr.freeboxos.ftb.client.ihm.HDDIhm;
+import fr.freeboxos.ftb.client.ihm.HddIhm;
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.config.ConfigMarqueCpuService;
 import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueCpu;
@@ -190,7 +190,7 @@ public class ConfigMarqueCpuIhm extends javax.swing.JFrame {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(HDDIhm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HddIhm.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         /* Create and display the form */

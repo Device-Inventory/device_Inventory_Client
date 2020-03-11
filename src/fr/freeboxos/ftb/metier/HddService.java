@@ -12,7 +12,7 @@ import lml.persistence.CrudService;
  *
  * @author alan
  */
-public interface HDDService extends CrudService<HDD> {
+public interface HddService extends CrudService<HDD> {
 
     public HDD[] sort() throws Exception;
 }
