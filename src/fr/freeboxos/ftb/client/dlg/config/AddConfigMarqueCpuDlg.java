@@ -19,9 +19,12 @@ package fr.freeboxos.ftb.client.dlg.config;
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.config.ConfigMarqueCpuService;
 import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueCpu;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,9 +33,9 @@ import javax.swing.JOptionPane;
  */
 public class AddConfigMarqueCpuDlg extends javax.swing.JDialog {
 
-    private long id = 0;
     private ConfigMarqueCpu configMarqueCpu = null;
     private final ConfigMarqueCpuService configMarqueCpuService;
+    private String paramAll;
 
     /**
      * Creates new form AddConfigMarqueCpuDlg
@@ -49,6 +52,20 @@ public class AddConfigMarqueCpuDlg extends javax.swing.JDialog {
         this.getRootPane().setDefaultButton(jButtonAdd);
         this.repaint();
         this.pack();
+    }
+
+    public AddConfigMarqueCpuDlg(JFrame frame, boolean b, String paramAll) {
+        super(frame, b);
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.configMarqueCpuService = MetierFactory.getConfigMarqueCpuService();
+        Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
+        this.setIconImage(icone);
+        this.setAllElements(paramAll);
+        this.getRootPane().setDefaultButton(jButtonAdd);
+        this.repaint();
+        this.pack();
+        this.paramAll = paramAll;
     }
 
     /**
@@ -199,4 +216,12 @@ public class AddConfigMarqueCpuDlg extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelTitre;
     private javax.swing.JTextField jTextFieldMarqueProcesseur;
     // End of variables declaration//GEN-END:variables
+
+    private void setAllElements(String paramAll) {
+        switch (paramAll) {
+            case "Marque cpu":
+                this.jLabelTitre.setText("Ajout d'une marque de processeur");
+                break;
+        }
+    }
 }

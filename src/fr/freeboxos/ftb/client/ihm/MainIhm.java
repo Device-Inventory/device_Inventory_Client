@@ -5,7 +5,7 @@
  */
 package fr.freeboxos.ftb.client.ihm;
 
-import fr.freeboxos.ftb.client.ihm.config.ConfigMarqueCpuIhm;
+import fr.freeboxos.ftb.client.ihm.config.ConfigList;
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.entitys.Autre;
 import fr.freeboxos.ftb.metier.entitys.Cable;
@@ -528,8 +528,8 @@ public class MainIhm extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         try {
-            ConfigMarqueCpuIhm configMarqueCpu = new ConfigMarqueCpuIhm();
-            configMarqueCpu.setVisible(true);
+            ConfigList configList = new ConfigList(this, true, "Marque cpu");
+            configList.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
         }

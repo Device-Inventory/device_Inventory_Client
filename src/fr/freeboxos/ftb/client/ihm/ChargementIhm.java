@@ -19,6 +19,8 @@ package fr.freeboxos.ftb.client.ihm;
 import fr.freeboxos.ftb.client.observable.Data;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,8 +36,10 @@ public class ChargementIhm extends javax.swing.JFrame {
 
     /**
      * Creates new form Chargement
+     *
+     * @throws java.lang.InterruptedException
      */
-    public ChargementIhm() {
+    public ChargementIhm() throws InterruptedException {
         this.initComponents();
         this.setLocationRelativeTo(null);
         this.jLabel1.setText("Chargement en cours ...");
@@ -75,6 +79,7 @@ public class ChargementIhm extends javax.swing.JFrame {
         getContentPane().add(jLabel1, gridBagConstraints);
 
         jProgressBar1.setIndeterminate(true);
+        jProgressBar1.setInheritsPopupMenu(true);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -87,32 +92,14 @@ public class ChargementIhm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ChargementIhm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new ChargementIhm().setVisible(true);
+            try {
+                new ChargementIhm().setVisible(true);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ChargementIhm.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
     }
 

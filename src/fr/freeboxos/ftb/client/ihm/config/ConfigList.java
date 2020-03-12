@@ -17,7 +17,6 @@
 package fr.freeboxos.ftb.client.ihm.config;
 
 import fr.freeboxos.ftb.client.dlg.config.AddConfigMarqueCpuDlg;
-import fr.freeboxos.ftb.client.ihm.HddIhm;
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.config.ConfigMarqueCpuService;
 import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueCpu;
@@ -27,35 +26,59 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 /**
  *
  * @author alan
  */
-public class ConfigMarqueCpuIhm extends javax.swing.JFrame {
+public class ConfigList extends javax.swing.JDialog {
 
     private final ConfigMarqueCpuService configMarqueCpuService;
     private List<ConfigMarqueCpu> configMarqueCpus;
+    private String paramAll;
 
     /**
-     * Creates new form ConfigMarqueCpu
+     * Creates new form ConfigList
      *
+     * @param parent
+     * @param modal
+     * @param param
      * @throws java.lang.Exception
      */
-    public ConfigMarqueCpuIhm() throws Exception {
+    public ConfigList(java.awt.Frame parent, boolean modal, String param) throws Exception {
+        super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
         this.configMarqueCpuService = MetierFactory.getConfigMarqueCpuService();
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
-        this.jLabel1.setText("Liste des marque de processeur");
-        this.setList();
-
+        this.setAllElements(param);
         this.repaint();
         this.pack();
-        //this.setSize(this.getWidth(), 300);
+        this.paramAll = param;
+    }
+
+    public ConfigList(JFrame jFrame, boolean b) {
+        super(jFrame, b);
+        initComponents();
+        this.configMarqueCpuService = MetierFactory.getConfigMarqueCpuService();
+    }
+
+    private void setAllElements(String param) throws Exception {
+        switch (param) {
+            case "Marque cpu":
+                this.jLabel1.setText("Liste des marque de processeur");
+                this.configMarqueCpus = MetierFactory.getConfigMarqueCpuService().getAll();
+                DefaultListModel<String> defaultListModel = new DefaultListModel<>();
+                configMarqueCpus.forEach((configMarqueCpu) -> {
+                    defaultListModel.addElement(configMarqueCpu.getMarqueCpu());
+                });
+
+                this.jList1.setModel(defaultListModel);
+                break;
+        }
     }
 
     /**
@@ -72,14 +95,11 @@ public class ConfigMarqueCpuIhm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jButtonAdd = new javax.swing.JButton();
-        jButtonRemove = new javax.swing.JButton();
         jButtonQuit = new javax.swing.JButton();
+        jButtonRemove = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
-        layout.columnWidths = new int[] {0, 5, 0};
-        layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0};
-        getContentPane().setLayout(layout);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setText("Test marque");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -109,18 +129,6 @@ public class ConfigMarqueCpuIhm extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         getContentPane().add(jButtonAdd, gridBagConstraints);
 
-        jButtonRemove.setText("Supprimer");
-        jButtonRemove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRemoveActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        getContentPane().add(jButtonRemove, gridBagConstraints);
-
         jButtonQuit.setText("Quitter");
         jButtonQuit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,33 +141,37 @@ public class ConfigMarqueCpuIhm extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 3;
         getContentPane().add(jButtonQuit, gridBagConstraints);
 
+        jButtonRemove.setText("Supprimer");
+        jButtonRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoveActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        getContentPane().add(jButtonRemove, gridBagConstraints);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void setList() throws Exception {
-        this.configMarqueCpus = MetierFactory.getConfigMarqueCpuService().getAll();
-        DefaultListModel<String> defaultListModel = new DefaultListModel<>();
-        configMarqueCpus.forEach((configMarqueCpu) -> {
-            defaultListModel.addElement(configMarqueCpu.getMarqueCpu());
-        });
+    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-        this.jList1.setModel(defaultListModel);
-    }
+        AddConfigMarqueCpuDlg addConfigMarqueCpuDlg = new AddConfigMarqueCpuDlg(frame, true, "Marque cpu");
+        addConfigMarqueCpuDlg.setVisible(true);
+        try {
+            this.setAllElements(this.paramAll);
+        } catch (Exception ex) {
+            Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.jList1.repaint();
+    }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitActionPerformed
         dispose();
     }//GEN-LAST:event_jButtonQuitActionPerformed
-
-    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        AddConfigMarqueCpuDlg addConfigMarqueCpuDlg = new AddConfigMarqueCpuDlg(this, true);
-        addConfigMarqueCpuDlg.setVisible(true);
-        try {
-            this.setList();
-        } catch (Exception ex) {
-            Logger.getLogger(ConfigMarqueCpuIhm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.jList1.repaint();
-    }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveActionPerformed
         try {
@@ -175,10 +187,10 @@ public class ConfigMarqueCpuIhm extends javax.swing.JFrame {
                 configMarqueCpu = configMarqueCpuService.getByMarque(marqueTemp);
                 configMarqueCpuService.remove(configMarqueCpu);
             }
-            this.setList();
+            this.setAllElements(paramAll);
             this.jList1.repaint();
         } catch (Exception ex) {
-            Logger.getLogger(ConfigMarqueCpuIhm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonRemoveActionPerformed
 
@@ -187,21 +199,37 @@ public class ConfigMarqueCpuIhm extends javax.swing.JFrame {
      */
     @SuppressWarnings("Convert2Lambda")
     public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(HddIhm.class.getName()).log(Level.SEVERE, null, ex);
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ConfigList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
 
-        /* Create and display the form */
+        //</editor-fold>
+
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                try {
-                    new ConfigMarqueCpuIhm().setVisible(true);
-                } catch (Exception ex) {
-                    Logger.getLogger(ConfigMarqueCpuIhm.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                ConfigList dialog = new ConfigList(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
