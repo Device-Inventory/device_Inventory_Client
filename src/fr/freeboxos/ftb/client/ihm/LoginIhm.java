@@ -162,7 +162,11 @@ public class LoginIhm extends javax.swing.JFrame implements Observer {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Chargement chargement = new Chargement();
         chargement.addObserver(this);
-        chargement.execute();
+        try {
+            chargement.execute();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(LoginIhm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
