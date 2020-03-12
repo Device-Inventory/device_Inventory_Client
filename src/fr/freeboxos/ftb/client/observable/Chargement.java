@@ -29,7 +29,7 @@ public class Chargement extends Observable implements WindowListener {
 
     private ChargementIhm chargementIHM;
 
-    public void execute() {
+    public void execute() throws InterruptedException {
         this.chargementIHM = new ChargementIhm();
         this.chargementIHM.addWindowListener(this);
         this.chargementIHM.setLocationRelativeTo(null);
