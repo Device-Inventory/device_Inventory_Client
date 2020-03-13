@@ -48,7 +48,6 @@ public class AddConfigMarqueCpuDlg extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
         this.configMarqueCpuService = MetierFactory.getConfigMarqueCpuService();
-        this.jLabelTitre.setText("Ajout d'une marque de processeur");
         this.getRootPane().setDefaultButton(jButtonAdd);
         this.repaint();
         this.pack();
@@ -143,30 +142,35 @@ public class AddConfigMarqueCpuDlg extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonAnnulerActionPerformed
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        try {
-            String marque = this.jTextFieldMarqueProcesseur.getText();
+        switch (paramAll) {
+            case "Marque cpu":
+                try {
+                    String marque = this.jTextFieldMarqueProcesseur.getText();
 
-            List<ConfigMarqueCpu> configMarqueCpus = this.configMarqueCpuService.getAll();
+                    List<ConfigMarqueCpu> configMarqueCpus = this.configMarqueCpuService.getAll();
 
-            if (marque.isEmpty()) {
-                throw new Exception("Veuillez remplir une marque");
-            }
+                    if (marque.isEmpty()) {
+                        throw new Exception("Veuillez remplir une marque");
+                    }
 
-            for (int i = 0; i < configMarqueCpus.size(); i++) {
-                if (marque.equals(configMarqueCpus.get(i).toString())) {
-                    throw new Exception("Veuillez entrer une autre marque");
+                    for (int i = 0; i < configMarqueCpus.size(); i++) {
+                        if (marque.equals(configMarqueCpus.get(i).toString())) {
+                            throw new Exception("Veuillez entrer une autre marque");
+                        }
+                    }
+
+                    this.configMarqueCpu = new ConfigMarqueCpu(marque);
+                    configMarqueCpuService.add(configMarqueCpu);
+                    this.dispose();
+                } catch (RuntimeException ex) {
+                    JOptionPane.showMessageDialog(this, "Veuillez entre une autre marque", "Erreur", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                    Logger.getLogger(AddConfigMarqueCpuDlg.class.getName()).log(Level.SEVERE, null, e);
                 }
-            }
-
-            this.configMarqueCpu = new ConfigMarqueCpu(marque);
-            configMarqueCpuService.add(configMarqueCpu);
-            this.dispose();
-        } catch (RuntimeException ex) {
-            JOptionPane.showMessageDialog(this, "Veuillez entre une autre marque", "Erreur", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(AddConfigMarqueCpuDlg.class.getName()).log(Level.SEVERE, null, e);
+                break;
         }
+
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     /**

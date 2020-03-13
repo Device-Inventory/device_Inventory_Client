@@ -27,6 +27,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
@@ -159,14 +160,19 @@ public class ConfigList extends javax.swing.JDialog {
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-        AddConfigMarqueCpuDlg addConfigMarqueCpuDlg = new AddConfigMarqueCpuDlg(frame, true, "Marque cpu");
-        addConfigMarqueCpuDlg.setVisible(true);
-        try {
-            this.setAllElements(this.paramAll);
-        } catch (Exception ex) {
-            Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+        switch (this.paramAll) {
+            case "Marque cpu":
+                AddConfigMarqueCpuDlg addConfigMarqueCpuDlg = new AddConfigMarqueCpuDlg(frame, true, this.paramAll);
+                addConfigMarqueCpuDlg.setVisible(true);
+                try {
+                    this.setAllElements(this.paramAll);
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                this.jList1.repaint();
+                break;
         }
-        this.jList1.repaint();
+
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitActionPerformed
@@ -174,24 +180,34 @@ public class ConfigList extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonQuitActionPerformed
 
     private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveActionPerformed
-        try {
-            ConfigMarqueCpu configMarqueCpu;
-            if (this.jList1.getSelectedValuesList() != null) {
-                List<String> marqueTemp = this.jList1.getSelectedValuesList();
-                for (int i = 0; i < marqueTemp.size(); i++) {
-                    configMarqueCpu = configMarqueCpuService.getByMarque(marqueTemp.get(i));
-                    configMarqueCpuService.remove(configMarqueCpu);
+        switch (this.paramAll) {
+            case "Marque cpu":
+                try {
+                    if (this.jList1.getSelectedValue() == null) {
+                        throw new Exception("Veuillez selectionner un élément");
+                    }
+
+                    ConfigMarqueCpu configMarqueCpu;
+                    if (this.jList1.getSelectedValuesList() != null) {
+                        List<String> marqueTemp = this.jList1.getSelectedValuesList();
+                        for (int i = 0; i < marqueTemp.size(); i++) {
+                            configMarqueCpu = configMarqueCpuService.getByMarque(marqueTemp.get(i));
+                            configMarqueCpuService.remove(configMarqueCpu);
+                        }
+                    } else {
+                        String marqueTemp = this.jList1.getSelectedValue();
+                        configMarqueCpu = configMarqueCpuService.getByMarque(marqueTemp);
+                        configMarqueCpuService.remove(configMarqueCpu);
+                    }
+                    this.setAllElements(paramAll);
+                    this.jList1.repaint();
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
                 }
-            } else {
-                String marqueTemp = this.jList1.getSelectedValue();
-                configMarqueCpu = configMarqueCpuService.getByMarque(marqueTemp);
-                configMarqueCpuService.remove(configMarqueCpu);
-            }
-            this.setAllElements(paramAll);
-            this.jList1.repaint();
-        } catch (Exception ex) {
-            Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                break;
         }
+
     }//GEN-LAST:event_jButtonRemoveActionPerformed
 
     /**
