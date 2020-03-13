@@ -18,38 +18,48 @@ package fr.freeboxos.ftb.metier.config;
 
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.RestServerLocalConfiguration;
-import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueCpu;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigChipsetCpu;
 import fr.freeboxos.ftb.metier.sort.Sort;
-import fr.freeboxos.ftb.metier.sort.config.ComparatorByIdConfigMarqueCpu;
+import fr.freeboxos.ftb.metier.sort.config.ComparatorByIdConfigChipsetCpu;
 import java.util.List;
 import lml.rest.client.ClientRest;
 
-public class ConfigMarqueCpuServiceImpl extends ClientRest<ConfigMarqueCpu> implements ConfigMarqueCpuService {
+public class ConfigChipsetCpuServiceImpl extends ClientRest<ConfigChipsetCpu> implements ConfigChipsetCpuService {
 
-    public ConfigMarqueCpuServiceImpl() {
-        super.init("ConfigMarqueCpuService", new RestServerLocalConfiguration());
+    public ConfigChipsetCpuServiceImpl() {
+        super.init("ConfigChipsetCpuService", new RestServerLocalConfiguration());
     }
 
     @Override
-    public ConfigMarqueCpu add(ConfigMarqueCpu t) throws Exception {
+    public ConfigChipsetCpu[] sort() throws Exception {
+        ConfigChipsetCpu[] configChipsetCpus = this.getAll().toArray(new ConfigChipsetCpu[0]);
+        ComparatorByIdConfigChipsetCpu cmp = new ComparatorByIdConfigChipsetCpu();
+        Sort trieuse = MetierFactory.getSortSerivce();
+        trieuse.sort(configChipsetCpus, cmp);
+
+        return configChipsetCpus;
+    }
+
+    @Override
+    public ConfigChipsetCpu add(ConfigChipsetCpu t) throws Exception {
         super.setPath("");
         return super.addEntity(t);
     }
 
     @Override
-    public void remove(ConfigMarqueCpu t) throws Exception {
+    public void remove(ConfigChipsetCpu t) throws Exception {
         super.setPath("");
         super.removeEntity(t);
     }
 
     @Override
-    public void update(ConfigMarqueCpu t) throws Exception {
+    public void update(ConfigChipsetCpu t) throws Exception {
         super.setPath("");
         super.updateEntity(t);
     }
 
     @Override
-    public ConfigMarqueCpu getById(Long l) throws Exception {
+    public ConfigChipsetCpu getById(Long l) throws Exception {
         super.setPath("" + l);
         return super.getEntity();
     }
@@ -61,31 +71,15 @@ public class ConfigMarqueCpuServiceImpl extends ClientRest<ConfigMarqueCpu> impl
     }
 
     @Override
-    public List<ConfigMarqueCpu> getAll() throws Exception {
+    public List<ConfigChipsetCpu> getAll() throws Exception {
         super.setPath("");
         return super.getEntitys();
     }
 
     @Override
-    public List<ConfigMarqueCpu> getAll(int i, int i1) throws Exception {
+    public List<ConfigChipsetCpu> getAll(int i, int i1) throws Exception {
         super.setPath("" + i + "/" + i1);
         return super.getEntitys();
-    }
-
-    @Override
-    public ConfigMarqueCpu[] sort() throws Exception {
-        ConfigMarqueCpu[] configMarqueCpus = this.getAll().toArray(new ConfigMarqueCpu[0]);
-        ComparatorByIdConfigMarqueCpu cmp = new ComparatorByIdConfigMarqueCpu();
-        Sort trieuse = MetierFactory.getSortSerivce();
-        trieuse.sort(configMarqueCpus, cmp);
-
-        return configMarqueCpus;
-    }
-
-    @Override
-    public ConfigMarqueCpu getByMarque(String marque) throws Exception {
-        super.setPath("marque/" + marque);
-        return super.getEntity();
     }
 
 }

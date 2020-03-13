@@ -16,6 +16,7 @@ import fr.freeboxos.ftb.metier.sort.Sort;
  */
 public class MetierFactory {
 
+    //Partie Entity
     private static final AutreService AUTRE_SERVICE = new AutreServiceImpl();
 
     public static AutreService getAutreService() {
@@ -76,6 +77,7 @@ public class MetierFactory {
         return CARTE_MERE_SERVICE;
     }
 
+    //Partie configuration
     private static final ConfigMarqueCpuService CONFIG_MARQUE_CPU_SERVICE = new ConfigMarqueCpuServiceImpl();
 
     public static ConfigMarqueCpuService getConfigMarqueCpuService() {
