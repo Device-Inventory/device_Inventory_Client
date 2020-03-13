@@ -40,7 +40,7 @@ public class HddIhm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.hDDService = MetierFactory.getHDDService();
+        this.hDDService = MetierFactory.getHddService();
         this.model = new HddTableModel(this.hDDService.sort());
         this.jTable1.setModel(model);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");

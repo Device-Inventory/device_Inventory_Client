@@ -30,7 +30,7 @@ public class MetierFactory {
 
     private static final HddService H_DDSERVICE = new HddServiceImpl();
 
-    public static HddService getHDDService() {
+    public static HddService getHddService() {
         return H_DDSERVICE;
     }
 

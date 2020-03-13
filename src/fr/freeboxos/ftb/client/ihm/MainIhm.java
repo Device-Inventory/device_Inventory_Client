@@ -301,7 +301,7 @@ public class MainIhm extends javax.swing.JFrame {
         float prix = 0;
         List<Processeur> processeurs = MetierFactory.getProcesseurService().getAll();
         List<Memoire> memoires = MetierFactory.getMemoireService().getAll();
-        List<HDD> hdds = MetierFactory.getHDDService().getAll();
+        List<HDD> hdds = MetierFactory.getHddService().getAll();
         List<CarteGraphique> carteGraphiques = MetierFactory.getCarteGraphiqueService().getAll();
 
         Processeur processeur;
@@ -376,7 +376,7 @@ public class MainIhm extends javax.swing.JFrame {
         }
 
         try {
-            this.jLabel_hdd.setText(String.valueOf(MetierFactory.getHDDService().getCount()));
+            this.jLabel_hdd.setText(String.valueOf(MetierFactory.getHddService().getCount()));
         } catch (Exception ex) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Erreur de lecture du nombre de disque dur", "Erreur", JOptionPane.ERROR_MESSAGE);

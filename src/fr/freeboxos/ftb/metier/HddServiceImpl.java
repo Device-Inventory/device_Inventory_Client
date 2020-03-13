@@ -20,7 +20,7 @@ import lml.rest.client.ClientRest;
 public class HddServiceImpl extends ClientRest<HDD> implements HddService {
 
     public HddServiceImpl() {
-        super.init("HDDService", new RestServerLocalConfiguration());
+        super.init("HddService", new RestServerLocalConfiguration());
         List<Class> classes = new ArrayList<>();
         classes.add(SSD.class);
         super.polymorphicInit(classes);

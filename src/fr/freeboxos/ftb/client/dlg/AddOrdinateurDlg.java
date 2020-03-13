@@ -68,7 +68,7 @@ public class AddOrdinateurDlg extends javax.swing.JDialog {
         this.memoires = MetierFactory.getMemoireService().getAll();
 
         HDD hdd;
-        this.hdds = MetierFactory.getHDDService().getAll();
+        this.hdds = MetierFactory.getHddService().getAll();
 
         for (Ordinateur ordinateur1 : this.ordinateurs) {
             for (int i = 0; i < this.processeurs.size(); i++) {
@@ -126,7 +126,7 @@ public class AddOrdinateurDlg extends javax.swing.JDialog {
         this.memoires = MetierFactory.getMemoireService().getAll();
 
 //        HDD hdd;
-        this.hdds = MetierFactory.getHDDService().getAll();
+        this.hdds = MetierFactory.getHddService().getAll();
 
 //        for (Ordinateur ordinateur1 : this.ordinateurs) {
 //            for (int i = 0; i < this.processeurs.size(); i++) {
@@ -315,7 +315,7 @@ public class AddOrdinateurDlg extends javax.swing.JDialog {
         HDD hdd = null;
 
         try {
-            hdd = MetierFactory.getHDDService().getById(Long.parseLong(hddId));
+            hdd = MetierFactory.getHddService().getById(Long.parseLong(hddId));
         } catch (Exception ex) {
             Logger.getLogger(AddOrdinateurDlg.class.getName()).log(Level.SEVERE, null, ex);
         }
