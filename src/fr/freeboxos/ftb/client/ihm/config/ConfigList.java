@@ -16,7 +16,7 @@
  */
 package fr.freeboxos.ftb.client.ihm.config;
 
-import fr.freeboxos.ftb.client.dlg.config.AddConfigMarqueCpuDlg;
+import fr.freeboxos.ftb.client.dlg.config.AddConfigDlg;
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.config.ConfigMarqueCpuService;
 import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueCpu;
@@ -162,7 +162,7 @@ public class ConfigList extends javax.swing.JDialog {
 
         switch (this.paramAll) {
             case "Marque cpu":
-                AddConfigMarqueCpuDlg addConfigMarqueCpuDlg = new AddConfigMarqueCpuDlg(frame, true, this.paramAll);
+                AddConfigDlg addConfigMarqueCpuDlg = new AddConfigDlg(frame, true, this.paramAll);
                 addConfigMarqueCpuDlg.setVisible(true);
                 try {
                     this.setAllElements(this.paramAll);

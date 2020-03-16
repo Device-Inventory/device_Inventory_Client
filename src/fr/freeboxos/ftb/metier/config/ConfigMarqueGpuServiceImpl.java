@@ -18,52 +18,48 @@ package fr.freeboxos.ftb.metier.config;
 
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.RestServerLocalConfiguration;
-import fr.freeboxos.ftb.metier.entitys.config.ConfigFormatCarteMere;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueGpu;
 import fr.freeboxos.ftb.metier.sort.Sort;
-import fr.freeboxos.ftb.metier.sort.config.ComparatorByIdConfigFormatCarteMere;
+import fr.freeboxos.ftb.metier.sort.config.ComparatorByIdConfigMarqueGpu;
 import java.util.List;
 import lml.rest.client.ClientRest;
 
-/**
- *
- * @author alan
- */
-public class ConfigFormatCarteMereServiceImpl extends ClientRest<ConfigFormatCarteMere> implements ConfigFormatCarteMereService {
+public class ConfigMarqueGpuServiceImpl extends ClientRest<ConfigMarqueGpu> implements ConfigMarqueGpuService {
 
-    public ConfigFormatCarteMereServiceImpl() {
-        super.init("ConfigFormatCarteMereService", new RestServerLocalConfiguration());
+    public ConfigMarqueGpuServiceImpl() {
+        super.init("ConfigMarqueGpuService", new RestServerLocalConfiguration());
     }
 
     @Override
-    public ConfigFormatCarteMere[] sort() throws Exception {
-        ConfigFormatCarteMere[] configFormatCarteMeres = this.getAll().toArray(new ConfigFormatCarteMere[0]);
-        ComparatorByIdConfigFormatCarteMere cmp = new ComparatorByIdConfigFormatCarteMere();
+    public ConfigMarqueGpu[] sort() throws Exception {
+        ConfigMarqueGpu[] configMarqueGpus = this.getAll().toArray(new ConfigMarqueGpu[0]);
+        ComparatorByIdConfigMarqueGpu cmp = new ComparatorByIdConfigMarqueGpu();
         Sort trieuse = MetierFactory.getSortSerivce();
-        trieuse.sort(configFormatCarteMeres, cmp);
+        trieuse.sort(configMarqueGpus, cmp);
 
-        return configFormatCarteMeres;
+        return configMarqueGpus;
     }
 
     @Override
-    public ConfigFormatCarteMere add(ConfigFormatCarteMere t) throws Exception {
+    public ConfigMarqueGpu add(ConfigMarqueGpu t) throws Exception {
         super.setPath("");
         return super.addEntity(t);
     }
 
     @Override
-    public void remove(ConfigFormatCarteMere t) throws Exception {
+    public void remove(ConfigMarqueGpu t) throws Exception {
         super.setPath("");
         super.removeEntity(t);
     }
 
     @Override
-    public void update(ConfigFormatCarteMere t) throws Exception {
+    public void update(ConfigMarqueGpu t) throws Exception {
         super.setPath("");
         super.updateEntity(t);
     }
 
     @Override
-    public ConfigFormatCarteMere getById(Long l) throws Exception {
+    public ConfigMarqueGpu getById(Long l) throws Exception {
         super.setPath("" + l);
         return super.getEntity();
     }
@@ -75,13 +71,13 @@ public class ConfigFormatCarteMereServiceImpl extends ClientRest<ConfigFormatCar
     }
 
     @Override
-    public List<ConfigFormatCarteMere> getAll() throws Exception {
+    public List<ConfigMarqueGpu> getAll() throws Exception {
         super.setPath("");
         return super.getEntitys();
     }
 
     @Override
-    public List<ConfigFormatCarteMere> getAll(int i, int i1) throws Exception {
+    public List<ConfigMarqueGpu> getAll(int i, int i1) throws Exception {
         super.setPath("" + i + "/" + i1);
         return super.getEntitys();
     }

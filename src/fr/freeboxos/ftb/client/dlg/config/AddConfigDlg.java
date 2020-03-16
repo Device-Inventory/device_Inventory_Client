@@ -31,7 +31,7 @@ import javax.swing.JOptionPane;
  *
  * @author alan
  */
-public class AddConfigMarqueCpuDlg extends javax.swing.JDialog {
+public class AddConfigDlg extends javax.swing.JDialog {
 
     private ConfigMarqueCpu configMarqueCpu = null;
     private final ConfigMarqueCpuService configMarqueCpuService;
@@ -43,7 +43,7 @@ public class AddConfigMarqueCpuDlg extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    public AddConfigMarqueCpuDlg(java.awt.Frame parent, boolean modal) {
+    public AddConfigDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -53,7 +53,7 @@ public class AddConfigMarqueCpuDlg extends javax.swing.JDialog {
         this.pack();
     }
 
-    public AddConfigMarqueCpuDlg(JFrame frame, boolean b, String paramAll) {
+    public AddConfigDlg(JFrame frame, boolean b, String paramAll) {
         super(frame, b);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -166,7 +166,7 @@ public class AddConfigMarqueCpuDlg extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(this, "Veuillez entre une autre marque", "Erreur", JOptionPane.ERROR_MESSAGE);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
-                    Logger.getLogger(AddConfigMarqueCpuDlg.class.getName()).log(Level.SEVERE, null, e);
+                    Logger.getLogger(AddConfigDlg.class.getName()).log(Level.SEVERE, null, e);
                 }
                 break;
         }
@@ -191,8 +191,9 @@ public class AddConfigMarqueCpuDlg extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddConfigMarqueCpuDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddConfigDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         //</editor-fold>
@@ -201,7 +202,7 @@ public class AddConfigMarqueCpuDlg extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                AddConfigMarqueCpuDlg dialog = new AddConfigMarqueCpuDlg(new javax.swing.JFrame(), true);
+                AddConfigDlg dialog = new AddConfigDlg(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

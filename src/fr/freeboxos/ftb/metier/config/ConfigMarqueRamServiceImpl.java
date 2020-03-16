@@ -18,52 +18,48 @@ package fr.freeboxos.ftb.metier.config;
 
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.RestServerLocalConfiguration;
-import fr.freeboxos.ftb.metier.entitys.config.ConfigFormatCarteMere;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueRam;
 import fr.freeboxos.ftb.metier.sort.Sort;
-import fr.freeboxos.ftb.metier.sort.config.ComparatorByIdConfigFormatCarteMere;
+import fr.freeboxos.ftb.metier.sort.config.ComparatorByIdConfigMarqueRam;
 import java.util.List;
 import lml.rest.client.ClientRest;
 
-/**
- *
- * @author alan
- */
-public class ConfigFormatCarteMereServiceImpl extends ClientRest<ConfigFormatCarteMere> implements ConfigFormatCarteMereService {
+public class ConfigMarqueRamServiceImpl extends ClientRest<ConfigMarqueRam> implements ConfigMarqueRamService {
 
-    public ConfigFormatCarteMereServiceImpl() {
-        super.init("ConfigFormatCarteMereService", new RestServerLocalConfiguration());
+    public ConfigMarqueRamServiceImpl() {
+        super.init("ConfigMarqueRamService", new RestServerLocalConfiguration());
     }
 
     @Override
-    public ConfigFormatCarteMere[] sort() throws Exception {
-        ConfigFormatCarteMere[] configFormatCarteMeres = this.getAll().toArray(new ConfigFormatCarteMere[0]);
-        ComparatorByIdConfigFormatCarteMere cmp = new ComparatorByIdConfigFormatCarteMere();
+    public ConfigMarqueRam[] sort() throws Exception {
+        ConfigMarqueRam[] configMarqueRams = this.getAll().toArray(new ConfigMarqueRam[0]);
+        ComparatorByIdConfigMarqueRam cmp = new ComparatorByIdConfigMarqueRam();
         Sort trieuse = MetierFactory.getSortSerivce();
-        trieuse.sort(configFormatCarteMeres, cmp);
+        trieuse.sort(configMarqueRams, cmp);
 
-        return configFormatCarteMeres;
+        return configMarqueRams;
     }
 
     @Override
-    public ConfigFormatCarteMere add(ConfigFormatCarteMere t) throws Exception {
+    public ConfigMarqueRam add(ConfigMarqueRam t) throws Exception {
         super.setPath("");
         return super.addEntity(t);
     }
 
     @Override
-    public void remove(ConfigFormatCarteMere t) throws Exception {
+    public void remove(ConfigMarqueRam t) throws Exception {
         super.setPath("");
         super.removeEntity(t);
     }
 
     @Override
-    public void update(ConfigFormatCarteMere t) throws Exception {
+    public void update(ConfigMarqueRam t) throws Exception {
         super.setPath("");
         super.updateEntity(t);
     }
 
     @Override
-    public ConfigFormatCarteMere getById(Long l) throws Exception {
+    public ConfigMarqueRam getById(Long l) throws Exception {
         super.setPath("" + l);
         return super.getEntity();
     }
@@ -75,13 +71,13 @@ public class ConfigFormatCarteMereServiceImpl extends ClientRest<ConfigFormatCar
     }
 
     @Override
-    public List<ConfigFormatCarteMere> getAll() throws Exception {
+    public List<ConfigMarqueRam> getAll() throws Exception {
         super.setPath("");
         return super.getEntitys();
     }
 
     @Override
-    public List<ConfigFormatCarteMere> getAll(int i, int i1) throws Exception {
+    public List<ConfigMarqueRam> getAll(int i, int i1) throws Exception {
         super.setPath("" + i + "/" + i1);
         return super.getEntitys();
     }

@@ -3,18 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/metier/config/ConfigTypeMemoireService.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/metier/config/ConfigMarqueGpuService.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/metier/config/ConfigMarqueCarteMereService.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/metier/MetierFactory.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/metier/config/ConfigMarqueRamService.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/metier/config/ConfigSupportDuProcesseurService.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/metier/config/ConfigMarqueCpuServiceImpl.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/metier/config/ConfigTypeCableService.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/metier/config/ConfigTypeSsdService.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/metier/config/ConfigFormatCarteMereServiceImpl.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/metier/config/ConfigMarqueHddService.java</file>
-            <file>file:/home/alan/NetBeansProjects/device_Inventory_Client/src/fr/freeboxos/ftb/metier/config/ConfigFormatCarteMereService.java</file>
+            <file>file:/home/alan/NetBeansProjects/device_Inventory/device_Inventory_Client/src/fr/freeboxos/ftb/client/ihm/MainIhm.java</file>
         </group>
     </open-files>
 </project-private>

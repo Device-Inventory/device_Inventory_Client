@@ -18,52 +18,48 @@ package fr.freeboxos.ftb.metier.config;
 
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.RestServerLocalConfiguration;
-import fr.freeboxos.ftb.metier.entitys.config.ConfigFormatCarteMere;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigTypeCable;
 import fr.freeboxos.ftb.metier.sort.Sort;
-import fr.freeboxos.ftb.metier.sort.config.ComparatorByIdConfigFormatCarteMere;
+import fr.freeboxos.ftb.metier.sort.config.ComparatorByIdConfigTypeCable;
 import java.util.List;
 import lml.rest.client.ClientRest;
 
-/**
- *
- * @author alan
- */
-public class ConfigFormatCarteMereServiceImpl extends ClientRest<ConfigFormatCarteMere> implements ConfigFormatCarteMereService {
+public class ConfigTypeCableServiceImpl extends ClientRest<ConfigTypeCable> implements ConfigTypeCableService {
 
-    public ConfigFormatCarteMereServiceImpl() {
-        super.init("ConfigFormatCarteMereService", new RestServerLocalConfiguration());
+    public ConfigTypeCableServiceImpl() {
+        super.init("ConfigMarqueCpuService", new RestServerLocalConfiguration());
     }
 
     @Override
-    public ConfigFormatCarteMere[] sort() throws Exception {
-        ConfigFormatCarteMere[] configFormatCarteMeres = this.getAll().toArray(new ConfigFormatCarteMere[0]);
-        ComparatorByIdConfigFormatCarteMere cmp = new ComparatorByIdConfigFormatCarteMere();
+    public ConfigTypeCable[] sort() throws Exception {
+        ConfigTypeCable[] configTypeCables = this.getAll().toArray(new ConfigTypeCable[0]);
+        ComparatorByIdConfigTypeCable cmp = new ComparatorByIdConfigTypeCable();
         Sort trieuse = MetierFactory.getSortSerivce();
-        trieuse.sort(configFormatCarteMeres, cmp);
+        trieuse.sort(configTypeCables, cmp);
 
-        return configFormatCarteMeres;
+        return configTypeCables;
     }
 
     @Override
-    public ConfigFormatCarteMere add(ConfigFormatCarteMere t) throws Exception {
+    public ConfigTypeCable add(ConfigTypeCable t) throws Exception {
         super.setPath("");
         return super.addEntity(t);
     }
 
     @Override
-    public void remove(ConfigFormatCarteMere t) throws Exception {
+    public void remove(ConfigTypeCable t) throws Exception {
         super.setPath("");
         super.removeEntity(t);
     }
 
     @Override
-    public void update(ConfigFormatCarteMere t) throws Exception {
+    public void update(ConfigTypeCable t) throws Exception {
         super.setPath("");
         super.updateEntity(t);
     }
 
     @Override
-    public ConfigFormatCarteMere getById(Long l) throws Exception {
+    public ConfigTypeCable getById(Long l) throws Exception {
         super.setPath("" + l);
         return super.getEntity();
     }
@@ -75,13 +71,13 @@ public class ConfigFormatCarteMereServiceImpl extends ClientRest<ConfigFormatCar
     }
 
     @Override
-    public List<ConfigFormatCarteMere> getAll() throws Exception {
+    public List<ConfigTypeCable> getAll() throws Exception {
         super.setPath("");
         return super.getEntitys();
     }
 
     @Override
-    public List<ConfigFormatCarteMere> getAll(int i, int i1) throws Exception {
+    public List<ConfigTypeCable> getAll(int i, int i1) throws Exception {
         super.setPath("" + i + "/" + i1);
         return super.getEntitys();
     }

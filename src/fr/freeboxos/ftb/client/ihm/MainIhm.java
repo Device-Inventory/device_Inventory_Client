@@ -75,10 +75,11 @@ public class MainIhm extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
+        jMenuFile = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuEdit = new javax.swing.JMenu();
+        jMenuMarque = new javax.swing.JMenu();
+        jMenuItemMarqueProcesseur = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
@@ -264,7 +265,7 @@ public class MainIhm extends javax.swing.JFrame {
         gridBagConstraints.gridy = 4;
         getContentPane().add(jLabel2, gridBagConstraints);
 
-        jMenu2.setText("File");
+        jMenuFile.setText("File");
 
         jMenuItem1.setText("Quitter");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -272,21 +273,25 @@ public class MainIhm extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenuFile.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenuFile);
 
-        jMenu3.setText("Edit");
+        jMenuEdit.setText("Edit");
 
-        jMenuItem2.setText("Marque processeur");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuMarque.setText("Marque");
+
+        jMenuItemMarqueProcesseur.setText("Marque processeur");
+        jMenuItemMarqueProcesseur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItemMarqueProcesseurActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        jMenuMarque.add(jMenuItemMarqueProcesseur);
 
-        jMenuBar1.add(jMenu3);
+        jMenuEdit.add(jMenuMarque);
+
+        jMenuBar1.add(jMenuEdit);
 
         setJMenuBar(jMenuBar1);
 
@@ -526,14 +531,14 @@ public class MainIhm extends javax.swing.JFrame {
         this.getNombreAll();
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItemMarqueProcesseurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMarqueProcesseurActionPerformed
         try {
             ConfigList configList = new ConfigList(this, true, "Marque cpu");
             configList.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
         }
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuItemMarqueProcesseurActionPerformed
 
     /**
      * @param args the command line arguments
@@ -581,10 +586,11 @@ public class MainIhm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_hdd;
     private javax.swing.JLabel jLabel_prixTotal;
     private javax.swing.JLabel jLabel_ram;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuEdit;
+    private javax.swing.JMenu jMenuFile;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItemMarqueProcesseur;
+    private javax.swing.JMenu jMenuMarque;
     // End of variables declaration//GEN-END:variables
 }
