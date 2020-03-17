@@ -18,8 +18,30 @@ package fr.freeboxos.ftb.client.ihm.config;
 
 import fr.freeboxos.ftb.client.dlg.config.AddConfigDlg;
 import fr.freeboxos.ftb.metier.MetierFactory;
+import fr.freeboxos.ftb.metier.config.ConfigChipsetCpuService;
+import fr.freeboxos.ftb.metier.config.ConfigFormatCarteMereService;
+import fr.freeboxos.ftb.metier.config.ConfigMarqueCarteMereService;
+import fr.freeboxos.ftb.metier.config.ConfigMarqueChipsetGpuService;
 import fr.freeboxos.ftb.metier.config.ConfigMarqueCpuService;
+import fr.freeboxos.ftb.metier.config.ConfigMarqueGpuService;
+import fr.freeboxos.ftb.metier.config.ConfigMarqueHddService;
+import fr.freeboxos.ftb.metier.config.ConfigMarqueRamService;
+import fr.freeboxos.ftb.metier.config.ConfigSupportDuProcesseurService;
+import fr.freeboxos.ftb.metier.config.ConfigTypeCableService;
+import fr.freeboxos.ftb.metier.config.ConfigTypeMemoireService;
+import fr.freeboxos.ftb.metier.config.ConfigTypeSsdService;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigChipsetCpu;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigFormatCarteMere;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueCarteMere;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueChipsetGpu;
 import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueCpu;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueGpu;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueHdd;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueRam;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigSupportDuProcesseur;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigTypeCable;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigTypeMemoire;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigTypeSsd;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.List;
@@ -36,8 +58,30 @@ import javax.swing.SwingUtilities;
  */
 public class ConfigList extends javax.swing.JDialog {
 
+    private final ConfigChipsetCpuService configChipsetCpuService;
+    private final ConfigFormatCarteMereService configFormatCarteMereService;
+    private final ConfigMarqueCarteMereService configMarqueCarteMereService;
+    private final ConfigMarqueChipsetGpuService configMarqueChipsetGpuService;
     private final ConfigMarqueCpuService configMarqueCpuService;
+    private final ConfigMarqueGpuService configMarqueGpuService;
+    private final ConfigMarqueHddService configMarqueHddService;
+    private final ConfigMarqueRamService configMarqueRamService;
+    private final ConfigSupportDuProcesseurService configSupportDuProcesseurService;
+    private final ConfigTypeCableService configTypeCableService;
+    private final ConfigTypeMemoireService configTypeMemoireService;
+    private final ConfigTypeSsdService configTypeSsdService;
+    private List<ConfigChipsetCpu> configChipsetCpus;
+    private List<ConfigFormatCarteMere> configFormatCarteMeres;
+    private List<ConfigMarqueCarteMere> configMarqueCarteMeres;
+    private List<ConfigMarqueChipsetGpu> configMarqueChipsetGpus;
     private List<ConfigMarqueCpu> configMarqueCpus;
+    private List<ConfigMarqueGpu> configMarqueGpus;
+    private List<ConfigMarqueHdd> configMarqueHdds;
+    private List<ConfigMarqueRam> configMarqueRams;
+    private List<ConfigSupportDuProcesseur> configSupportDuProcesseurs;
+    private List<ConfigTypeCable> configTypeCables;
+    private List<ConfigTypeMemoire> configTypeMemoires;
+    private List<ConfigTypeSsd> configTypeSsds;
     private String paramAll;
 
     /**
@@ -52,7 +96,18 @@ public class ConfigList extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        this.configChipsetCpuService = MetierFactory.getConfigChipsetCpuService();
+        this.configFormatCarteMereService = MetierFactory.getConfigFormatCarteMereService();
+        this.configMarqueCarteMereService = MetierFactory.getConfigMarqueCarteMereService();
+        this.configMarqueChipsetGpuService = MetierFactory.getConfigMarqueChipsetGpuService();
         this.configMarqueCpuService = MetierFactory.getConfigMarqueCpuService();
+        this.configMarqueGpuService = MetierFactory.getConfigMarqueGpuService();
+        this.configMarqueHddService = MetierFactory.getConfigMarqueHddService();
+        this.configMarqueRamService = MetierFactory.getConfigMarqueRamService();
+        this.configSupportDuProcesseurService = MetierFactory.getConfigSupportDuProcesseurService();
+        this.configTypeCableService = MetierFactory.getConfigTypeCableService();
+        this.configTypeMemoireService = MetierFactory.getConfigTypeMemoireService();
+        this.configTypeSsdService = MetierFactory.getConfigTypeSsdService();
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
         this.setAllElements(param);
@@ -64,17 +119,38 @@ public class ConfigList extends javax.swing.JDialog {
     public ConfigList(JFrame jFrame, boolean b) {
         super(jFrame, b);
         initComponents();
+        this.configChipsetCpuService = MetierFactory.getConfigChipsetCpuService();
+        this.configFormatCarteMereService = MetierFactory.getConfigFormatCarteMereService();
+        this.configMarqueCarteMereService = MetierFactory.getConfigMarqueCarteMereService();
+        this.configMarqueChipsetGpuService = MetierFactory.getConfigMarqueChipsetGpuService();
         this.configMarqueCpuService = MetierFactory.getConfigMarqueCpuService();
+        this.configMarqueGpuService = MetierFactory.getConfigMarqueGpuService();
+        this.configMarqueHddService = MetierFactory.getConfigMarqueHddService();
+        this.configMarqueRamService = MetierFactory.getConfigMarqueRamService();
+        this.configSupportDuProcesseurService = MetierFactory.getConfigSupportDuProcesseurService();
+        this.configTypeCableService = MetierFactory.getConfigTypeCableService();
+        this.configTypeMemoireService = MetierFactory.getConfigTypeMemoireService();
+        this.configTypeSsdService = MetierFactory.getConfigTypeSsdService();
     }
 
     private void setAllElements(String param) throws Exception {
+
+        DefaultListModel<String> defaultListModel = new DefaultListModel<>();
         switch (param) {
             case "Marque cpu":
-                this.jLabel1.setText("Liste des marque de processeur");
-                this.configMarqueCpus = MetierFactory.getConfigMarqueCpuService().getAll();
-                DefaultListModel<String> defaultListModel = new DefaultListModel<>();
+                this.jLabel1.setText("Liste des marques de processeur");
+                this.configMarqueCpus = this.configMarqueCpuService.getAll();
                 configMarqueCpus.forEach((configMarqueCpu) -> {
                     defaultListModel.addElement(configMarqueCpu.getMarqueCpu());
+                });
+
+                this.jList1.setModel(defaultListModel);
+                break;
+            case "Chipset cpu":
+                this.jLabel1.setText("Liste des chipset cpu");
+                this.configChipsetCpus = this.configChipsetCpuService.getAll();
+                configChipsetCpus.forEach((configMarqueCpu) -> {
+                    defaultListModel.addElement(configMarqueCpu.getChipsetCpu());
                 });
 
                 this.jList1.setModel(defaultListModel);

@@ -78,8 +78,20 @@ public class MainIhm extends javax.swing.JFrame {
         jMenuFile = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuEdit = new javax.swing.JMenu();
+        jMenuItemChipsetCpu = new javax.swing.JMenuItem();
+        jMenuItemFormatCarteMere = new javax.swing.JMenuItem();
         jMenuMarque = new javax.swing.JMenu();
+        jMenuItemMarqueCarteMere = new javax.swing.JMenuItem();
+        jMenuItemMarqueChipsetGpu = new javax.swing.JMenuItem();
         jMenuItemMarqueProcesseur = new javax.swing.JMenuItem();
+        jMenuItemMarqueCarteGraphique = new javax.swing.JMenuItem();
+        jMenuItemMarqueHdd = new javax.swing.JMenuItem();
+        jMenuItemMarqueRam = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItemTpeCable = new javax.swing.JMenuItem();
+        jMenuItemTypeRam = new javax.swing.JMenuItem();
+        jMenuItemTypeSsd = new javax.swing.JMenuItem();
+        jMenuItemSupportDuProcesseur = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
@@ -279,7 +291,39 @@ public class MainIhm extends javax.swing.JFrame {
 
         jMenuEdit.setText("Edit");
 
+        jMenuItemChipsetCpu.setText("Chipset cpu");
+        jMenuItemChipsetCpu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemChipsetCpuActionPerformed(evt);
+            }
+        });
+        jMenuEdit.add(jMenuItemChipsetCpu);
+
+        jMenuItemFormatCarteMere.setText("Format de carte mère");
+        jMenuItemFormatCarteMere.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFormatCarteMereActionPerformed(evt);
+            }
+        });
+        jMenuEdit.add(jMenuItemFormatCarteMere);
+
         jMenuMarque.setText("Marque");
+
+        jMenuItemMarqueCarteMere.setText("Marque carte mère");
+        jMenuItemMarqueCarteMere.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemMarqueCarteMereActionPerformed(evt);
+            }
+        });
+        jMenuMarque.add(jMenuItemMarqueCarteMere);
+
+        jMenuItemMarqueChipsetGpu.setText("Marque chipset gpu");
+        jMenuItemMarqueChipsetGpu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemMarqueChipsetGpuActionPerformed(evt);
+            }
+        });
+        jMenuMarque.add(jMenuItemMarqueChipsetGpu);
 
         jMenuItemMarqueProcesseur.setText("Marque processeur");
         jMenuItemMarqueProcesseur.addActionListener(new java.awt.event.ActionListener() {
@@ -289,7 +333,67 @@ public class MainIhm extends javax.swing.JFrame {
         });
         jMenuMarque.add(jMenuItemMarqueProcesseur);
 
+        jMenuItemMarqueCarteGraphique.setText("Marque carte graphique");
+        jMenuItemMarqueCarteGraphique.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemMarqueCarteGraphiqueActionPerformed(evt);
+            }
+        });
+        jMenuMarque.add(jMenuItemMarqueCarteGraphique);
+
+        jMenuItemMarqueHdd.setText("Marque disque dur");
+        jMenuItemMarqueHdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemMarqueHddActionPerformed(evt);
+            }
+        });
+        jMenuMarque.add(jMenuItemMarqueHdd);
+
+        jMenuItemMarqueRam.setText("Marque mémoire");
+        jMenuItemMarqueRam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemMarqueRamActionPerformed(evt);
+            }
+        });
+        jMenuMarque.add(jMenuItemMarqueRam);
+
         jMenuEdit.add(jMenuMarque);
+
+        jMenu1.setText("Type");
+
+        jMenuItemTpeCable.setText("Type de cable");
+        jMenuItemTpeCable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTpeCableActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemTpeCable);
+
+        jMenuItemTypeRam.setText("Type de mémoire");
+        jMenuItemTypeRam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTypeRamActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemTypeRam);
+
+        jMenuItemTypeSsd.setText("Type de ssd");
+        jMenuItemTypeSsd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTypeSsdActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemTypeSsd);
+
+        jMenuEdit.add(jMenu1);
+
+        jMenuItemSupportDuProcesseur.setText("Support du processeur");
+        jMenuItemSupportDuProcesseur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSupportDuProcesseurActionPerformed(evt);
+            }
+        });
+        jMenuEdit.add(jMenuItemSupportDuProcesseur);
 
         jMenuBar1.add(jMenuEdit);
 
@@ -540,6 +644,105 @@ public class MainIhm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemMarqueProcesseurActionPerformed
 
+    private void jMenuItemChipsetCpuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemChipsetCpuActionPerformed
+        try {
+            ConfigList configList = new ConfigList(this, true, "Chipset cpu");
+            configList.setVisible(true);
+        } catch (Exception e) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jMenuItemChipsetCpuActionPerformed
+
+    private void jMenuItemFormatCarteMereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFormatCarteMereActionPerformed
+        try {
+            ConfigList configList = new ConfigList(this, true, "Format carte mere");
+            configList.setVisible(true);
+        } catch (Exception e) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jMenuItemFormatCarteMereActionPerformed
+
+    private void jMenuItemMarqueCarteMereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMarqueCarteMereActionPerformed
+        try {
+            ConfigList configList = new ConfigList(this, true, "Marque carte mere");
+            configList.setVisible(true);
+        } catch (Exception e) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jMenuItemMarqueCarteMereActionPerformed
+
+    private void jMenuItemMarqueChipsetGpuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMarqueChipsetGpuActionPerformed
+        try {
+            ConfigList configList = new ConfigList(this, true, "Marque chipset gpu");
+            configList.setVisible(true);
+        } catch (Exception e) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jMenuItemMarqueChipsetGpuActionPerformed
+
+    private void jMenuItemMarqueCarteGraphiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMarqueCarteGraphiqueActionPerformed
+        try {
+            ConfigList configList = new ConfigList(this, true, "Marque gpu");
+            configList.setVisible(true);
+        } catch (Exception e) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jMenuItemMarqueCarteGraphiqueActionPerformed
+
+    private void jMenuItemMarqueHddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMarqueHddActionPerformed
+        try {
+            ConfigList configList = new ConfigList(this, true, "Marque hdd");
+            configList.setVisible(true);
+        } catch (Exception e) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jMenuItemMarqueHddActionPerformed
+
+    private void jMenuItemMarqueRamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMarqueRamActionPerformed
+        try {
+            ConfigList configList = new ConfigList(this, true, "Marque ram");
+            configList.setVisible(true);
+        } catch (Exception e) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jMenuItemMarqueRamActionPerformed
+
+    private void jMenuItemTpeCableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTpeCableActionPerformed
+        try {
+            ConfigList configList = new ConfigList(this, true, "Type cable");
+            configList.setVisible(true);
+        } catch (Exception e) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jMenuItemTpeCableActionPerformed
+
+    private void jMenuItemTypeRamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTypeRamActionPerformed
+        try {
+            ConfigList configList = new ConfigList(this, true, "Type ram");
+            configList.setVisible(true);
+        } catch (Exception e) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jMenuItemTypeRamActionPerformed
+
+    private void jMenuItemTypeSsdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTypeSsdActionPerformed
+        try {
+            ConfigList configList = new ConfigList(this, true, "Type ssd");
+            configList.setVisible(true);
+        } catch (Exception e) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jMenuItemTypeSsdActionPerformed
+
+    private void jMenuItemSupportDuProcesseurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSupportDuProcesseurActionPerformed
+        try {
+            ConfigList configList = new ConfigList(this, true, "Support du processeur");
+            configList.setVisible(true);
+        } catch (Exception e) {
+            Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jMenuItemSupportDuProcesseurActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -586,11 +789,23 @@ public class MainIhm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_hdd;
     private javax.swing.JLabel jLabel_prixTotal;
     private javax.swing.JLabel jLabel_ram;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuEdit;
     private javax.swing.JMenu jMenuFile;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemChipsetCpu;
+    private javax.swing.JMenuItem jMenuItemFormatCarteMere;
+    private javax.swing.JMenuItem jMenuItemMarqueCarteGraphique;
+    private javax.swing.JMenuItem jMenuItemMarqueCarteMere;
+    private javax.swing.JMenuItem jMenuItemMarqueChipsetGpu;
+    private javax.swing.JMenuItem jMenuItemMarqueHdd;
     private javax.swing.JMenuItem jMenuItemMarqueProcesseur;
+    private javax.swing.JMenuItem jMenuItemMarqueRam;
+    private javax.swing.JMenuItem jMenuItemSupportDuProcesseur;
+    private javax.swing.JMenuItem jMenuItemTpeCable;
+    private javax.swing.JMenuItem jMenuItemTypeRam;
+    private javax.swing.JMenuItem jMenuItemTypeSsd;
     private javax.swing.JMenu jMenuMarque;
     // End of variables declaration//GEN-END:variables
 }
