@@ -86,7 +86,7 @@ public class AddHddDlg extends javax.swing.JDialog {
              * Mettre les valeurs pour la modification
              */
             this.jComboBoxTypeMemoire.setSelectedItem(ssd.getType_memoire());
-            if (ssd.isNvme() == true) {
+            if (ssd.isNvme()) {
                 this.jCheckBoxNVME.setSelected(true);
             }
             this.jTextFieldControleur.setText(ssd.getControleur());
