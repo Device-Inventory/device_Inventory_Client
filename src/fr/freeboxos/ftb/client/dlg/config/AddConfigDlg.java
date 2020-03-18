@@ -227,6 +227,7 @@ public class AddConfigDlg extends javax.swing.JDialog {
 
                     this.configMarqueCpu = new ConfigMarqueCpu(marque);
                     configMarqueCpuService.add(configMarqueCpu);
+                    this.configMarqueCpu = null;
                     this.dispose();
                 } catch (RuntimeException ex) {
                     JOptionPane.showMessageDialog(this, "Veuillez entre une autre marque", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -254,6 +255,7 @@ public class AddConfigDlg extends javax.swing.JDialog {
 
                     this.configFormatcarteMere = new ConfigChipsetCpu(chipset);
                     configChipsetCpuService.add(configFormatcarteMere);
+                    this.configFormatcarteMere = null;
                     this.dispose();
                 } catch (RuntimeException ex) {
                     JOptionPane.showMessageDialog(this, "Veuillez entre un autre chipset", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -281,6 +283,7 @@ public class AddConfigDlg extends javax.swing.JDialog {
 
                     this.configFormatCarteMere = new ConfigFormatCarteMere(format);
                     configFormatCarteMereService.add(configFormatCarteMere);
+                    this.configFormatCarteMere = null;
                     this.dispose();
                 } catch (RuntimeException ex) {
                     JOptionPane.showMessageDialog(this, "Veuillez entre un autre format de carte mère", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -308,6 +311,7 @@ public class AddConfigDlg extends javax.swing.JDialog {
 
                     this.configMarqueCarteMere = new ConfigMarqueCarteMere(marque);
                     configMarqueCarteMereService.add(configMarqueCarteMere);
+                    this.configMarqueCarteMere = null;
                     this.dispose();
                 } catch (RuntimeException ex) {
                     JOptionPane.showMessageDialog(this, "Veuillez entre une autre marque", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -335,6 +339,7 @@ public class AddConfigDlg extends javax.swing.JDialog {
 
                     this.configMarqueChipsetGpu = new ConfigMarqueChipsetGpu(marque);
                     configMarqueChipsetGpuService.add(configMarqueChipsetGpu);
+                    this.configMarqueChipsetGpu = null;
                     this.dispose();
                 } catch (RuntimeException ex) {
                     JOptionPane.showMessageDialog(this, "Veuillez entre une autre marque", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -362,6 +367,7 @@ public class AddConfigDlg extends javax.swing.JDialog {
 
                     this.configMarqueGpu = new ConfigMarqueGpu(marque);
                     configMarqueGpuService.add(configMarqueGpu);
+                    this.configMarqueGpu = null;
                     this.dispose();
                 } catch (RuntimeException ex) {
                     JOptionPane.showMessageDialog(this, "Veuillez entre une autre marque", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -389,6 +395,7 @@ public class AddConfigDlg extends javax.swing.JDialog {
 
                     this.configMarqueHdd = new ConfigMarqueHdd(marque);
                     configMarqueHddService.add(configMarqueHdd);
+                    this.configMarqueHdd = null;
                     this.dispose();
                 } catch (RuntimeException ex) {
                     JOptionPane.showMessageDialog(this, "Veuillez entre une autre marque", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -416,6 +423,7 @@ public class AddConfigDlg extends javax.swing.JDialog {
 
                     this.configMarqueRam = new ConfigMarqueRam(marque);
                     configMarqueRamService.add(configMarqueRam);
+                    this.configMarqueRam = null;
                     this.dispose();
                 } catch (RuntimeException ex) {
                     JOptionPane.showMessageDialog(this, "Veuillez entre une autre marque", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -443,6 +451,7 @@ public class AddConfigDlg extends javax.swing.JDialog {
 
                     this.configTypeCable = new ConfigTypeCable(marque);
                     configTypeCableService.add(configTypeCable);
+                    this.configTypeCable = null;
                     this.dispose();
                 } catch (RuntimeException ex) {
                     JOptionPane.showMessageDialog(this, "Veuillez entre un autre type de cable", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -470,6 +479,7 @@ public class AddConfigDlg extends javax.swing.JDialog {
 
                     this.configTypeMemoire = new ConfigTypeMemoire(marque);
                     configTypeMemoireService.add(configTypeMemoire);
+                    this.configTypeMemoire = null;
                     this.dispose();
                 } catch (RuntimeException ex) {
                     JOptionPane.showMessageDialog(this, "Veuillez entre un autre type de memoire", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -496,6 +506,7 @@ public class AddConfigDlg extends javax.swing.JDialog {
 
                     this.configTypeSsd = new ConfigTypeSsd(marque);
                     configTypeSsdService.add(configTypeSsd);
+                    this.configTypeSsd = null;
                     this.dispose();
                 } catch (RuntimeException ex) {
                     JOptionPane.showMessageDialog(this, "Veuillez entre un autre type ssd", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -523,6 +534,7 @@ public class AddConfigDlg extends javax.swing.JDialog {
 
                     this.configSupportDuProcesseur = new ConfigSupportDuProcesseur(marque);
                     configSupportDuProcesseurService.add(configSupportDuProcesseur);
+                    this.configSupportDuProcesseur = null;
                     this.dispose();
                 } catch (RuntimeException ex) {
                     JOptionPane.showMessageDialog(this, "Veuillez entre une autre marque", "Erreur", JOptionPane.ERROR_MESSAGE);
