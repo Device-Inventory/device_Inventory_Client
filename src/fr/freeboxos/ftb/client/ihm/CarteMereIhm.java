@@ -179,6 +179,8 @@ public class CarteMereIhm extends javax.swing.JDialog {
             }
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(this, "Erreur d'ouverture de la fenetre d'ajout d'une carte mère", "Erreur", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            Logger.getLogger(CarteMereIhm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonAddActionPerformed
 
