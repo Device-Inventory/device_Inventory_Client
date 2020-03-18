@@ -82,4 +82,10 @@ public class ConfigMarqueRamServiceImpl extends ClientRest<ConfigMarqueRam> impl
         return super.getEntitys();
     }
 
+    @Override
+    public ConfigMarqueRam getByMarqueRam(String s) throws Exception {
+        super.setPath("marque/" + s);
+        return super.getEntity();
+    }
+
 }

@@ -86,4 +86,10 @@ public class ConfigFormatCarteMereServiceImpl extends ClientRest<ConfigFormatCar
         return super.getEntitys();
     }
 
+    @Override
+    public ConfigFormatCarteMere getByFormatCarteMere(String format) throws Exception {
+        super.setPath("marque/" + format);
+        return super.getEntity();
+    }
+
 }

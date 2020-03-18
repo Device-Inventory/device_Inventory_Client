@@ -82,4 +82,10 @@ public class ConfigMarqueGpuServiceImpl extends ClientRest<ConfigMarqueGpu> impl
         return super.getEntitys();
     }
 
+    @Override
+    public ConfigMarqueGpu getByMarqueGpu(String s) throws Exception {
+        super.setPath("marque/" + s);
+        return super.getEntity();
+    }
+
 }

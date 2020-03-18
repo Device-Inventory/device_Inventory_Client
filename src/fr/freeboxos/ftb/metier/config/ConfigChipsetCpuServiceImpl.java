@@ -82,4 +82,10 @@ public class ConfigChipsetCpuServiceImpl extends ClientRest<ConfigChipsetCpu> im
         return super.getEntitys();
     }
 
+    @Override
+    public ConfigChipsetCpu getByChipset(String chipset) throws Exception {
+        super.setPath("chipset/" + chipset);
+        return super.getEntity();
+    }
+
 }

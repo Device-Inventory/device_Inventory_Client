@@ -88,7 +88,7 @@ public class MainIhm extends javax.swing.JFrame {
         jMenuItemMarqueHdd = new javax.swing.JMenuItem();
         jMenuItemMarqueRam = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItemTpeCable = new javax.swing.JMenuItem();
+        jMenuItemTypeCable = new javax.swing.JMenuItem();
         jMenuItemTypeRam = new javax.swing.JMenuItem();
         jMenuItemTypeSsd = new javax.swing.JMenuItem();
         jMenuItemSupportDuProcesseur = new javax.swing.JMenuItem();
@@ -361,13 +361,13 @@ public class MainIhm extends javax.swing.JFrame {
 
         jMenu1.setText("Type");
 
-        jMenuItemTpeCable.setText("Type de cable");
-        jMenuItemTpeCable.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemTypeCable.setText("Type de cable");
+        jMenuItemTypeCable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemTpeCableActionPerformed(evt);
+                jMenuItemTypeCableActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemTpeCable);
+        jMenu1.add(jMenuItemTypeCable);
 
         jMenuItemTypeRam.setText("Type de mémoire");
         jMenuItemTypeRam.addActionListener(new java.awt.event.ActionListener() {
@@ -707,14 +707,14 @@ public class MainIhm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemMarqueRamActionPerformed
 
-    private void jMenuItemTpeCableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTpeCableActionPerformed
+    private void jMenuItemTypeCableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTypeCableActionPerformed
         try {
             ConfigList configList = new ConfigList(this, true, "Type cable");
             configList.setVisible(true);
         } catch (Exception e) {
             Logger.getLogger(MainIhm.class.getName()).log(Level.SEVERE, null, e);
         }
-    }//GEN-LAST:event_jMenuItemTpeCableActionPerformed
+    }//GEN-LAST:event_jMenuItemTypeCableActionPerformed
 
     private void jMenuItemTypeRamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTypeRamActionPerformed
         try {
@@ -803,7 +803,7 @@ public class MainIhm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemMarqueProcesseur;
     private javax.swing.JMenuItem jMenuItemMarqueRam;
     private javax.swing.JMenuItem jMenuItemSupportDuProcesseur;
-    private javax.swing.JMenuItem jMenuItemTpeCable;
+    private javax.swing.JMenuItem jMenuItemTypeCable;
     private javax.swing.JMenuItem jMenuItemTypeRam;
     private javax.swing.JMenuItem jMenuItemTypeSsd;
     private javax.swing.JMenu jMenuMarque;

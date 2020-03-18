@@ -82,4 +82,10 @@ public class ConfigTypeMemoireServiceImpl extends ClientRest<ConfigTypeMemoire> 
         return super.getEntitys();
     }
 
+    @Override
+    public ConfigTypeMemoire getByTypeMemoire(String s) throws Exception {
+        super.setPath("type/" + s);
+        return super.getEntity();
+    }
+
 }

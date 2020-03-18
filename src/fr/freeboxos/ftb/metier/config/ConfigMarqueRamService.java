@@ -26,4 +26,7 @@ import lml.persistence.CrudService;
 public interface ConfigMarqueRamService extends CrudService<ConfigMarqueRam> {
 
     public ConfigMarqueRam[] sort() throws Exception;
+
+    public ConfigMarqueRam getByMarqueRam(String s) throws Exception;
+
 }

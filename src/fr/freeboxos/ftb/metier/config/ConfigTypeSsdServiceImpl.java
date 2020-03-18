@@ -17,6 +17,7 @@
 package fr.freeboxos.ftb.metier.config;
 
 import fr.freeboxos.ftb.metier.MetierFactory;
+import fr.freeboxos.ftb.metier.RestServerLocalConfiguration;
 import fr.freeboxos.ftb.metier.entitys.config.ConfigTypeSsd;
 import fr.freeboxos.ftb.metier.sort.Sort;
 import fr.freeboxos.ftb.metier.sort.config.ComparatorByIdConfigTypeSsd;
@@ -24,6 +25,10 @@ import java.util.List;
 import lml.rest.client.ClientRest;
 
 public class ConfigTypeSsdServiceImpl extends ClientRest<ConfigTypeSsd> implements ConfigTypeSsdService {
+
+    public ConfigTypeSsdServiceImpl() {
+        super.init("ConfigTypeSsdService", new RestServerLocalConfiguration());
+    }
 
     @Override
     public ConfigTypeSsd[] sort() throws Exception {
@@ -75,6 +80,12 @@ public class ConfigTypeSsdServiceImpl extends ClientRest<ConfigTypeSsd> implemen
     public List<ConfigTypeSsd> getAll(int i, int i1) throws Exception {
         super.setPath("" + i + "/" + i1);
         return super.getEntitys();
+    }
+
+    @Override
+    public ConfigTypeSsd getByTypeSsd(String s) throws Exception {
+        super.setPath("type/" + s);
+        return super.getEntity();
     }
 
 }

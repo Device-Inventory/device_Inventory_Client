@@ -26,4 +26,7 @@ import lml.persistence.CrudService;
 public interface ConfigTypeCableService extends CrudService<ConfigTypeCable> {
 
     public ConfigTypeCable[] sort() throws Exception;
+
+    public ConfigTypeCable getByTypeCable(String s) throws Exception;
+
 }

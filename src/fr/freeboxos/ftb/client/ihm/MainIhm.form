@@ -100,12 +100,12 @@
                 <Property name="text" type="java.lang.String" value="Type"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTpeCable">
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTypeCable">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Type de cable"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemTpeCableActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemTypeCableActionPerformed"/>
                   </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTypeRam">

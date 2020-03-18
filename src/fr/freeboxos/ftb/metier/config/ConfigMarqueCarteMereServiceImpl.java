@@ -27,7 +27,7 @@ import lml.rest.client.ClientRest;
 public class ConfigMarqueCarteMereServiceImpl extends ClientRest<ConfigMarqueCarteMere> implements ConfigMarqueCarteMereService {
 
     public ConfigMarqueCarteMereServiceImpl() {
-        super.init("ConfigMarqueCartemereService", new RestServerLocalConfiguration());
+        super.init("ConfigMarqueCarteMereService", new RestServerLocalConfiguration());
     }
 
     @Override
@@ -80,6 +80,12 @@ public class ConfigMarqueCarteMereServiceImpl extends ClientRest<ConfigMarqueCar
     public List<ConfigMarqueCarteMere> getAll(int i, int i1) throws Exception {
         super.setPath("" + i + "/" + i1);
         return super.getEntitys();
+    }
+
+    @Override
+    public ConfigMarqueCarteMere getByMarqueCarteMere(String s) throws Exception {
+        super.setPath("marque/" + s);
+        return super.getEntity();
     }
 
 }

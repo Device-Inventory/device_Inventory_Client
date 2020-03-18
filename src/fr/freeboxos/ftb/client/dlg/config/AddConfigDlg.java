@@ -17,8 +17,30 @@
 package fr.freeboxos.ftb.client.dlg.config;
 
 import fr.freeboxos.ftb.metier.MetierFactory;
+import fr.freeboxos.ftb.metier.config.ConfigChipsetCpuService;
+import fr.freeboxos.ftb.metier.config.ConfigFormatCarteMereService;
+import fr.freeboxos.ftb.metier.config.ConfigMarqueCarteMereService;
+import fr.freeboxos.ftb.metier.config.ConfigMarqueChipsetGpuService;
 import fr.freeboxos.ftb.metier.config.ConfigMarqueCpuService;
+import fr.freeboxos.ftb.metier.config.ConfigMarqueGpuService;
+import fr.freeboxos.ftb.metier.config.ConfigMarqueHddService;
+import fr.freeboxos.ftb.metier.config.ConfigMarqueRamService;
+import fr.freeboxos.ftb.metier.config.ConfigSupportDuProcesseurService;
+import fr.freeboxos.ftb.metier.config.ConfigTypeCableService;
+import fr.freeboxos.ftb.metier.config.ConfigTypeMemoireService;
+import fr.freeboxos.ftb.metier.config.ConfigTypeSsdService;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigChipsetCpu;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigFormatCarteMere;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueCarteMere;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueChipsetGpu;
 import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueCpu;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueGpu;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueHdd;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueRam;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigSupportDuProcesseur;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigTypeCable;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigTypeMemoire;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigTypeSsd;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.List;
@@ -33,8 +55,30 @@ import javax.swing.JOptionPane;
  */
 public class AddConfigDlg extends javax.swing.JDialog {
 
+    private ConfigChipsetCpu configFormatcarteMere = null;
+    private ConfigFormatCarteMere configFormatCarteMere = null;
+    private ConfigMarqueCarteMere configMarqueCarteMere = null;
+    private ConfigMarqueChipsetGpu configMarqueChipsetGpu = null;
     private ConfigMarqueCpu configMarqueCpu = null;
+    private ConfigMarqueGpu configMarqueGpu = null;
+    private ConfigMarqueHdd configMarqueHdd = null;
+    private ConfigMarqueRam configMarqueRam = null;
+    private ConfigSupportDuProcesseur configSupportDuProcesseur = null;
+    private ConfigTypeCable configTypeCable = null;
+    private ConfigTypeMemoire configTypeMemoire = null;
+    private ConfigTypeSsd configTypeSsd = null;
+    private final ConfigChipsetCpuService configChipsetCpuService;
+    private final ConfigFormatCarteMereService configFormatCarteMereService;
+    private final ConfigMarqueCarteMereService configMarqueCarteMereService;
+    private final ConfigMarqueChipsetGpuService configMarqueChipsetGpuService;
     private final ConfigMarqueCpuService configMarqueCpuService;
+    private final ConfigMarqueGpuService configMarqueGpuService;
+    private final ConfigMarqueHddService configMarqueHddService;
+    private final ConfigMarqueRamService configMarqueRamService;
+    private final ConfigSupportDuProcesseurService configSupportDuProcesseurService;
+    private final ConfigTypeCableService configTypeCableService;
+    private final ConfigTypeMemoireService configTypeMemoireService;
+    private final ConfigTypeSsdService configTypeSsdService;
     private String paramAll;
 
     /**
@@ -47,7 +91,18 @@ public class AddConfigDlg extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        this.configChipsetCpuService = MetierFactory.getConfigChipsetCpuService();
+        this.configFormatCarteMereService = MetierFactory.getConfigFormatCarteMereService();
+        this.configMarqueCarteMereService = MetierFactory.getConfigMarqueCarteMereService();
+        this.configMarqueChipsetGpuService = MetierFactory.getConfigMarqueChipsetGpuService();
         this.configMarqueCpuService = MetierFactory.getConfigMarqueCpuService();
+        this.configMarqueGpuService = MetierFactory.getConfigMarqueGpuService();
+        this.configMarqueHddService = MetierFactory.getConfigMarqueHddService();
+        this.configMarqueRamService = MetierFactory.getConfigMarqueRamService();
+        this.configSupportDuProcesseurService = MetierFactory.getConfigSupportDuProcesseurService();
+        this.configTypeCableService = MetierFactory.getConfigTypeCableService();
+        this.configTypeMemoireService = MetierFactory.getConfigTypeMemoireService();
+        this.configTypeSsdService = MetierFactory.getConfigTypeSsdService();
         this.getRootPane().setDefaultButton(jButtonAdd);
         this.repaint();
         this.pack();
@@ -57,7 +112,18 @@ public class AddConfigDlg extends javax.swing.JDialog {
         super(frame, b);
         initComponents();
         this.setLocationRelativeTo(null);
+        this.configChipsetCpuService = MetierFactory.getConfigChipsetCpuService();
+        this.configFormatCarteMereService = MetierFactory.getConfigFormatCarteMereService();
+        this.configMarqueCarteMereService = MetierFactory.getConfigMarqueCarteMereService();
+        this.configMarqueChipsetGpuService = MetierFactory.getConfigMarqueChipsetGpuService();
         this.configMarqueCpuService = MetierFactory.getConfigMarqueCpuService();
+        this.configMarqueGpuService = MetierFactory.getConfigMarqueGpuService();
+        this.configMarqueHddService = MetierFactory.getConfigMarqueHddService();
+        this.configMarqueRamService = MetierFactory.getConfigMarqueRamService();
+        this.configSupportDuProcesseurService = MetierFactory.getConfigSupportDuProcesseurService();
+        this.configTypeCableService = MetierFactory.getConfigTypeCableService();
+        this.configTypeMemoireService = MetierFactory.getConfigTypeMemoireService();
+        this.configTypeSsdService = MetierFactory.getConfigTypeSsdService();
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
         this.setAllElements(paramAll);
@@ -169,6 +235,303 @@ public class AddConfigDlg extends javax.swing.JDialog {
                     Logger.getLogger(AddConfigDlg.class.getName()).log(Level.SEVERE, null, e);
                 }
                 break;
+
+            case "Chipset cpu":
+                try {
+                    String chipset = this.jTextFieldMarqueProcesseur.getText();
+
+                    List<ConfigChipsetCpu> configChipsetCpus = this.configChipsetCpuService.getAll();
+
+                    if (chipset.isEmpty()) {
+                        throw new Exception("Veuillez remplir un chipset");
+                    }
+
+                    for (int i = 0; i < configChipsetCpus.size(); i++) {
+                        if (chipset.equals(configChipsetCpus.get(i).toString())) {
+                            throw new Exception("Veuillez entrer un autre chipset");
+                        }
+                    }
+
+                    this.configFormatcarteMere = new ConfigChipsetCpu(chipset);
+                    configChipsetCpuService.add(configFormatcarteMere);
+                    this.dispose();
+                } catch (RuntimeException ex) {
+                    JOptionPane.showMessageDialog(this, "Veuillez entre un autre chipset", "Erreur", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                    Logger.getLogger(AddConfigDlg.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+
+            case "Format carte mere":
+                try {
+                    String format = this.jTextFieldMarqueProcesseur.getText();
+
+                    List<ConfigFormatCarteMere> configFormatCarteMeres = this.configFormatCarteMereService.getAll();
+
+                    if (format.isEmpty()) {
+                        throw new Exception("Veuillez remplir un format de carte mère");
+                    }
+
+                    for (int i = 0; i < configFormatCarteMeres.size(); i++) {
+                        if (format.equals(configFormatCarteMeres.get(i).toString())) {
+                            throw new Exception("Veuillez entrer un autre format de carte mère");
+                        }
+                    }
+
+                    this.configFormatCarteMere = new ConfigFormatCarteMere(format);
+                    configFormatCarteMereService.add(configFormatCarteMere);
+                    this.dispose();
+                } catch (RuntimeException ex) {
+                    JOptionPane.showMessageDialog(this, "Veuillez entre un autre format de carte mère", "Erreur", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                    Logger.getLogger(AddConfigDlg.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+
+            case "Marque carte mere":
+                try {
+                    String marque = this.jTextFieldMarqueProcesseur.getText();
+
+                    List<ConfigMarqueCarteMere> configMarqueCarteMeres = this.configMarqueCarteMereService.getAll();
+
+                    if (marque.isEmpty()) {
+                        throw new Exception("Veuillez remplir une marque");
+                    }
+
+                    for (int i = 0; i < configMarqueCarteMeres.size(); i++) {
+                        if (marque.equals(configMarqueCarteMeres.get(i).toString())) {
+                            throw new Exception("Veuillez entrer une autre marque");
+                        }
+                    }
+
+                    this.configMarqueCarteMere = new ConfigMarqueCarteMere(marque);
+                    configMarqueCarteMereService.add(configMarqueCarteMere);
+                    this.dispose();
+                } catch (RuntimeException ex) {
+                    JOptionPane.showMessageDialog(this, "Veuillez entre une autre marque", "Erreur", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                    Logger.getLogger(AddConfigDlg.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+
+            case "Marque chipset gpu":
+                try {
+                    String marque = this.jTextFieldMarqueProcesseur.getText();
+
+                    List<ConfigMarqueChipsetGpu> configMarqueChipsetGpus = this.configMarqueChipsetGpuService.getAll();
+
+                    if (marque.isEmpty()) {
+                        throw new Exception("Veuillez remplir une marque");
+                    }
+
+                    for (int i = 0; i < configMarqueChipsetGpus.size(); i++) {
+                        if (marque.equals(configMarqueChipsetGpus.get(i).toString())) {
+                            throw new Exception("Veuillez entrer une autre marque");
+                        }
+                    }
+
+                    this.configMarqueChipsetGpu = new ConfigMarqueChipsetGpu(marque);
+                    configMarqueChipsetGpuService.add(configMarqueChipsetGpu);
+                    this.dispose();
+                } catch (RuntimeException ex) {
+                    JOptionPane.showMessageDialog(this, "Veuillez entre une autre marque", "Erreur", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                    Logger.getLogger(AddConfigDlg.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+
+            case "Marque gpu":
+                try {
+                    String marque = this.jTextFieldMarqueProcesseur.getText();
+
+                    List<ConfigMarqueGpu> configMarqueGpus = this.configMarqueGpuService.getAll();
+
+                    if (marque.isEmpty()) {
+                        throw new Exception("Veuillez remplir une marque");
+                    }
+
+                    for (int i = 0; i < configMarqueGpus.size(); i++) {
+                        if (marque.equals(configMarqueGpus.get(i).toString())) {
+                            throw new Exception("Veuillez entrer une autre marque");
+                        }
+                    }
+
+                    this.configMarqueGpu = new ConfigMarqueGpu(marque);
+                    configMarqueGpuService.add(configMarqueGpu);
+                    this.dispose();
+                } catch (RuntimeException ex) {
+                    JOptionPane.showMessageDialog(this, "Veuillez entre une autre marque", "Erreur", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                    Logger.getLogger(AddConfigDlg.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+
+            case "Marque hdd":
+                try {
+                    String marque = this.jTextFieldMarqueProcesseur.getText();
+
+                    List<ConfigMarqueHdd> configMarqueHdds = this.configMarqueHddService.getAll();
+
+                    if (marque.isEmpty()) {
+                        throw new Exception("Veuillez remplir une marque");
+                    }
+
+                    for (int i = 0; i < configMarqueHdds.size(); i++) {
+                        if (marque.equals(configMarqueHdds.get(i).toString())) {
+                            throw new Exception("Veuillez entrer une autre marque");
+                        }
+                    }
+
+                    this.configMarqueHdd = new ConfigMarqueHdd(marque);
+                    configMarqueHddService.add(configMarqueHdd);
+                    this.dispose();
+                } catch (RuntimeException ex) {
+                    JOptionPane.showMessageDialog(this, "Veuillez entre une autre marque", "Erreur", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                    Logger.getLogger(AddConfigDlg.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+
+            case "Marque ram":
+                try {
+                    String marque = this.jTextFieldMarqueProcesseur.getText();
+
+                    List<ConfigMarqueRam> configMarqueRams = this.configMarqueRamService.getAll();
+
+                    if (marque.isEmpty()) {
+                        throw new Exception("Veuillez remplir une marque");
+                    }
+
+                    for (int i = 0; i < configMarqueRams.size(); i++) {
+                        if (marque.equals(configMarqueRams.get(i).toString())) {
+                            throw new Exception("Veuillez entrer une autre marque");
+                        }
+                    }
+
+                    this.configMarqueRam = new ConfigMarqueRam(marque);
+                    configMarqueRamService.add(configMarqueRam);
+                    this.dispose();
+                } catch (RuntimeException ex) {
+                    JOptionPane.showMessageDialog(this, "Veuillez entre une autre marque", "Erreur", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                    Logger.getLogger(AddConfigDlg.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+
+            case "Type cable":
+                try {
+                    String marque = this.jTextFieldMarqueProcesseur.getText();
+
+                    List<ConfigTypeCable> configTypeCables = this.configTypeCableService.getAll();
+
+                    if (marque.isEmpty()) {
+                        throw new Exception("Veuillez remplir un type de cable");
+                    }
+
+                    for (int i = 0; i < configTypeCables.size(); i++) {
+                        if (marque.equals(configTypeCables.get(i).toString())) {
+                            throw new Exception("Veuillez entrer un autre type de cable");
+                        }
+                    }
+
+                    this.configTypeCable = new ConfigTypeCable(marque);
+                    configTypeCableService.add(configTypeCable);
+                    this.dispose();
+                } catch (RuntimeException ex) {
+                    JOptionPane.showMessageDialog(this, "Veuillez entre un autre type de cable", "Erreur", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                    Logger.getLogger(AddConfigDlg.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+
+            case "Type ram":
+                try {
+                    String marque = this.jTextFieldMarqueProcesseur.getText();
+
+                    List<ConfigTypeMemoire> configTypeMemoires = this.configTypeMemoireService.getAll();
+
+                    if (marque.isEmpty()) {
+                        throw new Exception("Veuillez remplir un type de memoire");
+                    }
+
+                    for (int i = 0; i < configTypeMemoires.size(); i++) {
+                        if (marque.equals(configTypeMemoires.get(i).toString())) {
+                            throw new Exception("Veuillez entrer un autre type de memoire");
+                        }
+                    }
+
+                    this.configTypeMemoire = new ConfigTypeMemoire(marque);
+                    configTypeMemoireService.add(configTypeMemoire);
+                    this.dispose();
+                } catch (RuntimeException ex) {
+                    JOptionPane.showMessageDialog(this, "Veuillez entre un autre type de memoire", "Erreur", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                    Logger.getLogger(AddConfigDlg.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+            case "Type ssd":
+                try {
+                    String marque = this.jTextFieldMarqueProcesseur.getText();
+
+                    List<ConfigTypeSsd> configTypeSsds = this.configTypeSsdService.getAll();
+
+                    if (marque.isEmpty()) {
+                        throw new Exception("Veuillez remplir un type de ssd");
+                    }
+
+                    for (int i = 0; i < configTypeSsds.size(); i++) {
+                        if (marque.equals(configTypeSsds.get(i).toString())) {
+                            throw new Exception("Veuillez entrer un autre type de ssd");
+                        }
+                    }
+
+                    this.configTypeSsd = new ConfigTypeSsd(marque);
+                    configTypeSsdService.add(configTypeSsd);
+                    this.dispose();
+                } catch (RuntimeException ex) {
+                    JOptionPane.showMessageDialog(this, "Veuillez entre un autre type ssd", "Erreur", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                    Logger.getLogger(AddConfigDlg.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+
+            case "Support du processeur":
+                try {
+                    String marque = this.jTextFieldMarqueProcesseur.getText();
+
+                    List<ConfigSupportDuProcesseur> configSupportDuProcesseurs = this.configSupportDuProcesseurService.getAll();
+
+                    if (marque.isEmpty()) {
+                        throw new Exception("Veuillez remplir un type de memoire");
+                    }
+
+                    for (int i = 0; i < configSupportDuProcesseurs.size(); i++) {
+                        if (marque.equals(configSupportDuProcesseurs.get(i).toString())) {
+                            throw new Exception("Veuillez entrer un autre type de memoire");
+                        }
+                    }
+
+                    this.configSupportDuProcesseur = new ConfigSupportDuProcesseur(marque);
+                    configSupportDuProcesseurService.add(configSupportDuProcesseur);
+                    this.dispose();
+                } catch (RuntimeException ex) {
+                    JOptionPane.showMessageDialog(this, "Veuillez entre une autre marque", "Erreur", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                    Logger.getLogger(AddConfigDlg.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+
         }
 
     }//GEN-LAST:event_jButtonAddActionPerformed
@@ -227,6 +590,50 @@ public class AddConfigDlg extends javax.swing.JDialog {
             case "Marque cpu":
                 this.jLabelTitre.setText("Ajout d'une marque de processeur");
                 break;
+
+            case "Chipset cpu":
+                this.jLabelTitre.setText("Ajout d'un chipset de processeur");
+                break;
+            case "Format carte mere":
+                this.jLabelTitre.setText("Ajout d'un format de carte mère");
+                break;
+
+            case "Marque carte mere":
+                this.jLabelTitre.setText("Ajout d'une marque de carte mère");
+                break;
+
+            case "Marque chipset gpu":
+                this.jLabelTitre.setText("Ajout d'une marque de chipset gpu");
+                break;
+
+            case "Marque gpu":
+                this.jLabelTitre.setText("Ajout d'une marque d'une carte graphique");
+                break;
+
+            case "Marque hdd":
+                this.jLabelTitre.setText("Ajout d'une marque de disque dur");
+                break;
+
+            case "Marque ram":
+                this.jLabelTitre.setText("Ajout d'une marque de barette mémoire");
+                break;
+
+            case "Type cable":
+                this.jLabelTitre.setText("Ajout d'un type de cable");
+                break;
+
+            case "Type ram":
+                this.jLabelTitre.setText("Ajout d'un type de barette mémoire");
+                break;
+
+            case "Type ssd":
+                this.jLabelTitre.setText("Ajout d'un type de ssd");
+                break;
+
+            case "Support du processeur":
+                this.jLabelTitre.setText("Ajout d'un type de support du processeur");
+                break;
+
         }
     }
 }

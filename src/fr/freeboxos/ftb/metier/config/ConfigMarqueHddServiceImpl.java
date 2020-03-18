@@ -82,4 +82,10 @@ public class ConfigMarqueHddServiceImpl extends ClientRest<ConfigMarqueHdd> impl
         return super.getEntitys();
     }
 
+    @Override
+    public ConfigMarqueHdd getByMarqueHdd(String s) throws Exception {
+        super.setPath("marque/" + s);
+        return super.getEntity();
+    }
+
 }

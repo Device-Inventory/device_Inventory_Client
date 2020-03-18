@@ -17,6 +17,7 @@
 package fr.freeboxos.ftb.metier.config;
 
 import fr.freeboxos.ftb.metier.MetierFactory;
+import fr.freeboxos.ftb.metier.RestServerLocalConfiguration;
 import fr.freeboxos.ftb.metier.entitys.config.ConfigSupportDuProcesseur;
 import fr.freeboxos.ftb.metier.sort.Sort;
 import fr.freeboxos.ftb.metier.sort.config.ComparatorByIdConfigSupportDuProcesseur;
@@ -24,6 +25,10 @@ import java.util.List;
 import lml.rest.client.ClientRest;
 
 public class ConfigSupportDuProcesseurServiceImpl extends ClientRest<ConfigSupportDuProcesseur> implements ConfigSupportDuProcesseurService {
+
+    public ConfigSupportDuProcesseurServiceImpl() {
+        super.init("ConfigSupportDuProcesseurService", new RestServerLocalConfiguration());
+    }
 
     @Override
     public ConfigSupportDuProcesseur[] sort() throws Exception {
@@ -75,6 +80,12 @@ public class ConfigSupportDuProcesseurServiceImpl extends ClientRest<ConfigSuppo
     public List<ConfigSupportDuProcesseur> getAll(int i, int i1) throws Exception {
         super.setPath("" + i + "/" + i1);
         return super.getEntitys();
+    }
+
+    @Override
+    public ConfigSupportDuProcesseur getByConfigSupportDuProcesseur(String s) throws Exception {
+        super.setPath("supportduprocesseur/" + s);
+        return super.getEntity();
     }
 
 }

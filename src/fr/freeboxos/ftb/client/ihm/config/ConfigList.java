@@ -147,10 +147,100 @@ public class ConfigList extends javax.swing.JDialog {
                 this.jList1.setModel(defaultListModel);
                 break;
             case "Chipset cpu":
-                this.jLabel1.setText("Liste des chipset cpu");
+                this.jLabel1.setText("Liste des chipsets cpu");
                 this.configChipsetCpus = this.configChipsetCpuService.getAll();
-                configChipsetCpus.forEach((configMarqueCpu) -> {
-                    defaultListModel.addElement(configMarqueCpu.getChipsetCpu());
+                configChipsetCpus.forEach((configChipsetCpu) -> {
+                    defaultListModel.addElement(configChipsetCpu.getChipsetCpu());
+                });
+
+                this.jList1.setModel(defaultListModel);
+                break;
+            case "Format carte mere":
+                this.jLabel1.setText("Liste des formats de carte mère");
+                this.configFormatCarteMeres = this.configFormatCarteMereService.getAll();
+                configFormatCarteMeres.forEach((configFormatCarteMere) -> {
+                    defaultListModel.addElement(configFormatCarteMere.getFormatCarteMere());
+                });
+
+                this.jList1.setModel(defaultListModel);
+                break;
+            case "Marque carte mere":
+                this.jLabel1.setText("Liste des marques de carte mère");
+                this.configMarqueCarteMeres = this.configMarqueCarteMereService.getAll();
+                configMarqueCarteMeres.forEach((configMarqueCarteMere) -> {
+                    defaultListModel.addElement(configMarqueCarteMere.getMarqueCarteMere());
+                });
+
+                this.jList1.setModel(defaultListModel);
+                break;
+            case "Marque chipset gpu":
+                this.jLabel1.setText("Liste des marques de chipset gpu");
+                this.configMarqueChipsetGpus = this.configMarqueChipsetGpuService.getAll();
+                configMarqueChipsetGpus.forEach((configMarqueChipsetGpu) -> {
+                    defaultListModel.addElement(configMarqueChipsetGpu.getMarqueChipsetGpu());
+                });
+
+                this.jList1.setModel(defaultListModel);
+                break;
+            case "Marque gpu":
+                this.jLabel1.setText("Liste des marques de gpu");
+                this.configMarqueGpus = this.configMarqueGpuService.getAll();
+                configMarqueGpus.forEach((configMarqueGpu) -> {
+                    defaultListModel.addElement(configMarqueGpu.getMarqueGpu());
+                });
+
+                this.jList1.setModel(defaultListModel);
+                break;
+            case "Marque hdd":
+                this.jLabel1.setText("Liste des marques de disque dur");
+                this.configMarqueHdds = this.configMarqueHddService.getAll();
+                configMarqueHdds.forEach((configMarqueHdd) -> {
+                    defaultListModel.addElement(configMarqueHdd.getMarqueHdd());
+                });
+
+                this.jList1.setModel(defaultListModel);
+                break;
+            case "Marque ram":
+                this.jLabel1.setText("Liste des marques de barrette de mémoire");
+                this.configMarqueRams = this.configMarqueRamService.getAll();
+                configMarqueRams.forEach((configMarqueRam) -> {
+                    defaultListModel.addElement(configMarqueRam.getMarqueRam());
+                });
+
+                this.jList1.setModel(defaultListModel);
+                break;
+            case "Type cable":
+                this.jLabel1.setText("Liste des types de cable");
+                this.configTypeCables = this.configTypeCableService.getAll();
+                configTypeCables.forEach((configTypeCable) -> {
+                    defaultListModel.addElement(configTypeCable.getTypeCable());
+                });
+
+                this.jList1.setModel(defaultListModel);
+                break;
+            case "Type ram":
+                this.jLabel1.setText("Liste des types de barrette de mémoire");
+                this.configTypeMemoires = this.configTypeMemoireService.getAll();
+                configTypeMemoires.forEach((configTypeRam) -> {
+                    defaultListModel.addElement(configTypeRam.getTypeMemoire());
+                });
+
+                this.jList1.setModel(defaultListModel);
+                break;
+            case "Type ssd":
+                this.jLabel1.setText("Liste des types de ssd");
+                this.configTypeSsds = this.configTypeSsdService.getAll();
+                configTypeSsds.forEach((configTypeSsd) -> {
+                    defaultListModel.addElement(configTypeSsd.getTypeSsd());
+                });
+
+                this.jList1.setModel(defaultListModel);
+                break;
+            case "Support du processeur":
+                this.jLabel1.setText("Liste des supports du processeur");
+                this.configSupportDuProcesseurs = this.configSupportDuProcesseurService.getAll();
+                configSupportDuProcesseurs.forEach((configSupportDuProcesseur) -> {
+                    defaultListModel.addElement(configSupportDuProcesseur.getSupportDuProcesseur());
                 });
 
                 this.jList1.setModel(defaultListModel);
@@ -247,6 +337,116 @@ public class ConfigList extends javax.swing.JDialog {
                 }
                 this.jList1.repaint();
                 break;
+            case "Chipset cpu":
+                AddConfigDlg addConfigChipsetCpuDlg = new AddConfigDlg(frame, true, this.paramAll);
+                addConfigChipsetCpuDlg.setVisible(true);
+                try {
+                    this.setAllElements(this.paramAll);
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                this.jList1.repaint();
+                break;
+            case "Format carte mere":
+                AddConfigDlg addConfigFormatCarteMereDlg = new AddConfigDlg(frame, true, this.paramAll);
+                addConfigFormatCarteMereDlg.setVisible(true);
+                try {
+                    this.setAllElements(this.paramAll);
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                this.jList1.repaint();
+                break;
+            case "Marque carte mere":
+                AddConfigDlg addConfigMarqueCarteMereDlg = new AddConfigDlg(frame, true, this.paramAll);
+                addConfigMarqueCarteMereDlg.setVisible(true);
+                try {
+                    this.setAllElements(this.paramAll);
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                this.jList1.repaint();
+                break;
+            case "Marque chipset gpu":
+                AddConfigDlg addConfigMarqueChipsetGpuDlg = new AddConfigDlg(frame, true, this.paramAll);
+                addConfigMarqueChipsetGpuDlg.setVisible(true);
+                try {
+                    this.setAllElements(this.paramAll);
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                this.jList1.repaint();
+                break;
+            case "Marque gpu":
+                AddConfigDlg addConfigMarqueGpuDlg = new AddConfigDlg(frame, true, this.paramAll);
+                addConfigMarqueGpuDlg.setVisible(true);
+                try {
+                    this.setAllElements(this.paramAll);
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                this.jList1.repaint();
+                break;
+            case "Marque hdd":
+                AddConfigDlg addConfigMarqueHddDlg = new AddConfigDlg(frame, true, this.paramAll);
+                addConfigMarqueHddDlg.setVisible(true);
+                try {
+                    this.setAllElements(this.paramAll);
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                this.jList1.repaint();
+                break;
+            case "Marque ram":
+                AddConfigDlg addConfigMarqueRamDlg = new AddConfigDlg(frame, true, this.paramAll);
+                addConfigMarqueRamDlg.setVisible(true);
+                try {
+                    this.setAllElements(this.paramAll);
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                this.jList1.repaint();
+                break;
+            case "Type cable":
+                AddConfigDlg addConfigTypeCableDlg = new AddConfigDlg(frame, true, this.paramAll);
+                addConfigTypeCableDlg.setVisible(true);
+                try {
+                    this.setAllElements(this.paramAll);
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                this.jList1.repaint();
+                break;
+            case "Type ram":
+                AddConfigDlg addConfigTypeRamDlg = new AddConfigDlg(frame, true, this.paramAll);
+                addConfigTypeRamDlg.setVisible(true);
+                try {
+                    this.setAllElements(this.paramAll);
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                this.jList1.repaint();
+                break;
+            case "Type ssd":
+                AddConfigDlg addConfigTypeSsdDlg = new AddConfigDlg(frame, true, this.paramAll);
+                addConfigTypeSsdDlg.setVisible(true);
+                try {
+                    this.setAllElements(this.paramAll);
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                this.jList1.repaint();
+                break;
+            case "Support du processeur":
+                AddConfigDlg addConfigSupportDuProcesseurDlg = new AddConfigDlg(frame, true, this.paramAll);
+                addConfigSupportDuProcesseurDlg.setVisible(true);
+                try {
+                    this.setAllElements(this.paramAll);
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                this.jList1.repaint();
+                break;
         }
 
     }//GEN-LAST:event_jButtonAddActionPerformed
@@ -274,6 +474,282 @@ public class ConfigList extends javax.swing.JDialog {
                         String marqueTemp = this.jList1.getSelectedValue();
                         configMarqueCpu = configMarqueCpuService.getByMarque(marqueTemp);
                         configMarqueCpuService.remove(configMarqueCpu);
+                    }
+                    this.setAllElements(paramAll);
+                    this.jList1.repaint();
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+
+            case "Chipset cpu":
+                try {
+                    if (this.jList1.getSelectedValue() == null) {
+                        throw new Exception("Veuillez selectionner un élément");
+                    }
+
+                    ConfigChipsetCpu configChipsetCpu;
+                    if (this.jList1.getSelectedValuesList() != null) {
+                        List<String> chipsetTemp = this.jList1.getSelectedValuesList();
+                        for (int i = 0; i < chipsetTemp.size(); i++) {
+                            configChipsetCpu = configChipsetCpuService.getByChipset(chipsetTemp.get(i));
+                            configChipsetCpuService.remove(configChipsetCpu);
+                        }
+                    } else {
+                        String chipsetTemp = this.jList1.getSelectedValue();
+                        configChipsetCpu = configChipsetCpuService.getByChipset(chipsetTemp);
+                        configChipsetCpuService.remove(configChipsetCpu);
+                    }
+                    this.setAllElements(paramAll);
+                    this.jList1.repaint();
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case "Format carte mere":
+                try {
+                    if (this.jList1.getSelectedValue() == null) {
+                        throw new Exception("Veuillez selectionner un élément");
+                    }
+
+                    ConfigFormatCarteMere configFormatCarteMere;
+                    if (this.jList1.getSelectedValuesList() != null) {
+                        List<String> formatTemp = this.jList1.getSelectedValuesList();
+                        for (int i = 0; i < formatTemp.size(); i++) {
+                            configFormatCarteMere = configFormatCarteMereService.getByFormatCarteMere(formatTemp.get(i));
+                            configFormatCarteMereService.remove(configFormatCarteMere);
+                        }
+                    } else {
+                        String formatTemp = this.jList1.getSelectedValue();
+                        configFormatCarteMere = configFormatCarteMereService.getByFormatCarteMere(formatTemp);
+                        configFormatCarteMereService.remove(configFormatCarteMere);
+                    }
+                    this.setAllElements(paramAll);
+                    this.jList1.repaint();
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case "Marque carte mere":
+                try {
+                    if (this.jList1.getSelectedValue() == null) {
+                        throw new Exception("Veuillez selectionner un élément");
+                    }
+
+                    ConfigMarqueCarteMere configMarqueCarteMere;
+                    if (this.jList1.getSelectedValuesList() != null) {
+                        List<String> marqueTemp = this.jList1.getSelectedValuesList();
+                        for (int i = 0; i < marqueTemp.size(); i++) {
+                            configMarqueCarteMere = configMarqueCarteMereService.getByMarqueCarteMere(marqueTemp.get(i));
+                            configMarqueCarteMereService.remove(configMarqueCarteMere);
+                        }
+                    } else {
+                        String marqueTemp = this.jList1.getSelectedValue();
+                        configMarqueCarteMere = configMarqueCarteMereService.getByMarqueCarteMere(marqueTemp);
+                        configMarqueCarteMereService.remove(configMarqueCarteMere);
+                    }
+                    this.setAllElements(paramAll);
+                    this.jList1.repaint();
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case "Marque chipset gpu":
+                try {
+                    if (this.jList1.getSelectedValue() == null) {
+                        throw new Exception("Veuillez selectionner un élément");
+                    }
+
+                    ConfigMarqueChipsetGpu configMarqueChipsetGpu;
+                    if (this.jList1.getSelectedValuesList() != null) {
+                        List<String> marqueTemp = this.jList1.getSelectedValuesList();
+                        for (int i = 0; i < marqueTemp.size(); i++) {
+                            configMarqueChipsetGpu = configMarqueChipsetGpuService.getByMarqueChipsetGpu(marqueTemp.get(i));
+                            configMarqueChipsetGpuService.remove(configMarqueChipsetGpu);
+                        }
+                    } else {
+                        String marqueTemp = this.jList1.getSelectedValue();
+                        configMarqueChipsetGpu = configMarqueChipsetGpuService.getByMarqueChipsetGpu(marqueTemp);
+                        configMarqueChipsetGpuService.remove(configMarqueChipsetGpu);
+                    }
+                    this.setAllElements(paramAll);
+                    this.jList1.repaint();
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case "Marque gpu":
+                try {
+                    if (this.jList1.getSelectedValue() == null) {
+                        throw new Exception("Veuillez selectionner un élément");
+                    }
+
+                    ConfigMarqueGpu configMarqueGpu;
+                    if (this.jList1.getSelectedValuesList() != null) {
+                        List<String> marqueTemp = this.jList1.getSelectedValuesList();
+                        for (int i = 0; i < marqueTemp.size(); i++) {
+                            configMarqueGpu = configMarqueGpuService.getByMarqueGpu(marqueTemp.get(i));
+                            configMarqueGpuService.remove(configMarqueGpu);
+                        }
+                    } else {
+                        String marqueTemp = this.jList1.getSelectedValue();
+                        configMarqueGpu = configMarqueGpuService.getByMarqueGpu(marqueTemp);
+                        configMarqueGpuService.remove(configMarqueGpu);
+                    }
+                    this.setAllElements(paramAll);
+                    this.jList1.repaint();
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case "Marque hdd":
+                try {
+                    if (this.jList1.getSelectedValue() == null) {
+                        throw new Exception("Veuillez selectionner un élément");
+                    }
+
+                    ConfigMarqueHdd configMarqueHdd;
+                    if (this.jList1.getSelectedValuesList() != null) {
+                        List<String> marqueTemp = this.jList1.getSelectedValuesList();
+                        for (int i = 0; i < marqueTemp.size(); i++) {
+                            configMarqueHdd = configMarqueHddService.getByMarqueHdd(marqueTemp.get(i));
+                            configMarqueHddService.remove(configMarqueHdd);
+                        }
+                    } else {
+                        String marqueTemp = this.jList1.getSelectedValue();
+                        configMarqueHdd = configMarqueHddService.getByMarqueHdd(marqueTemp);
+                        configMarqueHddService.remove(configMarqueHdd);
+                    }
+                    this.setAllElements(paramAll);
+                    this.jList1.repaint();
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case "Marque ram":
+                try {
+                    if (this.jList1.getSelectedValue() == null) {
+                        throw new Exception("Veuillez selectionner un élément");
+                    }
+
+                    ConfigMarqueRam configMarqueRam;
+                    if (this.jList1.getSelectedValuesList() != null) {
+                        List<String> marqueTemp = this.jList1.getSelectedValuesList();
+                        for (int i = 0; i < marqueTemp.size(); i++) {
+                            configMarqueRam = configMarqueRamService.getByMarqueRam(marqueTemp.get(i));
+                            configMarqueRamService.remove(configMarqueRam);
+                        }
+                    } else {
+                        String marqueTemp = this.jList1.getSelectedValue();
+                        configMarqueRam = configMarqueRamService.getByMarqueRam(marqueTemp);
+                        configMarqueRamService.remove(configMarqueRam);
+                    }
+                    this.setAllElements(paramAll);
+                    this.jList1.repaint();
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case "Type cable":
+                try {
+                    if (this.jList1.getSelectedValue() == null) {
+                        throw new Exception("Veuillez selectionner un élément");
+                    }
+
+                    ConfigTypeCable configTypeCable;
+                    if (this.jList1.getSelectedValuesList() != null) {
+                        List<String> typeTemp = this.jList1.getSelectedValuesList();
+                        for (int i = 0; i < typeTemp.size(); i++) {
+                            configTypeCable = configTypeCableService.getByTypeCable(typeTemp.get(i));
+                            configTypeCableService.remove(configTypeCable);
+                        }
+                    } else {
+                        String typeTemp = this.jList1.getSelectedValue();
+                        configTypeCable = configTypeCableService.getByTypeCable(typeTemp);
+                        configTypeCableService.remove(configTypeCable);
+                    }
+                    this.setAllElements(paramAll);
+                    this.jList1.repaint();
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case "Type ram":
+                try {
+                    if (this.jList1.getSelectedValue() == null) {
+                        throw new Exception("Veuillez selectionner un élément");
+                    }
+
+                    ConfigTypeMemoire configTypeMemoire;
+                    if (this.jList1.getSelectedValuesList() != null) {
+                        List<String> typeTemp = this.jList1.getSelectedValuesList();
+                        for (int i = 0; i < typeTemp.size(); i++) {
+                            configTypeMemoire = configTypeMemoireService.getByTypeMemoire(typeTemp.get(i));
+                            configTypeMemoireService.remove(configTypeMemoire);
+                        }
+                    } else {
+                        String typeTemp = this.jList1.getSelectedValue();
+                        configTypeMemoire = configTypeMemoireService.getByTypeMemoire(typeTemp);
+                        configTypeMemoireService.remove(configTypeMemoire);
+                    }
+                    this.setAllElements(paramAll);
+                    this.jList1.repaint();
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case "Type ssd":
+                try {
+                    if (this.jList1.getSelectedValue() == null) {
+                        throw new Exception("Veuillez selectionner un élément");
+                    }
+
+                    ConfigTypeSsd configTypeSsd;
+                    if (this.jList1.getSelectedValuesList() != null) {
+                        List<String> typeTemp = this.jList1.getSelectedValuesList();
+                        for (int i = 0; i < typeTemp.size(); i++) {
+                            configTypeSsd = configTypeSsdService.getByTypeSsd(typeTemp.get(i));
+                            configTypeSsdService.remove(configTypeSsd);
+                        }
+                    } else {
+                        String typeTemp = this.jList1.getSelectedValue();
+                        configTypeSsd = configTypeSsdService.getByTypeSsd(typeTemp);
+                        configTypeSsdService.remove(configTypeSsd);
+                    }
+                    this.setAllElements(paramAll);
+                    this.jList1.repaint();
+                } catch (Exception ex) {
+                    Logger.getLogger(ConfigList.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case "Support du processeur":
+                try {
+                    if (this.jList1.getSelectedValue() == null) {
+                        throw new Exception("Veuillez selectionner un élément");
+                    }
+
+                    ConfigSupportDuProcesseur configSupportDuProcesseur;
+                    if (this.jList1.getSelectedValuesList() != null) {
+                        List<String> supportTemp = this.jList1.getSelectedValuesList();
+                        for (int i = 0; i < supportTemp.size(); i++) {
+                            configSupportDuProcesseur = configSupportDuProcesseurService.getByConfigSupportDuProcesseur(supportTemp.get(i));
+                            configSupportDuProcesseurService.remove(configSupportDuProcesseur);
+                        }
+                    } else {
+                        String supportTemp = this.jList1.getSelectedValue();
+                        configSupportDuProcesseur = configSupportDuProcesseurService.getByConfigSupportDuProcesseur(supportTemp);
+                        configSupportDuProcesseurService.remove(configSupportDuProcesseur);
                     }
                     this.setAllElements(paramAll);
                     this.jList1.repaint();

@@ -27,7 +27,7 @@ import lml.rest.client.ClientRest;
 public class ConfigTypeCableServiceImpl extends ClientRest<ConfigTypeCable> implements ConfigTypeCableService {
 
     public ConfigTypeCableServiceImpl() {
-        super.init("ConfigMarqueCpuService", new RestServerLocalConfiguration());
+        super.init("ConfigTypeCableService", new RestServerLocalConfiguration());
     }
 
     @Override
@@ -80,6 +80,12 @@ public class ConfigTypeCableServiceImpl extends ClientRest<ConfigTypeCable> impl
     public List<ConfigTypeCable> getAll(int i, int i1) throws Exception {
         super.setPath("" + i + "/" + i1);
         return super.getEntitys();
+    }
+
+    @Override
+    public ConfigTypeCable getByTypeCable(String s) throws Exception {
+        super.setPath("type/" + s);
+        return super.getEntity();
     }
 
 }
