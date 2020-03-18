@@ -55,18 +55,18 @@ import javax.swing.JOptionPane;
  */
 public class AddConfigDlg extends javax.swing.JDialog {
 
-    private ConfigChipsetCpu configFormatcarteMere = null;
-    private ConfigFormatCarteMere configFormatCarteMere = null;
-    private ConfigMarqueCarteMere configMarqueCarteMere = null;
-    private ConfigMarqueChipsetGpu configMarqueChipsetGpu = null;
-    private ConfigMarqueCpu configMarqueCpu = null;
-    private ConfigMarqueGpu configMarqueGpu = null;
-    private ConfigMarqueHdd configMarqueHdd = null;
-    private ConfigMarqueRam configMarqueRam = null;
-    private ConfigSupportDuProcesseur configSupportDuProcesseur = null;
-    private ConfigTypeCable configTypeCable = null;
-    private ConfigTypeMemoire configTypeMemoire = null;
-    private ConfigTypeSsd configTypeSsd = null;
+    private ConfigChipsetCpu configFormatcarteMere;
+    private ConfigFormatCarteMere configFormatCarteMere;
+    private ConfigMarqueCarteMere configMarqueCarteMere;
+    private ConfigMarqueChipsetGpu configMarqueChipsetGpu;
+    private ConfigMarqueCpu configMarqueCpu;
+    private ConfigMarqueGpu configMarqueGpu;
+    private ConfigMarqueHdd configMarqueHdd;
+    private ConfigMarqueRam configMarqueRam;
+    private ConfigSupportDuProcesseur configSupportDuProcesseur;
+    private ConfigTypeCable configTypeCable;
+    private ConfigTypeMemoire configTypeMemoire;
+    private ConfigTypeSsd configTypeSsd;
     private final ConfigChipsetCpuService configChipsetCpuService;
     private final ConfigFormatCarteMereService configFormatCarteMereService;
     private final ConfigMarqueCarteMereService configMarqueCarteMereService;
