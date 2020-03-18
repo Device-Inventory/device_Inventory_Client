@@ -93,7 +93,7 @@ public class AddHddDlg extends javax.swing.JDialog {
             this.jTextFieldLecture.setText(ssd.getLecture());
             this.jTextFieldEcriture.setText(ssd.getEcriture());
             this.jTextFieldIOPS.setText(String.valueOf(ssd.getIops()));
-            if (ssd.isTrim() == true) {
+            if (ssd.isTrim()) {
                 this.jCheckBoxTrim.setSelected(true);
             }
         }
@@ -498,15 +498,6 @@ public class AddHddDlg extends javax.swing.JDialog {
                 }
 
                 this.hdd = new SSD(type_memoire, nvme, controleur, lecture, ecriture, iops, trim, marque, modele, interface_ordinateur, format, capacite, vitesse_de_rotation, cache, prix);
-//
-//                SSD ssd = (SSD) this.hdd;
-//                ssd.setControleur(controleur);
-//                ssd.setEcriture(ecriture);
-//                ssd.setIops(iops);
-//                ssd.setLecture(lecture);
-//                ssd.setNvme(nvme);
-//                ssd.setTrim(trim);
-//                ssd.setType_memoire(type_memoire);
             } else {
                 this.hdd = new HDD(marque, modele, interface_ordinateur, format, capacite, vitesse_de_rotation, cache, prix);
             }
