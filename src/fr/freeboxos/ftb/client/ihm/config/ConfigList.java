@@ -146,6 +146,7 @@ public class ConfigList extends javax.swing.JDialog {
 
                 this.jList1.setModel(defaultListModel);
                 break;
+
             case "Chipset cpu":
                 this.jLabel1.setText("Liste des chipsets cpu");
                 this.configChipsetCpus = this.configChipsetCpuService.getAll();
@@ -155,6 +156,7 @@ public class ConfigList extends javax.swing.JDialog {
 
                 this.jList1.setModel(defaultListModel);
                 break;
+
             case "Format carte mere":
                 this.jLabel1.setText("Liste des formats de carte mère");
                 this.configFormatCarteMeres = this.configFormatCarteMereService.getAll();
@@ -164,6 +166,7 @@ public class ConfigList extends javax.swing.JDialog {
 
                 this.jList1.setModel(defaultListModel);
                 break;
+
             case "Marque carte mere":
                 this.jLabel1.setText("Liste des marques de carte mère");
                 this.configMarqueCarteMeres = this.configMarqueCarteMereService.getAll();
@@ -173,6 +176,7 @@ public class ConfigList extends javax.swing.JDialog {
 
                 this.jList1.setModel(defaultListModel);
                 break;
+
             case "Marque chipset gpu":
                 this.jLabel1.setText("Liste des marques de chipset gpu");
                 this.configMarqueChipsetGpus = this.configMarqueChipsetGpuService.getAll();
@@ -182,6 +186,7 @@ public class ConfigList extends javax.swing.JDialog {
 
                 this.jList1.setModel(defaultListModel);
                 break;
+
             case "Marque gpu":
                 this.jLabel1.setText("Liste des marques de gpu");
                 this.configMarqueGpus = this.configMarqueGpuService.getAll();
@@ -191,6 +196,7 @@ public class ConfigList extends javax.swing.JDialog {
 
                 this.jList1.setModel(defaultListModel);
                 break;
+
             case "Marque hdd":
                 this.jLabel1.setText("Liste des marques de disque dur");
                 this.configMarqueHdds = this.configMarqueHddService.getAll();
@@ -200,6 +206,7 @@ public class ConfigList extends javax.swing.JDialog {
 
                 this.jList1.setModel(defaultListModel);
                 break;
+
             case "Marque ram":
                 this.jLabel1.setText("Liste des marques de barrette de mémoire");
                 this.configMarqueRams = this.configMarqueRamService.getAll();
@@ -209,6 +216,7 @@ public class ConfigList extends javax.swing.JDialog {
 
                 this.jList1.setModel(defaultListModel);
                 break;
+
             case "Type cable":
                 this.jLabel1.setText("Liste des types de cable");
                 this.configTypeCables = this.configTypeCableService.getAll();
@@ -218,6 +226,7 @@ public class ConfigList extends javax.swing.JDialog {
 
                 this.jList1.setModel(defaultListModel);
                 break;
+
             case "Type ram":
                 this.jLabel1.setText("Liste des types de barrette de mémoire");
                 this.configTypeMemoires = this.configTypeMemoireService.getAll();
@@ -227,6 +236,7 @@ public class ConfigList extends javax.swing.JDialog {
 
                 this.jList1.setModel(defaultListModel);
                 break;
+
             case "Type ssd":
                 this.jLabel1.setText("Liste des types de ssd");
                 this.configTypeSsds = this.configTypeSsdService.getAll();
@@ -236,6 +246,7 @@ public class ConfigList extends javax.swing.JDialog {
 
                 this.jList1.setModel(defaultListModel);
                 break;
+
             case "Support du processeur":
                 this.jLabel1.setText("Liste des supports du processeur");
                 this.configSupportDuProcesseurs = this.configSupportDuProcesseurService.getAll();
@@ -245,6 +256,7 @@ public class ConfigList extends javax.swing.JDialog {
 
                 this.jList1.setModel(defaultListModel);
                 break;
+
         }
     }
 
@@ -337,6 +349,7 @@ public class ConfigList extends javax.swing.JDialog {
                 }
                 this.jList1.repaint();
                 break;
+
             case "Chipset cpu":
                 AddConfigDlg addConfigChipsetCpuDlg = new AddConfigDlg(frame, true, this.paramAll);
                 addConfigChipsetCpuDlg.setVisible(true);
@@ -347,6 +360,7 @@ public class ConfigList extends javax.swing.JDialog {
                 }
                 this.jList1.repaint();
                 break;
+
             case "Format carte mere":
                 AddConfigDlg addConfigFormatCarteMereDlg = new AddConfigDlg(frame, true, this.paramAll);
                 addConfigFormatCarteMereDlg.setVisible(true);
@@ -357,6 +371,7 @@ public class ConfigList extends javax.swing.JDialog {
                 }
                 this.jList1.repaint();
                 break;
+
             case "Marque carte mere":
                 AddConfigDlg addConfigMarqueCarteMereDlg = new AddConfigDlg(frame, true, this.paramAll);
                 addConfigMarqueCarteMereDlg.setVisible(true);
@@ -367,6 +382,7 @@ public class ConfigList extends javax.swing.JDialog {
                 }
                 this.jList1.repaint();
                 break;
+
             case "Marque chipset gpu":
                 AddConfigDlg addConfigMarqueChipsetGpuDlg = new AddConfigDlg(frame, true, this.paramAll);
                 addConfigMarqueChipsetGpuDlg.setVisible(true);
@@ -377,6 +393,7 @@ public class ConfigList extends javax.swing.JDialog {
                 }
                 this.jList1.repaint();
                 break;
+
             case "Marque gpu":
                 AddConfigDlg addConfigMarqueGpuDlg = new AddConfigDlg(frame, true, this.paramAll);
                 addConfigMarqueGpuDlg.setVisible(true);
@@ -387,6 +404,7 @@ public class ConfigList extends javax.swing.JDialog {
                 }
                 this.jList1.repaint();
                 break;
+
             case "Marque hdd":
                 AddConfigDlg addConfigMarqueHddDlg = new AddConfigDlg(frame, true, this.paramAll);
                 addConfigMarqueHddDlg.setVisible(true);
@@ -397,6 +415,7 @@ public class ConfigList extends javax.swing.JDialog {
                 }
                 this.jList1.repaint();
                 break;
+
             case "Marque ram":
                 AddConfigDlg addConfigMarqueRamDlg = new AddConfigDlg(frame, true, this.paramAll);
                 addConfigMarqueRamDlg.setVisible(true);
@@ -407,6 +426,7 @@ public class ConfigList extends javax.swing.JDialog {
                 }
                 this.jList1.repaint();
                 break;
+
             case "Type cable":
                 AddConfigDlg addConfigTypeCableDlg = new AddConfigDlg(frame, true, this.paramAll);
                 addConfigTypeCableDlg.setVisible(true);
@@ -417,6 +437,7 @@ public class ConfigList extends javax.swing.JDialog {
                 }
                 this.jList1.repaint();
                 break;
+
             case "Type ram":
                 AddConfigDlg addConfigTypeRamDlg = new AddConfigDlg(frame, true, this.paramAll);
                 addConfigTypeRamDlg.setVisible(true);
@@ -427,6 +448,7 @@ public class ConfigList extends javax.swing.JDialog {
                 }
                 this.jList1.repaint();
                 break;
+
             case "Type ssd":
                 AddConfigDlg addConfigTypeSsdDlg = new AddConfigDlg(frame, true, this.paramAll);
                 addConfigTypeSsdDlg.setVisible(true);
@@ -437,6 +459,7 @@ public class ConfigList extends javax.swing.JDialog {
                 }
                 this.jList1.repaint();
                 break;
+
             case "Support du processeur":
                 AddConfigDlg addConfigSupportDuProcesseurDlg = new AddConfigDlg(frame, true, this.paramAll);
                 addConfigSupportDuProcesseurDlg.setVisible(true);

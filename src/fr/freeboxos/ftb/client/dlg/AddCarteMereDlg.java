@@ -313,6 +313,15 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jLabelModele, gridBagConstraints);
+
+        jTextFieldModele.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldModeleKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldModeleKeyReleased(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -325,6 +334,8 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jLabelDesignation, gridBagConstraints);
+
+        jTextFieldDesignation.setEditable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
@@ -677,6 +688,12 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
 
         jScrollPane2.setPreferredSize(new java.awt.Dimension(60, 50));
 
+        jListMarque.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jListMarque.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListMarqueValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(jListMarque);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -805,6 +822,24 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         this.carteMere.setId(id);
         dispose();
     }//GEN-LAST:event_jButtonOkActionPerformed
+
+    private void jListMarqueValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListMarqueValueChanged
+        String marqueTemp = this.jListMarque.getSelectedValue();
+        this.jTextFieldDesignation.setText(marqueTemp + " " + this.jTextFieldModele.getText());
+    }//GEN-LAST:event_jListMarqueValueChanged
+
+    private void jTextFieldModeleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldModeleKeyPressed
+
+    }//GEN-LAST:event_jTextFieldModeleKeyPressed
+
+    private void jTextFieldModeleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldModeleKeyReleased
+        String modeleTemp = this.jTextFieldModele.getText();
+        if (this.jListMarque.getSelectedIndex() == -1) {
+            this.jTextFieldDesignation.setText(modeleTemp);
+        } else {
+            this.jTextFieldDesignation.setText(this.jListMarque.getSelectedValue() + " " + modeleTemp);
+        }
+    }//GEN-LAST:event_jTextFieldModeleKeyReleased
 
     /**
      * @param args the command line arguments
