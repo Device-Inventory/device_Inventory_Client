@@ -19,7 +19,10 @@ package fr.freeboxos.ftb.client.dlg;
 import com.bulenkov.darcula.DarculaLaf;
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.entitys.CarteMere;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigChipsetCpu;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigFormatCarteMere;
 import fr.freeboxos.ftb.metier.entitys.config.ConfigMarqueCarteMere;
+import fr.freeboxos.ftb.metier.entitys.config.ConfigSupportDuProcesseur;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.List;
@@ -110,14 +113,39 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
      * @throws Exception
      */
     private void setAllList() throws Exception {
-        DefaultListModel<String> defaultListModel = new DefaultListModel<>();
+        DefaultListModel<String> modelMarqueCarteMere = new DefaultListModel<>();
 
         List<ConfigMarqueCarteMere> configMarqueCarteMeres = MetierFactory.getConfigMarqueCarteMereService().getAll();
         configMarqueCarteMeres.forEach((configMarqueCarteMere) -> {
-            defaultListModel.addElement(configMarqueCarteMere.getMarqueCarteMere());
+            modelMarqueCarteMere.addElement(configMarqueCarteMere.getMarqueCarteMere());
         });
-        this.jListMarque.setModel(defaultListModel);
-        //todo : faire le set de toutes les listes.
+        this.jListMarque.setModel(modelMarqueCarteMere);
+
+        DefaultListModel<String> modelSupportDuProcesseur = new DefaultListModel<>();
+
+        List<ConfigSupportDuProcesseur> configSupportDuProcesseurs = MetierFactory.getConfigSupportDuProcesseurService().getAll();
+        configSupportDuProcesseurs.forEach((configSupportDuProcesseur) -> {
+            modelSupportDuProcesseur.addElement(configSupportDuProcesseur.getSupportDuProcesseur());
+        });
+        this.jListSupportDuProcesseur.setModel(modelSupportDuProcesseur);
+
+        DefaultListModel<String> modelFormatCarteMere = new DefaultListModel<>();
+
+        List<ConfigFormatCarteMere> configFormatCarteMeres = MetierFactory.getConfigFormatCarteMereService().getAll();
+        configFormatCarteMeres.forEach((configFormatCarteMere) -> {
+            modelFormatCarteMere.addElement(configFormatCarteMere.getFormatCarteMere());
+        });
+        this.jListFormatCarteMere.setModel(modelFormatCarteMere);
+
+        DefaultListModel<String> modelChipset = new DefaultListModel<>();
+
+        List<ConfigChipsetCpu> configChipsetCpus = MetierFactory.getConfigChipsetCpuService().getAll();
+        configChipsetCpus.forEach((configChipsetCpu) -> {
+            modelChipset.addElement(configChipsetCpu.getChipsetCpu());
+        });
+        this.jListChipset.setModel(modelChipset);
+
+//todo : faire le set de toutes les listes.
     }
 
     /**
@@ -126,7 +154,6 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
     private void setAllElements(CarteMere carteMere) throws Exception {
         this.jTextFieldModele.setText(carteMere.getModele());
         this.jTextFieldDesignation.setText(carteMere.getDesignation());
-//        this.jTextFieldSupportDuProcesseur.setText(carteMere.getSupportDuProcesseur());
         this.jSpinnerNombreDeCpu.setValue(carteMere.getNombreDeCpu());
         //todo : jcombobox format de la carte mère
         //todo : jcombobox chipset
