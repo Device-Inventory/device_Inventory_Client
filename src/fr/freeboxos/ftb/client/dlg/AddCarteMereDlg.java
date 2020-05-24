@@ -203,8 +203,6 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabelTitre = new javax.swing.JLabel();
         jLabelMarque = new javax.swing.JLabel();
-        jButtonOk = new javax.swing.JButton();
-        jButtonAnnuler = new javax.swing.JButton();
         jLabelModele = new javax.swing.JLabel();
         jTextFieldModele = new javax.swing.JTextField();
         jLabelDesignation = new javax.swing.JLabel();
@@ -287,12 +285,15 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         jScrollPane15 = new javax.swing.JScrollPane();
         jListModeRaid = new javax.swing.JList<>();
         jSpinnerPrix = new javax.swing.JSpinner();
+        jPanel2 = new javax.swing.JPanel();
+        jButtonAnnuler = new javax.swing.JButton();
+        jButtonOk = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
         jPanel1Layout.columnWidths = new int[] {0, 5, 0, 5, 0, 5, 0};
-        jPanel1Layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
+        jPanel1Layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
         jPanel1.setLayout(jPanel1Layout);
 
         jLabelTitre.setText("jLabel1");
@@ -308,30 +309,6 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel1.add(jLabelMarque, gridBagConstraints);
-
-        jButtonOk.setText("Ok");
-        jButtonOk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonOkActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 68;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel1.add(jButtonOk, gridBagConstraints);
-
-        jButtonAnnuler.setText("Annuler");
-        jButtonAnnuler.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAnnulerActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 68;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        jPanel1.add(jButtonAnnuler, gridBagConstraints);
 
         jLabelModele.setText("Modèle");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -857,6 +834,24 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
+        jButtonAnnuler.setText("Annuler");
+        jButtonAnnuler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnnulerActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonAnnuler);
+
+        jButtonOk.setText("Ok");
+        jButtonOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOkActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonOk);
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_END);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1037,6 +1032,7 @@ public class AddCarteMereDlg extends javax.swing.JDialog {
     private javax.swing.JList<String> jListTypeMultiGpu;
     private javax.swing.JList<String> jListTypeRam;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;

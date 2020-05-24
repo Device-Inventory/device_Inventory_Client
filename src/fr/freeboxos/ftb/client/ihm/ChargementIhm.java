@@ -66,6 +66,7 @@ public class ChargementIhm extends javax.swing.JFrame {
         jProgressBar1 = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setType(java.awt.Window.Type.UTILITY);
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
         layout.columnWidths = new int[] {0};
         layout.rowHeights = new int[] {0, 5, 0};
@@ -79,7 +80,6 @@ public class ChargementIhm extends javax.swing.JFrame {
         getContentPane().add(jLabel1, gridBagConstraints);
 
         jProgressBar1.setIndeterminate(true);
-        jProgressBar1.setInheritsPopupMenu(true);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;

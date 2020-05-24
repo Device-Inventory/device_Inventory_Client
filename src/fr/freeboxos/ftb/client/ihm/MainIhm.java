@@ -10,6 +10,7 @@ import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.entitys.Autre;
 import fr.freeboxos.ftb.metier.entitys.Cable;
 import fr.freeboxos.ftb.metier.entitys.CarteGraphique;
+import fr.freeboxos.ftb.metier.entitys.CarteMere;
 import fr.freeboxos.ftb.metier.entitys.HDD;
 import fr.freeboxos.ftb.metier.entitys.Memoire;
 import fr.freeboxos.ftb.metier.entitys.Processeur;
@@ -412,6 +413,7 @@ public class MainIhm extends javax.swing.JFrame {
         List<Memoire> memoires = MetierFactory.getMemoireService().getAll();
         List<HDD> hdds = MetierFactory.getHddService().getAll();
         List<CarteGraphique> carteGraphiques = MetierFactory.getCarteGraphiqueService().getAll();
+        List<CarteMere> carteMeres = MetierFactory.getCarteMereService().getAll();
 
         Processeur processeur;
         Memoire memoire;
@@ -436,6 +438,10 @@ public class MainIhm extends javax.swing.JFrame {
         for (int i = 0; i < carteGraphiques.size(); i++) {
             carteGraphique = carteGraphiques.get(i);
             prix = prix + carteGraphique.getPrix();
+        }
+
+        for (CarteMere carteMere : carteMeres) {
+            prix = prix + carteMere.getPrix();
         }
         return prix;
     }

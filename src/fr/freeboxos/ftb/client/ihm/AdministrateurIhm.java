@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -41,6 +42,7 @@ public class AdministrateurIhm extends javax.swing.JDialog {
         this.jTable1.setModel(model);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
+        setSizeColumn();
         this.repaint();
         this.pack();
     }
@@ -203,8 +205,11 @@ public class AdministrateurIhm extends javax.swing.JDialog {
             try {
                 this.administrateurService.add(administrateur);
                 this.model.update(this.administrateurService.sort());
+            } catch (RuntimeException se) {
+                JOptionPane.showMessageDialog(this, "L'utilisateur existe deja", "Erreur", JOptionPane.ERROR_MESSAGE);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Erreur pendant l'ajout de l'utilisateur", "Erreur", JOptionPane.ERROR_MESSAGE);
+                Logger.getLogger(AdministrateurIhm.class.getName()).log(Level.SEVERE, null, e);
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -295,4 +300,11 @@ public class AdministrateurIhm extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void setSizeColumn() {
+        TableColumnModel columnModel = this.jTable1.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(150);
+        columnModel.getColumn(1).setPreferredWidth(500);
+        this.jTable1.setAutoResizeMode(0);
+    }
 }

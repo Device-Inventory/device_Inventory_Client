@@ -7,18 +7,14 @@ package fr.freeboxos.ftb.client.ihm;
 
 import com.bulenkov.darcula.DarculaLaf;
 import fr.freeboxos.ftb.client.observable.Chargement;
-import fr.freeboxos.ftb.client.observable.Data;
 import fr.freeboxos.ftb.metier.MetierFactory;
 import fr.freeboxos.ftb.metier.entitys.Administrateur;
+import fr.freeboxos.ftb.physique.io.PropertiesFile;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -29,18 +25,23 @@ import javax.swing.JOptionPane;
  */
 public class LoginIhm extends javax.swing.JFrame implements Observer {
 
+    private final PropertiesFile propertiesFile;
+
     /**
      * Creates new form Login
      *
      * @throws java.io.IOException
+     * @throws java.lang.InterruptedException
      */
-    public LoginIhm() throws IOException {
+    public LoginIhm() throws IOException, InterruptedException {
+        this.propertiesFile = new PropertiesFile();
         initComponents();
         this.setLocationRelativeTo(null);
         this.getRootPane().setDefaultButton(jButton1);
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
         this.setIconImage(icone);
-        this.jTextField2.setText(getUrl());
+        this.propertiesFile.createFile();
+        this.jTextField2.setText(this.propertiesFile.getUrl());
         this.repaint();
         this.pack();
     }
@@ -64,9 +65,10 @@ public class LoginIhm extends javax.swing.JFrame implements Observer {
         jButton2 = new javax.swing.JButton();
         jLabelUrl = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(483, 162));
+        setResizable(false);
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
         layout.columnWidths = new int[] {0, 5, 0, 5, 0};
         layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0};
@@ -76,7 +78,7 @@ public class LoginIhm extends javax.swing.JFrame implements Observer {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridwidth = 3;
         getContentPane().add(jLabel1, gridBagConstraints);
 
         jLabel2.setText("Nom d'utilisateur");
@@ -88,7 +90,6 @@ public class LoginIhm extends javax.swing.JFrame implements Observer {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 269;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(jTextField1, gridBagConstraints);
@@ -110,13 +111,11 @@ public class LoginIhm extends javax.swing.JFrame implements Observer {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         getContentPane().add(jButton1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 269;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(jPasswordField1, gridBagConstraints);
@@ -128,7 +127,7 @@ public class LoginIhm extends javax.swing.JFrame implements Observer {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         getContentPane().add(jButton2, gridBagConstraints);
@@ -139,27 +138,23 @@ public class LoginIhm extends javax.swing.JFrame implements Observer {
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         getContentPane().add(jLabelUrl, gridBagConstraints);
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         getContentPane().add(jTextField2, gridBagConstraints);
 
-        jButton3.setText("Enregistrer");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 6;
-        getContentPane().add(jButton3, gridBagConstraints);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.propertiesFile.setUrl(this.jTextField2.getText());
         Chargement chargement = new Chargement();
         chargement.addObserver(this);
         try {
@@ -167,67 +162,77 @@ public class LoginIhm extends javax.swing.JFrame implements Observer {
         } catch (InterruptedException ex) {
             Logger.getLogger(LoginIhm.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try {
-            setUrl();
-        } catch (IOException ex) {
-            Logger.getLogger(LoginIhm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        this.propertiesFile.setUrl(this.jTextField2.getText());
+    }//GEN-LAST:event_jTextField2KeyPressed
 
-    private void setUrl() throws IOException {
-        FileInputStream in = null;
-        String resultat = null;
-        try {
-            Properties prop = new Properties();
-            in = new FileInputStream("server.properties");
-            OutputStream outputStream = new FileOutputStream("server.properties");
-            prop.load(in);
-            in.close();
-            prop.setProperty("server.url", this.jTextField2.getText());
-            prop.store(outputStream, "");
-        } catch (IOException e) {
-            System.err.println(e.getMessage() + "\nusing default url : " + resultat);
-        } finally {
-            try {
-                if (in != null) {
-                    in.close();
-                }
-            } catch (IOException e) {
-                System.err.println(e.getMessage());
-            }
-        }
-    }
-
-    private String getUrl() throws IOException {
-        FileInputStream in = null;
-        String resultat = null;
-        try {
-            Properties prop = new Properties();
-            in = new FileInputStream("server.properties");
-            prop.load(in);
-            in.close();
-            resultat = prop.getProperty("server.url");
-        } catch (IOException e) {
-            System.err.println(e.getMessage() + "\nusing default url : " + resultat);
-        } finally {
-            try {
-                if (in != null) {
-                    in.close();
-                }
-            } catch (IOException e) {
-                System.err.println(e.getMessage());
-            }
-        }
-        return resultat;
-    }
-
+//    private void createFile() throws IOException {
+//        File file = new File("server.properties");
+//        if (file.createNewFile()) {
+//            System.out.println("server.properties File created in project root directory");
+//            String fileData = "server.url=http://127.0.0.1:9999";
+//            try (FileOutputStream fos = new FileOutputStream(file)) {
+//                fos.write(fileData.getBytes());
+//                fos.flush();
+//            }
+//        } else {
+//            System.out.println("File file.txt already exists in the project root directory");
+//        }
+//    }
+//
+//    private void setUrl() throws IOException {
+//        FileInputStream in = null;
+//        String resultat = null;
+//        try {
+//            Properties prop = new Properties();
+//            in = new FileInputStream("server.properties");
+//            OutputStream outputStream = new FileOutputStream("server.properties");
+//            prop.load(in);
+//            in.close();
+//            prop.setProperty("server.url", this.jTextField2.getText());
+//            prop.store(outputStream, "");
+//        } catch (IOException e) {
+//            System.err.println(e.getMessage() + "\nusing default url : " + resultat);
+//        } finally {
+//            try {
+//                if (in != null) {
+//                    in.close();
+//                }
+//            } catch (IOException e) {
+//                System.err.println(e.getMessage());
+//            }
+//        }
+//    }
+//
+//    private String getUrl() throws IOException {
+//        FileInputStream in = null;
+//        String resultat = null;
+//        try {
+//            Properties prop = new Properties();
+//            in = new FileInputStream("server.properties");
+//            prop.load(in);
+//            in.close();
+//            resultat = prop.getProperty("server.url");
+//        } catch (IOException e) {
+//            System.err.println(e.getMessage() + "\nusing default url : " + resultat);
+//        } finally {
+//            try {
+//                if (in != null) {
+//                    in.close();
+//                }
+//            } catch (IOException e) {
+//                System.err.println(e.getMessage());
+//            }
+//        }
+//        return resultat;
+//    }
     /**
      * @param args the command line arguments
      */
@@ -255,7 +260,7 @@ public class LoginIhm extends javax.swing.JFrame implements Observer {
             public void run() {
                 try {
                     new LoginIhm().setVisible(true);
-                } catch (IOException ex) {
+                } catch (IOException | InterruptedException ex) {
                     Logger.getLogger(LoginIhm.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -265,7 +270,6 @@ public class LoginIhm extends javax.swing.JFrame implements Observer {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -277,35 +281,28 @@ public class LoginIhm extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg != null) {
-            if (arg instanceof Data) {
-                Data data = (Data) arg;
-                String login = this.jTextField1.getText();
+        String login = this.jTextField1.getText();
+        try {
+            Administrateur administrateur = (Administrateur) MetierFactory.getAdministrateurService().getByLogin(login);
+            if (administrateur != null) {
+                String passwd = new String(this.jPasswordField1.getPassword());
+                if (administrateur.isValid(passwd)) {
 
-                try {
-                    Administrateur administrateur = (Administrateur) MetierFactory.getAdministrateurService().getByLogin(login);
-                    if (administrateur != null) {
-                        String passwd = new String(this.jPasswordField1.getPassword());
-                        if (administrateur.isValid(passwd)) {
+                    MainIhm mainIhm;
 
-                            MainIhm mainIhm;
+                    mainIhm = new MainIhm();
 
-                            mainIhm = new MainIhm();
-
-                            mainIhm.setVisible(true);
-                            this.dispose();
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Mot de passe incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
-                        }
-
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Nom d'utilisateur incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
-                    }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Nom d'utilisateur inconnu", "Erreur", JOptionPane.ERROR_MESSAGE);
+                    mainIhm.setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Mot de passe incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
                 }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Nom d'utilisateur incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Nom d'utilisateur inconnu", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
-
 }

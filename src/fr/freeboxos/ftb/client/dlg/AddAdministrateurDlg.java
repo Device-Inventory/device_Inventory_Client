@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sql.rowset.serial.SerialException;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -174,7 +175,7 @@ public class AddAdministrateurDlg extends javax.swing.JDialog {
             this.administrateur.setId(id);
             dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e, "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonOKActionPerformed
 
