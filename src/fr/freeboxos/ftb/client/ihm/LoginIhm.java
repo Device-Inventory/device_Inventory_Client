@@ -6,24 +6,18 @@
 package fr.freeboxos.ftb.client.ihm;
 
 import com.bulenkov.darcula.DarculaLaf;
-import fr.freeboxos.ftb.client.observable.Chargement;
-import fr.freeboxos.ftb.metier.MetierFactory;
-import fr.freeboxos.ftb.metier.entitys.Administrateur;
 import fr.freeboxos.ftb.physique.io.PropertiesFile;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.IOException;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author alan
  */
-public class LoginIhm extends javax.swing.JFrame implements Observer {
+public class LoginIhm extends javax.swing.JFrame {
 
     private final PropertiesFile propertiesFile;
 
@@ -155,13 +149,15 @@ public class LoginIhm extends javax.swing.JFrame implements Observer {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.propertiesFile.setUrl(this.jTextField2.getText());
-        Chargement chargement = new Chargement();
-        chargement.addObserver(this);
-        try {
-            chargement.execute();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(LoginIhm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        ChargementIhm chargementIhm = new ChargementIhm();
+        chargementIhm.setVisible(true);
+        this.dispose();
+//        chargement.addObserver(this);
+//        try {
+//            chargement.execute();
+//        } catch (InterruptedException ex) {
+//            Logger.getLogger(LoginIhm.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -279,30 +275,30 @@ public class LoginIhm extends javax.swing.JFrame implements Observer {
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void update(Observable o, Object arg) {
-        String login = this.jTextField1.getText();
-        try {
-            Administrateur administrateur = (Administrateur) MetierFactory.getAdministrateurService().getByLogin(login);
-            if (administrateur != null) {
-                String passwd = new String(this.jPasswordField1.getPassword());
-                if (administrateur.isValid(passwd)) {
-
-                    MainIhm mainIhm;
-
-                    mainIhm = new MainIhm();
-
-                    mainIhm.setVisible(true);
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Mot de passe incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Nom d'utilisateur incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Nom d'utilisateur inconnu", "Erreur", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+//    @Override
+//    public void update(Observable o, Object arg) {
+//        String login = this.jTextField1.getText();
+//        try {
+//            Administrateur administrateur = (Administrateur) MetierFactory.getAdministrateurService().getByLogin(login);
+//            if (administrateur != null) {
+//                String passwd = new String(this.jPasswordField1.getPassword());
+//                if (administrateur.isValid(passwd)) {
+//
+//                    MainIhm mainIhm;
+//
+//                    mainIhm = new MainIhm();
+//
+//                    mainIhm.setVisible(true);
+//                    this.dispose();
+//                } else {
+//                    JOptionPane.showMessageDialog(this, "Mot de passe incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
+//                }
+//
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Nom d'utilisateur incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Nom d'utilisateur inconnu", "Erreur", JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
 }

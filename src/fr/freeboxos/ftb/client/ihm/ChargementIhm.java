@@ -16,7 +16,6 @@
  */
 package fr.freeboxos.ftb.client.ihm;
 
-import fr.freeboxos.ftb.client.observable.Data;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.logging.Level;
@@ -27,20 +26,37 @@ import java.util.logging.Logger;
  * @author alan
  */
 public class ChargementIhm extends javax.swing.JFrame {
+//
+//    private final Data d;
+//
+//    public Data getD() {
+//        return d;
+//    }
 
-    private final Data d;
-
-    public Data getD() {
-        return d;
-    }
+    private static Thread t;
 
     /**
      * Creates new form Chargement
      *
-     * @throws java.lang.InterruptedException
      */
-    public ChargementIhm() throws InterruptedException {
+    @SuppressWarnings({"Convert2Lambda", "CallToThreadStartDuringObjectConstruction"})
+    public ChargementIhm() {
+        ChargementIhm.t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    System.err.println("Test");
+                    MainIhm ihm = new MainIhm();
+                    ihm.setVisible(true);
+                    ChargementIhm.this.dispose();
+                } catch (Exception ex) {
+                    Logger.getLogger(ChargementIhm.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        t.start();
         this.initComponents();
+
         this.setLocationRelativeTo(null);
         this.jLabel1.setText("Chargement en cours ...");
         Image icone = Toolkit.getDefaultToolkit().getImage("./icone.png");
@@ -48,8 +64,8 @@ public class ChargementIhm extends javax.swing.JFrame {
         this.repaint();
         this.pack();
 
-        this.d = new Data();
-        this.d.setData("actif");
+//        this.d = new Data();
+//        this.d.setData("actif");
     }
 
     /**
@@ -91,14 +107,15 @@ public class ChargementIhm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("Convert2Lambda")
     public static void main(String args[]) {
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            try {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
                 new ChargementIhm().setVisible(true);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(ChargementIhm.class.getName()).log(Level.SEVERE, null, ex);
+                t.start();
             }
         });
     }

@@ -469,6 +469,8 @@ public class AddHddDlg extends javax.swing.JDialog {
                 throw new Exception("veuillez entrer un prix");
             }
 
+            float prixfloat = Float.parseFloat(prix);
+
             if (this.jCheckBoxSSD.isSelected()) {
                 String type_memoire = this.jComboBoxTypeMemoire.getSelectedItem().toString();
                 boolean nvme;
@@ -497,9 +499,9 @@ public class AddHddDlg extends javax.swing.JDialog {
                     throw new Exception("veuillez entrer une valeur de iops");
                 }
 
-                this.hdd = new SSD(type_memoire, nvme, controleur, lecture, ecriture, iops, trim, marque, modele, interface_ordinateur, format, capacite, vitesse_de_rotation, cache, prix);
+                this.hdd = new SSD(type_memoire, nvme, controleur, lecture, ecriture, iops, trim, marque, modele, interface_ordinateur, format, capacite, vitesse_de_rotation, cache, prixfloat);
             } else {
-                this.hdd = new HDD(marque, modele, interface_ordinateur, format, capacite, vitesse_de_rotation, cache, prix);
+                this.hdd = new HDD(marque, modele, interface_ordinateur, format, capacite, vitesse_de_rotation, cache, prixfloat);
             }
 
             this.hdd.setId(this.id);
